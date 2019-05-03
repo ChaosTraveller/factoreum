@@ -3,19 +3,23 @@ package com.main;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 
-public class Main extends Canvas implements Runnable {
+public class Main extends Canvas implements Runnable{
 
-    public static final int wi = 960, he = 720;
+    public static final int WI = 960, HE = 720;
 
     private Thread action;
     private boolean r = false;
 
     private Handler handler;
+    private GUI gui;
 
     public Main(){
-        new Window(wi, he, "Factoreum", this);
 
         handler = new Handler();
+
+        new Window(WI, HE, "Factoreum", this);
+
+        gui = new GUI();
 
         handler.addMachine(new Solar(50, 50, 20, 1, ID.Solar));
     }
@@ -71,6 +75,7 @@ public class Main extends Canvas implements Runnable {
 
     private void tick(){
         handler.tick();
+        gui.tick();
     }
 
     private void render(){
@@ -82,9 +87,11 @@ public class Main extends Canvas implements Runnable {
 
         Graphics gr = bs.getDrawGraphics();
         gr.setColor(Color.black);
-        gr.fillRect(0,0, wi, he);
+        gr.fillRect(0,0, WI, HE);
 
         handler.render(gr);
+
+        gui.render(gr);
 
         gr.dispose();
         bs.show();
