@@ -10,9 +10,14 @@ public class Main extends Canvas implements Runnable {
     private Thread action;
     private boolean r = false;
 
+    private Handler handler;
+
     public Main(){
         new Window(wi, he, "Factoreum", this);
 
+        handler = new Handler();
+
+        handler.addMachine(new Solar(50, 50, 20, 1, ID.Solar));
     }
 
     public synchronized void start() {
@@ -33,6 +38,7 @@ public class Main extends Canvas implements Runnable {
         }
 
     }
+
 
     public void run(){
 
@@ -64,7 +70,7 @@ public class Main extends Canvas implements Runnable {
     }
 
     private void tick(){
-
+        handler.tick();
     }
 
     private void render(){
@@ -77,6 +83,9 @@ public class Main extends Canvas implements Runnable {
         Graphics gr = bs.getDrawGraphics();
         gr.setColor(Color.black);
         gr.fillRect(0,0, wi, he);
+
+        handler.render(gr);
+
         gr.dispose();
         bs.show();
 
