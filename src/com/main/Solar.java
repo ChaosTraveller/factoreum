@@ -4,33 +4,36 @@ import java.awt.*;
 
 public class Solar extends Generator{
 
-    public int power = 0;
+    private int power = 0;
     long timer = System.currentTimeMillis();
 
     public Solar(int x, int y, int temperature, int lvl, ID id){
         super(x, y, temperature, lvl, id);
     }
+    private int lastLvl = lvl;
+    private  boolean p = false;
 
     public void tick() {
 
-        genPower();
+        if(p != true) {
+            GUI.setMaxPower(GUI.getMaxPower() + Math.round((float)lvl*lvl/2));
+            p = true;
+        } else if(p == true && lastLvl != lvl) {
+            GUI.setMaxPower(GUI.getMaxPower() - Math.round(lastLvl*lastLvl/2));
+            p = false;
+            lastLvl = lvl;
+        }
+
 
     }
-
+    private Color sol = new Color(255, 242, 159);
     public void render(Graphics gr) {
 
-        gr.setColor(Color.red);
-        gr.fillRect(x, y, 20, 20);
+        gr.setColor(sol);
+        gr.fillRect(x, y, 80, 80);
+        gr.setColor(Color.black);
+        gr.setFont(new Font("arial", Font.PLAIN, 15));
+        gr.drawString("lvl: " + lvl, x +2, y +10);
 
-    }
-
-    public int genPower() {
-
-        power++;
-        if (System.currentTimeMillis() - timer > 4000) {
-            timer += 4000;
-            System.out.println("Power: " + power);
-        }
-        return power;
     }
 }

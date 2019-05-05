@@ -6,6 +6,7 @@ import java.awt.image.BufferStrategy;
 public class Main extends Canvas implements Runnable{
 
     public static final int WI = 960, HE = 720;
+    public static int[] x, y;
 
     private Thread action;
     private boolean r = false;
@@ -14,14 +15,26 @@ public class Main extends Canvas implements Runnable{
     private GUI gui;
 
     public Main(){
-
+        int sp=0;
+        for (int i=0; i<6; i++) {
+            x[i] = 20 + (i * 80) + sp;
+            sp += 20;
+        }
+        sp = 0;
+        for (int i=0; i<6; i++) {
+            y[i] = 20 + (i * 80) + sp;
+            sp += 20;
+        }
+        //Tu coś nie gra jeszcze nie wiem co
         handler = new Handler();
 
         new Window(WI, HE, "Factoreum", this);
 
         gui = new GUI();
 
-        handler.addMachine(new Solar(50, 50, 20, 1, ID.Solar));
+        handler.addMachine(new Solar(x[0], y[0], 20, 3, ID.Solar));
+        handler.addMachine(new Solar(x[0], y[2], 20, 5, ID.Solar));
+        handler.addMachine(new Solar(x[4], y[4], 20, 9, ID.Solar));
     }
 
     public synchronized void start() {
@@ -88,10 +101,8 @@ public class Main extends Canvas implements Runnable{
         Graphics gr = bs.getDrawGraphics();
         gr.setColor(Color.black);
         gr.fillRect(0,0, WI, HE);
-
-        handler.render(gr);
-
         gui.render(gr);
+        handler.render(gr);
 
         gr.dispose();
         bs.show();

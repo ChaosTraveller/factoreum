@@ -9,7 +9,6 @@ public abstract class Generator extends Machine {
         super(x, y, temperature, lvl, id);
     }
 
-    public abstract int genPower();
 
     public abstract void tick();
     public abstract void render(Graphics gr);

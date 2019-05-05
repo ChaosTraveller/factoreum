@@ -27,9 +27,7 @@ public abstract class Machine {
     public void setLvl(int lvl) {
         this.lvl = lvl;
     }
-    public int getTemperature() {
-        return temperature;
-    }
+    public int getTemperature() { return temperature; }
     public int getLvl() {
         return lvl;
     }
@@ -39,16 +37,8 @@ public abstract class Machine {
     public ID getId() {
         return id;
     }
-    public void setX(int x) {
-        this.x = x;
-    }
-    public int getX() {
-        return x;
-    }
-    public void setY(int y) {
-        this.y = y;
-    }
-    public int getY() {
-        return y;
-    }
+    public void setX(int x) {this.x = x; }
+    public int getX() { return x; }
+    public void setY(int y) { this.y = y; }
+    public int getY() { return y; }
 }
