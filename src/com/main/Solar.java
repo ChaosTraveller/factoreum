@@ -2,16 +2,17 @@ package com.main;
 
 import java.awt.*;
 
+
+
 public class Solar extends Generator{
 
-    private int power = 0;
-    long timer = System.currentTimeMillis();
 
     public Solar(int x, int y, int temperature, int lvl, ID id){
         super(x, y, temperature, lvl, id);
     }
     private int lastLvl = lvl;
     private  boolean p = false;
+
 
     public void tick() {
 
@@ -33,7 +34,7 @@ public class Solar extends Generator{
         gr.fillRect(x, y, 80, 80);
         gr.setColor(Color.black);
         gr.setFont(new Font("arial", Font.PLAIN, 15));
-        gr.drawString("lvl: " + lvl, x +2, y +10);
+        gr.drawString("lvl: " + lvl, x +10, y +20);
 
     }
 }

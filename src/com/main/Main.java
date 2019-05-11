@@ -6,7 +6,7 @@ import java.awt.image.BufferStrategy;
 public class Main extends Canvas implements Runnable{
 
     public static final int WI = 960, HE = 720;
-    public static int[] x, y;
+    public static final int[] x = {20,125, 230, 335, 440, 545}, y = {60, 165, 270, 375, 480, 585};
 
     private Thread action;
     private boolean r = false;
@@ -15,26 +15,18 @@ public class Main extends Canvas implements Runnable{
     private GUI gui;
 
     public Main(){
-        int sp=0;
-        for (int i=0; i<6; i++) {
-            x[i] = 20 + (i * 80) + sp;
-            sp += 20;
-        }
-        sp = 0;
-        for (int i=0; i<6; i++) {
-            y[i] = 20 + (i * 80) + sp;
-            sp += 20;
-        }
-        //Tu coś nie gra jeszcze nie wiem co
         handler = new Handler();
 
         new Window(WI, HE, "Factoreum", this);
 
         gui = new GUI();
 
-        handler.addMachine(new Solar(x[0], y[0], 20, 3, ID.Solar));
-        handler.addMachine(new Solar(x[0], y[2], 20, 5, ID.Solar));
-        handler.addMachine(new Solar(x[4], y[4], 20, 9, ID.Solar));
+        handler.addMachine(new Solar(x[0], y[0], 20, 1, ID.Solar));
+        handler.addMachine(new Solar(x[1], y[1], 20, 2, ID.Solar));
+        handler.addMachine(new Solar(x[2], y[2], 20, 3, ID.Solar));
+        handler.addMachine(new Solar(x[3], y[3], 20, 4, ID.Solar));
+        handler.addMachine(new Solar(x[4], y[4], 20, 5, ID.Solar));
+        handler.addMachine(new Solar(x[5], y[5], 20, 6, ID.Solar));
     }
 
     public synchronized void start() {
