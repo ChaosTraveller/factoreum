@@ -29,6 +29,7 @@ public class Main extends Canvas implements Runnable{
         handler.addMachine(new Solar(x[5], y[5], 20, 6, ID.Solar));
         handler.addMachine(new FuelGen(x[4], y[3], 20, 2, ID.Fuel));
         handler.addMachine(new NuclearGen(x[1], y[3], 20, 3, ID.Nuclear));
+        handler.addMachine(new Miner(x[0], y[5], 20, 2, ID.Miner));
     }
 
     public synchronized void start() {

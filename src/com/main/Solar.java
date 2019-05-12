@@ -4,7 +4,7 @@ import java.awt.*;
 
 
 
-public class Solar extends Generator{
+public class Solar extends Machine{
 
 
     public Solar(int x, int y, int temperature, int lvl, ID id){
@@ -12,12 +12,14 @@ public class Solar extends Generator{
     }
     private int lastLvl = lvl;
     private  boolean p = false;
+    private int power = 0;
 
 
     public void tick() {
 
         if(p != true) {
-            GUI.setMaxPower(GUI.getMaxPower() + Math.round((float)lvl*lvl/2));
+            power = Math.round((float)lvl*lvl/2);
+            GUI.setMaxPower(GUI.getMaxPower() + power);
             p = true;
         } else if(p == true && lastLvl != lvl) {
             GUI.setMaxPower(GUI.getMaxPower() - Math.round((float)lastLvl*lastLvl/2));
@@ -36,7 +38,8 @@ public class Solar extends Generator{
         gr.setFont(new Font("arial", Font.PLAIN, 10));
         gr.drawString("Solar generator", x +3, y +10);
         gr.setFont(new Font("arial", Font.PLAIN, 15));
-        gr.drawString("lvl: " + lvl, x +10, y +30);
+        gr.drawString("lvl: " + lvl, x +3, y +30);
+        gr.drawString("Power: " +power, x+3, y+50);
 
     }
 }

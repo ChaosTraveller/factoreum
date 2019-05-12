@@ -2,7 +2,7 @@ package com.main;
 
 import java.awt.*;
 
-public class NuclearGen extends Generator {
+public class NuclearGen extends Machine {
 
     public NuclearGen(int x, int y, int temperature, int lvl, ID id) {
         super(x, y, temperature, lvl, id);
@@ -11,6 +11,7 @@ public class NuclearGen extends Generator {
     private boolean p = false;
     private int fuelReq = 10*lvl;
     private int fuelTime = 0;
+    private int power = 0;
 
     public void tick() {
         if (GUI.getUranium()>= fuelReq && p == true){
@@ -26,7 +27,8 @@ public class NuclearGen extends Generator {
             fuelTime--;
         }
         if(p != true && GUI.getUranium()>= fuelReq) {
-            GUI.setMaxPower(GUI.getMaxPower() + (lvl*lvl*lvl));
+            power = (lvl*lvl*lvl);
+            GUI.setMaxPower(GUI.getMaxPower() + power);
             p = true;
         } else if(p == true && lastLvl != lvl) {
             GUI.setMaxPower(GUI.getMaxPower() - (lastLvl*lastLvl*lastLvl));
@@ -45,6 +47,7 @@ public class NuclearGen extends Generator {
         gr.setFont(new Font("arial", Font.PLAIN, 10));
         gr.drawString("Nuclear gen.", x +3, y +10);
         gr.setFont(new Font("arial", Font.PLAIN, 15));
-        gr.drawString("lvl: " + lvl, x +10, y +30);
+        gr.drawString("lvl: " + lvl, x +3, y +30);
+        gr.drawString("Power: " +power, x+3, y+50);
     }
 }
