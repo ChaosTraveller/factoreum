@@ -20,7 +20,7 @@ public class Solar extends Generator{
             GUI.setMaxPower(GUI.getMaxPower() + Math.round((float)lvl*lvl/2));
             p = true;
         } else if(p == true && lastLvl != lvl) {
-            GUI.setMaxPower(GUI.getMaxPower() - Math.round(lastLvl*lastLvl/2));
+            GUI.setMaxPower(GUI.getMaxPower() - Math.round((float)lastLvl*lastLvl/2));
             p = false;
             lastLvl = lvl;
         }
@@ -33,8 +33,10 @@ public class Solar extends Generator{
         gr.setColor(sol);
         gr.fillRect(x, y, 80, 80);
         gr.setColor(Color.black);
+        gr.setFont(new Font("arial", Font.PLAIN, 10));
+        gr.drawString("Solar generator", x +3, y +10);
         gr.setFont(new Font("arial", Font.PLAIN, 15));
-        gr.drawString("lvl: " + lvl, x +10, y +20);
+        gr.drawString("lvl: " + lvl, x +10, y +30);
 
     }
 }

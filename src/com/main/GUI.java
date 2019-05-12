@@ -7,10 +7,10 @@ public class GUI {
     private static int maxPower;
     private static int powerUsage;
     private static int units;
-    private static int coal;
+    private static int coal = 200;
     private static int titanium;
     private static int crystals;
-    private static int uranium;
+    private static int uranium = 70;
     private static int coolingPower;
     private static int heatingPower;
     public Color c1 = new Color(0, 14, 33);
