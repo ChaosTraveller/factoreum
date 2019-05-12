@@ -22,7 +22,7 @@ public class Main extends Canvas implements Runnable{
         gui = new GUI();
 
         handler.addMachine(new Solar(x[0], y[0], 20, 1, ID.Solar));
-        handler.addMachine(new Solar(x[1], y[1], 20, 2, ID.Solar));
+        handler.addMachine(new CoolingSystem(x[1], y[1], 20, 3, ID.Cooler));
         handler.addMachine(new Solar(x[2], y[2], 20, 3, ID.Solar));
         handler.addMachine(new Solar(x[3], y[3], 20, 4, ID.Solar));
         handler.addMachine(new Solar(x[4], y[4], 20, 5, ID.Solar));
@@ -30,6 +30,7 @@ public class Main extends Canvas implements Runnable{
         handler.addMachine(new FuelGen(x[4], y[3], 20, 2, ID.Fuel));
         handler.addMachine(new NuclearGen(x[1], y[3], 20, 3, ID.Nuclear));
         handler.addMachine(new Miner(x[0], y[5], 20, 2, ID.Miner));
+        handler.addMachine(new Miner(x[1], y[5], 20, 3, ID.Miner));
     }
 
     public synchronized void start() {

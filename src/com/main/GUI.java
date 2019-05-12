@@ -27,6 +27,8 @@ public class GUI {
         gr.fillRect(0, 0, 960, 40);
         gr.fillRect(10, 50, 630, 630);
         gr.fillRect(650, 50, 295, 630);
+        gr.setColor(Color.black);
+        gr.fillRect(660, 60, 275, 610);
         gr.setColor(c3);
         int spx=0, spy=0;
         for (int i=0; i<6; i++) {

@@ -41,9 +41,10 @@ public class FuelGen extends Machine {
         gr.setColor(Color.black);
         gr.setFont(new Font("arial", Font.PLAIN, 10));
         gr.drawString("Fuel gen.", x +3, y +10);
-        gr.setFont(new Font("arial", Font.PLAIN, 15));
-        gr.drawString("lvl: " + lvl, x +3, y +30);
-        gr.drawString("Power: " +power, x+3, y+50);
+        gr.setFont(new Font("arial", Font.PLAIN, 13));
+        gr.drawString("lvl: " + lvl, x +3, y +25);
+        gr.drawString("Power: " +power, x+3, y+40);
+        gr.drawString("Temp: " + temperature, x+3, y+55);
 
     }
 }

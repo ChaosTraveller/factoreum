@@ -36,10 +36,11 @@ public class Solar extends Machine{
         gr.fillRect(x, y, 80, 80);
         gr.setColor(Color.black);
         gr.setFont(new Font("arial", Font.PLAIN, 10));
-        gr.drawString("Solar generator", x +3, y +10);
-        gr.setFont(new Font("arial", Font.PLAIN, 15));
-        gr.drawString("lvl: " + lvl, x +3, y +30);
-        gr.drawString("Power: " +power, x+3, y+50);
+        gr.drawString("Solar gen.", x +3, y +10);
+        gr.setFont(new Font("arial", Font.PLAIN, 13));
+        gr.drawString("lvl: " + lvl, x +3, y +25);
+        gr.drawString("Power: " +power, x+3, y+40);
+        gr.drawString("Temp: " + temperature, x+3, y+55);
 
     }
 }
