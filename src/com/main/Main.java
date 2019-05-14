@@ -13,6 +13,7 @@ public class Main extends Canvas implements Runnable{
 
     private Handler handler;
     private GUI gui;
+    private  Equipment eq;
 
     public Main(){
         handler = new Handler();
@@ -20,6 +21,7 @@ public class Main extends Canvas implements Runnable{
         new Window(WI, HE, "Factoreum", this);
 
         gui = new GUI();
+        eq = new Equipment();
 
         handler.addMachine(new Solar(x[0], y[0], 20, 1, ID.Solar));
         handler.addMachine(new CoolingSystem(x[1], y[1], 20, 3, ID.Cooler));
@@ -85,6 +87,7 @@ public class Main extends Canvas implements Runnable{
     private void tick(){
         handler.tick();
         gui.tick();
+        eq.tick();
     }
 
     private void render(){
@@ -98,6 +101,7 @@ public class Main extends Canvas implements Runnable{
         gr.setColor(Color.black);
         gr.fillRect(0,0, WI, HE);
         gui.render(gr);
+        eq.render(gr);
         handler.render(gr);
 
         gr.dispose();

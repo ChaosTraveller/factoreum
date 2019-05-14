@@ -41,7 +41,7 @@ public class Miner extends Machine {
         if (ore == 0){
             ore(n);
         }
-        powerU = Math.round((float)Math.pow(2, (float)(lvl/2)));
+        powerU = 2*lvl /*Math.round((float)(Math.pow(2, lvl/2)))*/;
 
         if(p != true) {
             GUI.setPowerUsage(GUI.getPowerUsage() + powerU);
