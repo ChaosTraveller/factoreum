@@ -1,8 +1,22 @@
 package factoreum;
 
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
-public class GUI implements IGuiRaw, IGuiItems {
+public class GUI extends MouseAdapter implements IGuiRaw, IGuiItems {
+
+    private static GUI ourInstance = new GUI();
+
+    private static GUI single_instance = null;
+
+    public static GUI getInstance()
+    {
+        if (single_instance == null)
+            single_instance = new GUI();
+
+        return single_instance;
+    }
 
     private  int maxPower = 0;
     private  int powerUsage = 0;
@@ -37,10 +51,40 @@ public class GUI implements IGuiRaw, IGuiItems {
         Store
     }
 
-    public OVERLAP overlap = OVERLAP.Menu;
+    //Menu menu = new Menu();
+    //Store store = new Store();
+
+    public OVERLAP overlap = OVERLAP.Items;
+
+    public void mouseClicked(MouseEvent e) {
+        int mx = e.getX();
+        int my = e.getY();
+
+        if (mousePos(mx, my, 880, 0, 70, 35)) {
+            overlap = OVERLAP.Menu;
+        } else if (mousePos(mx, my, 665, 65, 81, 35)) {
+            overlap = OVERLAP.Items;
+        } else if (mousePos(mx, my, 756, 65, 81, 35)) {
+            overlap = OVERLAP.Crafting;
+        } else if (mousePos(mx, my, 847, 65, 81, 35)) {
+            overlap = OVERLAP.Store;
+        }
+
+    }
+
+    public void mouseReleased(MouseEvent e) {
+        super.mouseReleased(e);
+    }
+
+    private boolean mousePos(int mx, int my, int x, int y, int width, int height) {
+        if (mx > x && mx < x + width) {
+            if (my > y && my < y + height) {
+                return true;
+            } else return false;
+        } else return false;
+    }
 
     public void tick(){
-
     }
 
     public void render(Graphics gr) {
@@ -73,8 +117,8 @@ public class GUI implements IGuiRaw, IGuiItems {
         gr.setColor(Color.black);
         gr.fillRect(660, 60, 275, 610);
         gr.setColor(Color.white);
-        gr. drawRect(880, 0, 70, 35);
         gr.setFont(new Font("arial", Font.PLAIN, 20));
+        gr. drawRect(880, 0, 70, 35);
         gr. drawString("Menu", 890, 25);
         gr.drawRect(665, 65, 81, 35);
         gr.drawString("Storage", 670, 90);
@@ -97,41 +141,21 @@ public class GUI implements IGuiRaw, IGuiItems {
             gr.drawString("Pure crystals: " + pureCrystal,                  665, 330);
             gr.drawString("Reinforced ti. plates: " + reinforcedTiPlate,    665, 355);
             gr.drawString("Electronic circutes: " + electronicCircute,      665, 380);
+            gr.setColor(Color.red);
+            gr.setFont(new Font("arial", Font.PLAIN, 20));
+            gr.drawRect(665, 65, 81, 35);
+            gr.drawString("Storage", 670, 90);
         } else if (overlap == OVERLAP.Crafting) {
 
+
+            gr.setColor(Color.red);
+            gr.setFont(new Font("arial", Font.PLAIN, 20));
+            gr.drawRect(756, 65, 81, 35);
+            gr.drawString("Crafting", 761, 90);
         } else if (overlap == OVERLAP.Store) {
-            gr.setColor(c2);
-            gr.setFont(new Font("arial", Font.PLAIN, 18));
-            gr.drawString("Graphite: " + graphite,                          665, 130);
-            gr.drawRect(                                                        665, 138, 265, 20);
-            gr.drawString("Graphite rods: " + graphiteRod,                  665, 180);
-            gr.drawRect(                                                        665, 188, 265, 20);
-            gr.drawString("Controm Rods: " + controlRod,                    665, 230);
-            gr.drawRect(                                                        665, 238, 265, 20);
-            gr.drawString("Titanium plates: " + titaniumPlate,              665, 280);
-            gr.drawRect(                                                        665, 288, 265, 20);
-            gr.drawString("Fuel rods: " + fuelRod,                          665, 330);
-            gr.drawRect(                                                        665, 338, 265, 20);
-            gr.drawString("Advanced fuel rods: " + advancedFuelRod,         665, 380);
-            gr.drawRect(                                                        665, 388, 265, 20);
-            gr.drawString("Electronic parts: " + electronicParts,           665, 430);
-            gr.drawRect(                                                        665, 438, 265, 20);
-            gr.drawString("Power transmiters: " + powerTransmiter,          665, 480);
-            gr.drawRect(                                                        665, 488, 265, 20);
-            gr.drawString("Pure crystals: " + pureCrystal,                  665, 530);
-            gr.drawRect(                                                        665, 538, 265, 20);
-            gr.drawString("Reinforced ti. plates: " + reinforcedTiPlate,    665, 580);
-            gr.drawRect(                                                        665, 588, 265, 20);
-            gr.drawString("Electronic circutes: " + electronicCircute,      665, 630);
-            gr.drawRect(                                                        665, 638, 265, 20);
+            Main.store.render(gr);
         } else if (overlap == OVERLAP.Menu) {
-            gr.setColor(Color.white);
-            gr.drawString("Save game",                                      670, 155);
-            gr.drawRect(                                                        665, 130, 265, 35);
-            gr.drawString("Load game",                                      670, 205);
-            gr.drawRect(                                                        665, 180, 265, 35);
-            gr.drawString("Exit" ,                                          670, 255);
-            gr.drawRect(                                                        665, 230, 265, 35);
+            Main.menu.render(gr);
         }
 
 
@@ -156,6 +180,7 @@ public class GUI implements IGuiRaw, IGuiItems {
     public void setCoolingPower(int coolingPower) { this.coolingPower = coolingPower; }
     public int getHeatingPower() { return heatingPower; }
     public void setHeatingPower(int heatingPower) { this.heatingPower = heatingPower;}
+
 
     public int getGraphite() { return graphite; }
     public void setGraphite(int graphite) { this.graphite = graphite; }

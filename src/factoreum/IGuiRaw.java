@@ -20,6 +20,4 @@ public interface IGuiRaw {
     public  void setCoolingPower(int coolingPower);
     public  int getHeatingPower();
     public  void setHeatingPower(int heatingPower);
-
-
 }

@@ -3,24 +3,32 @@ package factoreum;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 
-public class Main extends Canvas implements Runnable{
+public class Main extends Canvas implements Runnable {
 
     public static final int WI = 960, HE = 720;
     public static final int[] x = {20,125, 230, 335, 440, 545}, y = {60, 165, 270, 375, 480, 585};
+
+    public Color c1 = new Color(0, 14, 33);
+    public Color c2 = new Color(255, 172, 23);
+    public Color c3 = new Color(255, 188, 91);
 
     private Thread action;
     private boolean r = false;
 
     private Handler handler;
-    private GUI gui;
+    private GUI gui = GUI.getInstance();
+    public static Menu menu = new Menu();
+    public static Store store = new Store();
 
 
     public Main(){
         handler = new Handler();
 
-        new Window(WI, HE, "Factoreum", this);
+        this.addMouseListener(gui);
+        this.addMouseListener(store);
+        this.addMouseListener(menu);
 
-        gui = new GUI();
+        new Window(WI, HE, "Factoreum", this);
 
 
         handler.addMachine(new Solar(x[0], y[0], 20, 1, ID.Solar));
@@ -33,6 +41,8 @@ public class Main extends Canvas implements Runnable{
         handler.addMachine(new NuclearGen(x[1], y[3], 20, 3, ID.Nuclear));
         handler.addMachine(new Miner(x[0], y[5], 20, 2, ID.Miner));
         handler.addMachine(new Miner(x[1], y[5], 20, 3, ID.Miner));
+        handler.addMachine(new Miner(x[0], y[4], 20, 4, ID.Miner));
+        handler.addMachine(new Miner(x[1], y[4], 20, 5, ID.Miner));
     }
 
     public synchronized void start() {
@@ -87,6 +97,8 @@ public class Main extends Canvas implements Runnable{
     private void tick(){
         handler.tick();
         gui.tick();
+        menu.tick();
+        store.tick();
 
     }
 
@@ -101,6 +113,7 @@ public class Main extends Canvas implements Runnable{
         gr.setColor(Color.black);
         gr.fillRect(0,0, WI, HE);
         gui.render(gr);
+
 
         handler.render(gr);
 

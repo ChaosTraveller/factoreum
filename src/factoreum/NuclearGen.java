@@ -12,7 +12,6 @@ public class NuclearGen extends Machine{
     private int fuelReq = 10*lvl;
     private int fuelTime = 0;
     private int power = 0;
-    private IGuiRaw IGuiRaw = new GUI();
 
     public void tick() {
         if (IGuiRaw.getUranium()>= fuelReq && p == true){

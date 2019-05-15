@@ -13,7 +13,7 @@ public class Solar extends Machine{
     private int lastLvl = lvl;
     private  boolean p = false;
     private int power = 0;
-    private IGuiRaw IGuiRaw = new GUI();
+
 
 
 
@@ -29,6 +29,7 @@ public class Solar extends Machine{
             lastLvl = lvl;
         }
     }
+
     private Color sol = new Color(255, 242, 159);
     public void render(Graphics gr) {
 

@@ -2,12 +2,13 @@ package factoreum;
 
 import java.awt.*;
 
-public abstract class Machine {
+public abstract class Machine implements IMachine{
 
     protected int x, y;
     protected int temperature;
     protected int lvl;
     protected ID id;
+    protected IGuiRaw IGuiRaw = GUI.getInstance();
 
     public Machine(int x, int y, int temperature, int lvl, ID id) {
         this.x = x;

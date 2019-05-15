@@ -12,7 +12,6 @@ public class FuelGen extends Machine{
     private int fuelReq = lvl;
     private int time = 0;
     private int power = 0;
-    private IGuiRaw IGuiRaw = new GUI();
 
 
     public void tick() {
