@@ -1,4 +1,4 @@
-package com.main;
+package factoreum;
 
 import java.awt.*;
 import java.util.LinkedList;

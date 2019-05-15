@@ -1,30 +1,30 @@
-package com.main;
+package factoreum;
 
 import java.awt.*;
 
-public class GUI {
+public class GUI implements IGuiRaw, IGuiItems {
 
-    private static int maxPower;
-    private static int powerUsage;
-    private static int units;
-    private static int coal = 200;
-    private static int titanium;
-    private static int crystals;
-    private static int uranium = 70;
-    private static int coolingPower;
-    private static int heatingPower;
+    private  int maxPower = 0;
+    private  int powerUsage = 0;
+    private  int units = 0;
+    private  int coal = 0;
+    private  int titanium = 0;
+    private  int crystals = 0;
+    private  int uranium = 0;
+    private  int coolingPower = 0;
+    private  int heatingPower = 0;
 
-    private static int graphite;
-    private static int graphiteRod;
-    private static int controlRod;
-    private static int titaniumPlate;
-    private static int fuelRod;
-    private static int advancedFuelRod;
-    private static int electronicParts;
-    private static int powerTransmiter;
-    private static int pureCrystal;
-    private static int reinforcedTiPlate;
-    private static int electronicCircute;
+    private  int graphite = 0;
+    private  int graphiteRod = 0;
+    private  int controlRod = 0;
+    private  int titaniumPlate = 0;
+    private  int fuelRod = 0;
+    private  int advancedFuelRod = 0;
+    private  int electronicParts = 0;
+    private  int powerTransmiter = 0;
+    private  int pureCrystal = 0;
+    private  int reinforcedTiPlate = 0;
+    private  int electronicCircute = 0;
 
     public Color c1 = new Color(0, 14, 33);
     public Color c2 = new Color(255, 172, 23);
@@ -138,45 +138,45 @@ public class GUI {
 
     }
 
-    public static int getMaxPower() { return maxPower; }
-    public static void setMaxPower(int maxPower) { GUI.maxPower = maxPower; }
-    public static int getPowerUsage() { return powerUsage; }
-    public static void setPowerUsage(int powerUsage) { GUI.powerUsage = powerUsage; }
-    public static int getUnits() { return units; }
-    public static void setUnits(int units) { GUI.units = units; }
-    public static int getCoal() { return coal; }
-    public static void setCoal(int coal) { GUI.coal = coal; }
-    public static int getTitanium() { return titanium; }
-    public static void setTitanium(int titanium) { GUI.titanium = titanium; }
-    public static int getCrystals() { return crystals; }
-    public static void setCrystals(int crystals) { GUI.crystals = crystals; }
-    public static int getUranium() { return uranium; }
-    public static void setUranium(int uranium) { GUI.uranium = uranium; }
-    public static int getCoolingPower() { return coolingPower; }
-    public static void setCoolingPower(int coolingPower) { GUI.coolingPower = coolingPower; }
-    public static int getHeatingPower() { return heatingPower; }
-    public static void setHeatingPower(int heatingPower) { GUI.heatingPower = heatingPower;}
+    public int getMaxPower() { return maxPower; }
+    public void setMaxPower(int maxPower) { this.maxPower = maxPower; }
+    public int getPowerUsage() { return powerUsage; }
+    public void setPowerUsage(int powerUsage) { this.powerUsage = powerUsage; }
+    public int getUnits() { return units; }
+    public void setUnits(int units) { this.units = units; }
+    public int getCoal() { return coal; }
+    public void setCoal(int coal) { this.coal = coal; }
+    public int getTitanium() { return titanium; }
+    public void setTitanium(int titanium) { this.titanium = titanium; }
+    public int getCrystals() { return crystals; }
+    public void setCrystals(int crystals) { this.crystals = crystals; }
+    public int getUranium() { return uranium; }
+    public void setUranium(int uranium) { this.uranium = uranium; }
+    public int getCoolingPower() { return coolingPower; }
+    public void setCoolingPower(int coolingPower) { this.coolingPower = coolingPower; }
+    public int getHeatingPower() { return heatingPower; }
+    public void setHeatingPower(int heatingPower) { this.heatingPower = heatingPower;}
 
-    public static int getGraphite() { return graphite; }
-    public static void setGraphite(int graphite) { GUI.graphite = graphite; }
-    public static int getGraphiteRod() { return graphiteRod; }
-    public static void setGraphiteRod(int graphiteRod) { GUI.graphiteRod = graphiteRod; }
-    public static int getControlRod() { return controlRod; }
-    public static void setControlRod(int controlRod) { GUI.controlRod = controlRod; }
-    public static int getTitaniumPlate() { return titaniumPlate; }
-    public static void setTitaniumPlate(int titaniumPlate) { GUI.titaniumPlate = titaniumPlate; }
-    public static int getFuelRod() { return fuelRod; }
-    public static void setFuelRod(int fuelRod) { GUI.fuelRod = fuelRod; }
-    public static int getAdvancedFuelRod() { return advancedFuelRod; }
-    public static void setAdvancedFuelRod(int advancedFuelRod) { GUI.advancedFuelRod = advancedFuelRod; }
-    public static int getElectronicParts() { return electronicParts; }
-    public static void setElectronicParts(int electronicParts) { GUI.electronicParts = electronicParts; }
-    public static int getPowerTransmiter() { return powerTransmiter; }
-    public static void setPowerTransmiter(int powerTransmiter) { GUI.powerTransmiter = powerTransmiter; }
-    public static int getPureCrystal() { return pureCrystal; }
-    public static void setPureCrystal(int pureCrystal) { GUI.pureCrystal = pureCrystal; }
-    public static int getReinforcedTiPlate() { return reinforcedTiPlate; }
-    public static void setReinforcedTiPlate(int reinforcedTiPlate) { GUI.reinforcedTiPlate = reinforcedTiPlate; }
-    public static int getElectronicCircute() { return electronicCircute; }
-    public static void setElectronicCircute(int electronicCircute) { GUI.electronicCircute = electronicCircute; }
+    public int getGraphite() { return graphite; }
+    public void setGraphite(int graphite) { this.graphite = graphite; }
+    public int getGraphiteRod() { return graphiteRod; }
+    public void setGraphiteRod(int graphiteRod) { this.graphiteRod = graphiteRod; }
+    public int getControlRod() { return controlRod; }
+    public void setControlRod(int controlRod) { this.controlRod = controlRod; }
+    public int getTitaniumPlate() { return titaniumPlate; }
+    public void setTitaniumPlate(int titaniumPlate) { this.titaniumPlate = titaniumPlate; }
+    public int getFuelRod() { return fuelRod; }
+    public void setFuelRod(int fuelRod) { this.fuelRod = fuelRod; }
+    public int getAdvancedFuelRod() { return advancedFuelRod; }
+    public void setAdvancedFuelRod(int advancedFuelRod) { this.advancedFuelRod = advancedFuelRod; }
+    public int getElectronicParts() { return electronicParts; }
+    public void setElectronicParts(int electronicParts) { this.electronicParts = electronicParts; }
+    public int getPowerTransmiter() { return powerTransmiter; }
+    public void setPowerTransmiter(int powerTransmiter) { this.powerTransmiter = powerTransmiter; }
+    public int getPureCrystal() { return pureCrystal; }
+    public void setPureCrystal(int pureCrystal) { this.pureCrystal = pureCrystal; }
+    public int getReinforcedTiPlate() { return reinforcedTiPlate; }
+    public void setReinforcedTiPlate(int reinforcedTiPlate) { this.reinforcedTiPlate = reinforcedTiPlate; }
+    public int getElectronicCircute() { return electronicCircute; }
+    public void setElectronicCircute(int electronicCircute) { this.electronicCircute = electronicCircute; }
 }

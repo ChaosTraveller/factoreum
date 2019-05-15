@@ -1,8 +1,8 @@
-package com.main;
+package factoreum;
 
 import java.awt.*;
 
-public class NuclearGen extends Machine {
+public class NuclearGen extends Machine{
 
     public NuclearGen(int x, int y, int temperature, int lvl, ID id) {
         super(x, y, temperature, lvl, id);
@@ -12,26 +12,27 @@ public class NuclearGen extends Machine {
     private int fuelReq = 10*lvl;
     private int fuelTime = 0;
     private int power = 0;
+    private IGuiRaw IGuiRaw = new GUI();
 
     public void tick() {
-        if (GUI.getUranium()>= fuelReq && p == true){
+        if (IGuiRaw.getUranium()>= fuelReq && p == true){
             if(fuelTime == 0) {
-                GUI.setUranium(GUI.getUranium()-fuelReq);
+                IGuiRaw.setUranium(IGuiRaw.getUranium()-fuelReq);
                 fuelTime = 500;
             } else fuelTime--;
-        } else if (GUI.getUranium() < fuelReq && p == true){
+        } else if (IGuiRaw.getUranium() < fuelReq && p == true){
             if (fuelTime == 0){
-                GUI.setMaxPower(GUI.getMaxPower() - (lastLvl*lastLvl*lastLvl));
+                IGuiRaw.setMaxPower(IGuiRaw.getMaxPower() - (lastLvl*lastLvl*lastLvl));
                 p = false;
             }
             fuelTime--;
         }
-        if(p != true && GUI.getUranium()>= fuelReq) {
+        if(p != true && IGuiRaw.getUranium()>= fuelReq) {
             power = (lvl*lvl*lvl);
-            GUI.setMaxPower(GUI.getMaxPower() + power);
+            IGuiRaw.setMaxPower(IGuiRaw.getMaxPower() + power);
             p = true;
         } else if(p == true && lastLvl != lvl) {
-            GUI.setMaxPower(GUI.getMaxPower() - (lastLvl*lastLvl*lastLvl));
+            IGuiRaw.setMaxPower(IGuiRaw.getMaxPower() - (lastLvl*lastLvl*lastLvl));
             p = false;
             lastLvl = lvl;
         }
@@ -51,4 +52,5 @@ public class NuclearGen extends Machine {
         gr.drawString("Power: " +power, x+3, y+40);
         gr.drawString("Temp: " + temperature, x+3, y+55);
     }
+
 }

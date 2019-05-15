@@ -1,8 +1,8 @@
-package com.main;
+package factoreum;
 
 import java.awt.*;
 
-public class FuelGen extends Machine {
+public class FuelGen extends Machine{
 
     public FuelGen(int x, int y, int temperature, int lvl, ID id) {
         super(x, y, temperature, lvl, id);
@@ -12,21 +12,23 @@ public class FuelGen extends Machine {
     private int fuelReq = lvl;
     private int time = 0;
     private int power = 0;
+    private IGuiRaw IGuiRaw = new GUI();
+
 
     public void tick() {
-        if (GUI.getCoal()>= fuelReq && p == true && time == 0){
-            GUI.setCoal(GUI.getCoal()-fuelReq);
+        if (IGuiRaw.getCoal()>= fuelReq && p == true && time == 0){
+            IGuiRaw.setCoal(IGuiRaw.getCoal()-fuelReq);
             time = 50;
-        } else if (GUI.getCoal() < fuelReq && p == true){
-            GUI.setMaxPower(GUI.getMaxPower() - (lastLvl*lastLvl));
+        } else if (IGuiRaw.getCoal() < fuelReq && p == true){
+            IGuiRaw.setMaxPower(IGuiRaw.getMaxPower() - (lastLvl*lastLvl));
             p = false;
         } else if(p == true)time--;
-        if(p != true && GUI.getCoal()>= fuelReq) {
+        if(p != true && IGuiRaw.getCoal()>= fuelReq) {
             power = (lvl*lvl);
-            GUI.setMaxPower(GUI.getMaxPower() + power);
+            IGuiRaw.setMaxPower(IGuiRaw.getMaxPower() + power);
             p = true;
         } else if(p == true && lastLvl != lvl) {
-            GUI.setMaxPower(GUI.getMaxPower() - (lastLvl*lastLvl));
+            IGuiRaw.setMaxPower(IGuiRaw.getMaxPower() - (lastLvl*lastLvl));
             p = false;
             lastLvl = lvl;
         }

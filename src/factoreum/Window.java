@@ -1,4 +1,4 @@
-package com.main;
+package factoreum;
 
 import javax.swing.*;
 import java.awt.*;

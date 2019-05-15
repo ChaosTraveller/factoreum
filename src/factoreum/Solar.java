@@ -1,4 +1,4 @@
-package com.main;
+package factoreum;
 
 import java.awt.*;
 
@@ -13,21 +13,21 @@ public class Solar extends Machine{
     private int lastLvl = lvl;
     private  boolean p = false;
     private int power = 0;
+    private IGuiRaw IGuiRaw = new GUI();
+
 
 
     public void tick() {
 
         if(p != true) {
             power = Math.round((float)lvl*lvl/2);
-            GUI.setMaxPower(GUI.getMaxPower() + power);
+            IGuiRaw.setMaxPower(IGuiRaw.getMaxPower() + power);
             p = true;
         } else if(p == true && lastLvl != lvl) {
-            GUI.setMaxPower(GUI.getMaxPower() - Math.round((float)lastLvl*lastLvl/2));
+            IGuiRaw.setMaxPower(IGuiRaw.getMaxPower() - Math.round((float)lastLvl*lastLvl/2));
             p = false;
             lastLvl = lvl;
         }
-
-
     }
     private Color sol = new Color(255, 242, 159);
     public void render(Graphics gr) {
@@ -43,4 +43,5 @@ public class Solar extends Machine{
         gr.drawString("Temp: " + temperature, x+3, y+55);
 
     }
+
 }
