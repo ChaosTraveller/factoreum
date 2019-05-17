@@ -6,11 +6,13 @@ import java.awt.event.MouseEvent;
 
 public class Menu extends MouseAdapter {
 
+    private GUI gui = GUI.getInstance();
+
     public void mouseClicked(MouseEvent e) {
         int mx = e.getX();
         int my = e.getY();
 
-        if (mousePos(mx, my, 665, 230, 265, 35)) {
+        if (mousePos(mx, my, 665, 230, 265, 35) && gui.overlap == GUI.OVERLAP.Menu) {
             System.exit(1);
         }
 

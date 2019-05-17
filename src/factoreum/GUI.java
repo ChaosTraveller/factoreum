@@ -46,18 +46,21 @@ public class GUI extends MouseAdapter implements IGuiRaw, IGuiItems {
 
     private int[] minX = {0, 0, 0, 0, 0, 0};
     private int[] minY = {0, 0, 0, 0, 0, 0};
-    private int x, y;
+    public int[][] boardField = {{0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, };
+    public int fx, fy;
 
     public enum OVERLAP {
         Menu,
         Items,
         Crafting,
         Store,
-        fild;
-    }
+        Field,
+        FieldEmpty;
 
-    //Menu menu = new Menu();
-    //Store store = new Store();
+    }
+    private Handler handler = Handler.getInstance();
+
+    public boolean menu, items, crafting, store, upgrade;
 
     public OVERLAP overlap = OVERLAP.Items;
 
@@ -67,12 +70,16 @@ public class GUI extends MouseAdapter implements IGuiRaw, IGuiItems {
 
         if (mousePos(mx, my, 880, 0, 70, 35)) {
             overlap = OVERLAP.Menu;
+
         } else if (mousePos(mx, my, 665, 65, 81, 35)) {
             overlap = OVERLAP.Items;
+
         } else if (mousePos(mx, my, 756, 65, 81, 35)) {
             overlap = OVERLAP.Crafting;
+
         } else if (mousePos(mx, my, 847, 65, 81, 35)) {
             overlap = OVERLAP.Store;
+
         } else if (mousePos(mx, my, 10, 50, 630, 630)) {
             mouseBoardPos(mx, my);
         }
@@ -96,9 +103,13 @@ public class GUI extends MouseAdapter implements IGuiRaw, IGuiItems {
             for (int j = 0; j < 6; j++) {
                 if (mx > minX[j] && mx < minX[j] + 100) {
                     if (my > minY[i] && my < minY[i] + 100) {
-                        x = minX[j];
-                        y = minY[i];
-                        overlap = OVERLAP.fild;
+                        fx = j;
+                        fy = i;
+                        if (boardField[j][i] == 0) {
+                            overlap = OVERLAP.FieldEmpty;
+                        } else {
+                            overlap = OVERLAP.Field;
+                        }
                     }
                 }
             }
@@ -190,9 +201,14 @@ public class GUI extends MouseAdapter implements IGuiRaw, IGuiItems {
             Main.store.render(gr);
         } else if (overlap == OVERLAP.Menu) {
             Main.menu.render(gr);
-        } else if (overlap == OVERLAP.fild) {
+        } else if (overlap == OVERLAP.Field) {
             gr.setColor(Color.red);
-            gr.drawRect(x, y, 100, 100);
+            gr.drawRect(minX[fx], minY[fy], 100, 100);
+            Main.upgrade.render(gr);
+        } else if (overlap == OVERLAP.FieldEmpty) {
+            gr.setColor(Color.green);
+            gr.drawRect(minX[fx], minY[fy], 100, 100);
+            Main.build.render(gr);
         }
 
 

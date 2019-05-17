@@ -7,6 +7,8 @@ public class Crafter extends Machine {
         super(x, y, temperature, lvl, id);
     }
 
+    private GUI gui = GUI.getInstance();
+
     public void tick() {
 
     }

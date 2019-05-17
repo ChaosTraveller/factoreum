@@ -5,6 +5,18 @@ import java.util.LinkedList;
 
 public class Handler {
 
+    private static Handler ourInstance = new Handler();
+
+    private static Handler single_instance = null;
+
+    public static Handler getInstance()
+    {
+        if (single_instance == null)
+            single_instance = new Handler();
+
+        return single_instance;
+    }
+
     LinkedList<Machine> machine = new LinkedList<Machine>();
 
     public void tick() {
