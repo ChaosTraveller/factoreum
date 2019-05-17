@@ -7,6 +7,7 @@ public enum ID {
     Nuclear(),
     Crafter(),
     Miner(),
+    AdvancedMiner,
     Cooler();
 
 }

@@ -44,11 +44,16 @@ public class GUI extends MouseAdapter implements IGuiRaw, IGuiItems {
     public Color c2 = new Color(255, 172, 23);
     public Color c3 = new Color(255, 188, 91);
 
+    private int[] minX = {0, 0, 0, 0, 0, 0};
+    private int[] minY = {0, 0, 0, 0, 0, 0};
+    private int x, y;
+
     public enum OVERLAP {
         Menu,
         Items,
         Crafting,
-        Store
+        Store,
+        fild;
     }
 
     //Menu menu = new Menu();
@@ -68,7 +73,10 @@ public class GUI extends MouseAdapter implements IGuiRaw, IGuiItems {
             overlap = OVERLAP.Crafting;
         } else if (mousePos(mx, my, 847, 65, 81, 35)) {
             overlap = OVERLAP.Store;
+        } else if (mousePos(mx, my, 10, 50, 630, 630)) {
+            mouseBoardPos(mx, my);
         }
+
 
     }
 
@@ -83,8 +91,34 @@ public class GUI extends MouseAdapter implements IGuiRaw, IGuiItems {
             } else return false;
         } else return false;
     }
+    private void mouseBoardPos(int mx, int my) {
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 6; j++) {
+                if (mx > minX[j] && mx < minX[j] + 100) {
+                    if (my > minY[i] && my < minY[i] + 100) {
+                        x = minX[j];
+                        y = minY[i];
+                        overlap = OVERLAP.fild;
+                    }
+                }
+            }
+        }
+    }
+
 
     public void tick(){
+        if (minY[5] == 0) {
+            int spx = 0, spy = 0;
+            for (int i = 0; i < 6; i++) {
+                for (int j = 0; j < 6; j++) {
+                    minX[j] = 10 + (j * 100) + spx;
+                    minY[i] = 50 + (i * 100) + spy;
+                    spx += 5;
+                }
+                spx = 0;
+                spy += 5;
+            }
+        }
     }
 
     public void render(Graphics gr) {
@@ -156,8 +190,10 @@ public class GUI extends MouseAdapter implements IGuiRaw, IGuiItems {
             Main.store.render(gr);
         } else if (overlap == OVERLAP.Menu) {
             Main.menu.render(gr);
+        } else if (overlap == OVERLAP.fild) {
+            gr.setColor(Color.red);
+            gr.drawRect(x, y, 100, 100);
         }
-
 
 
     }
