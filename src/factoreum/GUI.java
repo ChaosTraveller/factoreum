@@ -3,6 +3,7 @@ package factoreum;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Random;
 
 public class GUI extends MouseAdapter implements IGuiRaw, IGuiItems {
 
@@ -46,7 +47,9 @@ public class GUI extends MouseAdapter implements IGuiRaw, IGuiItems {
 
     private int[] minX = {0, 0, 0, 0, 0, 0};
     private int[] minY = {0, 0, 0, 0, 0, 0};
-    public int[][] boardField = {{0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, };
+    private int[] random = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,};
+    public int[][] boardField = {{-1, -1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1, -1} };
+    public int[][] boardFieldOre = {{0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, };
     public int fx, fy;
 
     public enum OVERLAP {
@@ -58,11 +61,18 @@ public class GUI extends MouseAdapter implements IGuiRaw, IGuiItems {
         FieldEmpty;
 
     }
-    private Handler handler = Handler.getInstance();
+//    private Handler handler = Handler.getInstance();
 
     public boolean menu, items, crafting, store, upgrade;
 
     public OVERLAP overlap = OVERLAP.Items;
+
+    private int ore = 0;
+    Random r = new Random();
+    private int n;
+    private void ore(int i) {
+
+    }
 
     public void mouseClicked(MouseEvent e) {
         int mx = e.getX();
@@ -87,6 +97,7 @@ public class GUI extends MouseAdapter implements IGuiRaw, IGuiItems {
 
     }
 
+
     public void mouseReleased(MouseEvent e) {
         super.mouseReleased(e);
     }
@@ -105,7 +116,7 @@ public class GUI extends MouseAdapter implements IGuiRaw, IGuiItems {
                     if (my > minY[i] && my < minY[i] + 100) {
                         fx = j;
                         fy = i;
-                        if (boardField[j][i] == 0) {
+                        if (boardField[j][i] == -1) {
                             overlap = OVERLAP.FieldEmpty;
                         } else {
                             overlap = OVERLAP.Field;
@@ -128,6 +139,36 @@ public class GUI extends MouseAdapter implements IGuiRaw, IGuiItems {
                 }
                 spx = 0;
                 spy += 5;
+            }
+        }
+
+        if (boardFieldOre[5][5] == 0) {
+//            for (int i =0; i<36; i++) {
+//                random[i] = r.nextInt(100) + 1;
+//            }
+
+            for (int k = 0; k < 6; k++) {
+                //n = r.nextInt(100) + 1; //Coś tu jest nie tak z liczbami losowymi i błędy w energii przy usówaniu minerów
+                for (int l = 0; l < 6; l++) {
+                   // int i = 0;
+                    boardFieldOre[k][l] = r.nextInt(100) + 1;
+                    //i++;
+                }
+            }
+            for (int k = 0; k < 6; k++) {
+                //n = r.nextInt(100) + 1; //Coś tu jest nie tak z liczbami losowymi i błędy w energii przy usówaniu minerów
+                for (int l = 0; l < 6; l++) {
+                    System.out.println(boardFieldOre[k][l]);
+                    if (boardFieldOre[k][l] <= 50) {
+                        boardFieldOre[k][l] = 1;
+                    } else if (boardFieldOre[k][l] > 50 && boardFieldOre[k][l] <= 80) {
+                        boardFieldOre[k][l] = 2;
+                    } else if (boardFieldOre[k][l] > 80 && boardFieldOre[k][l] <= 95) {
+                        boardFieldOre[k][l] = 3;
+                    } else {
+                        boardFieldOre[k][l] = 4;
+                    }
+                }
             }
         }
     }

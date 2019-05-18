@@ -7,14 +7,17 @@ public abstract class Machine implements IMachine{
     protected int x, y;
     protected int temperature;
     protected int lvl;
-    protected ID id;
+    protected TYPE type;
     protected IGuiRaw IGuiRaw = GUI.getInstance();
+    protected GUI gui = GUI.getInstance();
+    protected int id;
 
-    public Machine(int x, int y, int temperature, int lvl, ID id) {
+    public Machine(int x, int y, int temperature, int lvl, TYPE type, int id) {
         this.x = x;
         this.y = y;
         this.temperature = temperature;
         this.lvl = lvl;
+        this.type = type;
         this.id = id;
     }
 
@@ -32,14 +35,17 @@ public abstract class Machine implements IMachine{
     public int getLvl() {
         return lvl;
     }
-    public void setId(ID id) {
-        this.id = id;
+    public void setType(TYPE id) {
+        this.type = type;
     }
-    public ID getId() {
-        return id;
+    public TYPE getType() {
+        return type;
     }
     public void setX(int x) {this.x = x; }
     public int getX() { return x; }
     public void setY(int y) { this.y = y; }
     public int getY() { return y; }
+    public void setId(int id) {this.id = id; }
+    public int getId() { return id;
+    }
 }

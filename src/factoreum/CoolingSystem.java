@@ -4,8 +4,8 @@ import java.awt.*;
 
 public class CoolingSystem extends Machine {
 
-    public CoolingSystem(int x, int y, int temperature, int lvl, ID id) {
-        super(x, y, temperature, lvl, id);
+    public CoolingSystem(int x, int y, int temperature, int lvl, TYPE type, int id) {
+        super(x, y, temperature, lvl, type, id);
     }
     private int lastLvl = lvl;
     private  boolean p = false;

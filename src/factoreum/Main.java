@@ -15,8 +15,9 @@ public class Main extends Canvas implements Runnable {
     private Thread action;
     private boolean r = false;
 
-    private Handler handler =  Handler.getInstance();
     private GUI gui = GUI.getInstance();
+    private Handler handler =  Handler.getInstance();
+
     public static Menu menu = new Menu();
     public static Store store = new Store();
     public static Build build = new Build();

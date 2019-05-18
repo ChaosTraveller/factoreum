@@ -6,7 +6,6 @@ import java.util.*;
 public class Miner extends Machine {
 
     private int ore = 0;
-    Random r = new Random();
     private boolean p = false;
     private int lastLvl = lvl;
     private int time = 0;
@@ -14,41 +13,35 @@ public class Miner extends Machine {
     private int powerU = 0;
 
 
-    public Miner(int x, int y, int temperature, int lvl, ID id) {
-        super(x, y, temperature, lvl, id);
+    public Miner(int x, int y, int temperature, int lvl, TYPE type, int id) {
+        super(x, y, temperature, lvl, type, id);
     }
 
-    private int n = r.nextInt(100) + 1;
-    private void ore(int i) {
 
-        if (i <= 50) {
-            ore = 1;
-            oreName = "Coal";
-        } else if (i > 50 && i <= 80) {
-            ore = 2;
-            oreName = "Titanium";
-        } else if (i > 80 && i <= 95) {
-            ore = 3;
-            oreName = "Crystals";
-        } else {
-            ore = 4;
-            oreName = "Uranium";
-        }
 
-    }
 
     public void tick() {
 
         if (ore == 0){
-            ore(n);
+            ore = gui.boardFieldOre[gui.fx][gui.fy];
+            if (ore == 1) {
+                oreName = "Coal";
+            } else if (ore == 2) {
+                oreName = "Titanium";
+            } else if (ore == 3) {
+                oreName = "Crystals";
+            } else {
+                oreName = "Uranium";
+            }
         }
+
         powerU = 2*lvl /*Math.round((float)(Math.pow(2, lvl/2)))*/;
 
         if(p != true) {
             IGuiRaw.setPowerUsage(IGuiRaw.getPowerUsage() + powerU);
             p = true;
         } else if(p == true && lastLvl != lvl) {
-            IGuiRaw.setPowerUsage(IGuiRaw.getPowerUsage() - Math.round((float)Math.pow(2, (float)(lastLvl/2))));
+            IGuiRaw.setPowerUsage(IGuiRaw.getPowerUsage() - 2*lastLvl);
             p = false;
             lastLvl = lvl;
         }

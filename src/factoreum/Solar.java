@@ -7,8 +7,8 @@ import java.awt.*;
 public class Solar extends Machine{
 
 
-    public Solar(int x, int y, int temperature, int lvl, ID id){
-        super(x, y, temperature, lvl, id);
+    public Solar(int x, int y, int temperature, int lvl, TYPE type, int id){
+        super(x, y, temperature, lvl, type, id);
     }
     private int lastLvl = lvl;
     private  boolean p = false;

@@ -1,6 +1,6 @@
 package factoreum;
 
-public enum ID {
+public enum TYPE {
 
     Solar(),
     Fuel(),
