@@ -12,7 +12,7 @@ public class Handler {
 
     private static Handler single_instance = null;
 
-    private GUI gui = GUI.getInstance();
+
 
     public static Handler getInstance()
     {
@@ -21,7 +21,7 @@ public class Handler {
 
         return single_instance;
     }
-
+    private GUI gui = GUI.getInstance();
 
     public ArrayList<Machine> machine = new ArrayList<>();
 

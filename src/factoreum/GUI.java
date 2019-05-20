@@ -5,7 +5,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Random;
 
-public class GUI extends MouseAdapter implements IGuiRaw, IGuiItems {
+public class GUI extends MouseAdapter implements IGuiRaw, IGuiItems, IGuiCoord {
 
     private static GUI ourInstance = new GUI();
 
@@ -48,9 +48,9 @@ public class GUI extends MouseAdapter implements IGuiRaw, IGuiItems {
     private int[] minX = {0, 0, 0, 0, 0, 0};
     private int[] minY = {0, 0, 0, 0, 0, 0};
     private int[] random = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,};
-    public int[][] boardField = {{-1, -1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1, -1} };
-    public int[][] boardFieldOre = {{0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, };
-    public int fx, fy;
+    private int[][] boardField = {{-1, -1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1, -1} };
+    private int[][] boardFieldOre = {{0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, };
+    private int fx, fy;
 
     public enum OVERLAP {
         Menu,
@@ -299,4 +299,36 @@ public class GUI extends MouseAdapter implements IGuiRaw, IGuiItems {
     public void setReinforcedTiPlate(int reinforcedTiPlate) { this.reinforcedTiPlate = reinforcedTiPlate; }
     public int getElectronicCircute() { return electronicCircute; }
     public void setElectronicCircute(int electronicCircute) { this.electronicCircute = electronicCircute; }
+
+    public int[][] getBoardField() {
+        return boardField;
+    }
+
+    public void setBoardField(int[][] boardField) {
+        this.boardField = boardField;
+    }
+
+    public int[][] getBoardFieldOre() {
+        return boardFieldOre;
+    }
+
+    public void setBoardFieldOre(int[][] boardFieldOre) {
+        this.boardFieldOre = boardFieldOre;
+    }
+
+    public int getFx() {
+        return fx;
+    }
+
+    public void setFx(int fx) {
+        this.fx = fx;
+    }
+
+    public int getFy() {
+        return fy;
+    }
+
+    public void setFy(int fy) {
+        this.fy = fy;
+    }
 }

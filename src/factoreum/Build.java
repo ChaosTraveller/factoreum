@@ -21,7 +21,7 @@ public class Build extends MouseAdapter {
     public Color c2 = new Color(255, 172, 23);
     private TYPE type;
     private Handler handler = Handler.getInstance();
-    private GUI gui = GUI.getInstance();
+    private GUI gui = new IGuiCoord();
     private int n = 0;
 
     public static final int[] x = {20,125, 230, 335, 440, 545}, y = {60, 165, 270, 375, 480, 585};

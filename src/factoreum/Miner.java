@@ -23,7 +23,7 @@ public class Miner extends Machine {
     public void tick() {
 
         if (ore == 0){
-            ore = gui.boardFieldOre[gui.fx][gui.fy];
+            ore = IGuiCoord.getBoardFieldOre()[IGuiCoord.getFx()][IGuiCoord.getFy()];
             if (ore == 1) {
                 oreName = "Coal";
             } else if (ore == 2) {
