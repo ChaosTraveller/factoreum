@@ -6,6 +6,18 @@ import java.awt.event.MouseEvent;
 
 public class Build extends MouseAdapter {
 
+    private static Build ourInstance = new Build();
+
+    private static Build single_instance = null;
+
+    public static Build getInstance()
+    {
+        if (single_instance == null)
+            single_instance = new Build();
+
+        return single_instance;
+    }
+
     public Color c2 = new Color(255, 172, 23);
     private TYPE type;
     private Handler handler = Handler.getInstance();

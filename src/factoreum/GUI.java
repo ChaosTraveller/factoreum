@@ -63,16 +63,18 @@ public class GUI extends MouseAdapter implements IGuiRaw, IGuiItems {
     }
 //    private Handler handler = Handler.getInstance();
 
-    public boolean menu, items, crafting, store, upgrade;
+//    public boolean menu, items, crafting, store, upgrade;
 
     public OVERLAP overlap = OVERLAP.Items;
 
     private int ore = 0;
     Random r = new Random();
     private int n;
-    private void ore(int i) {
 
-    }
+    private Build build = Build.getInstance();
+    private Menu menu = Menu.getInstance();
+    private Upgrade upgrade = Upgrade.getInstance();
+    private Store store = Store.getInstance();
 
     public void mouseClicked(MouseEvent e) {
         int mx = e.getX();
@@ -239,17 +241,17 @@ public class GUI extends MouseAdapter implements IGuiRaw, IGuiItems {
             gr.drawRect(756, 65, 81, 35);
             gr.drawString("Crafting", 761, 90);
         } else if (overlap == OVERLAP.Store) {
-            Main.store.render(gr);
+            store.render(gr);
         } else if (overlap == OVERLAP.Menu) {
-            Main.menu.render(gr);
+            menu.render(gr);
         } else if (overlap == OVERLAP.Field) {
             gr.setColor(Color.red);
             gr.drawRect(minX[fx], minY[fy], 100, 100);
-            Main.upgrade.render(gr);
+            upgrade.render(gr);
         } else if (overlap == OVERLAP.FieldEmpty) {
             gr.setColor(Color.green);
             gr.drawRect(minX[fx], minY[fy], 100, 100);
-            Main.build.render(gr);
+            build.render(gr);
         }
 
 

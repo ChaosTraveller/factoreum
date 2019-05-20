@@ -13,15 +13,15 @@ public class Main extends Canvas implements Runnable {
     public Color c3 = new Color(255, 188, 91);
 
     private Thread action;
-    private boolean r = false;
+    private boolean r = false; // Czy gra działa
 
     private GUI gui = GUI.getInstance();
     private Handler handler =  Handler.getInstance();
 
-    public static Menu menu = new Menu();
-    public static Store store = new Store();
-    public static Build build = new Build();
-    public static Upgrade upgrade = new Upgrade();
+    private static Menu menu = new Menu();
+    private static Store store = new Store();
+    private static Build build = new Build();
+    private static Upgrade upgrade = new Upgrade();
 
 
     public Main(){

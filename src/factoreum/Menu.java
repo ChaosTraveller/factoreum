@@ -6,6 +6,18 @@ import java.awt.event.MouseEvent;
 
 public class Menu extends MouseAdapter {
 
+    private static Menu ourInstance = new Menu();
+
+    private static Menu single_instance = null;
+
+    public static Menu getInstance()
+    {
+        if (single_instance == null)
+            single_instance = new Menu();
+
+        return single_instance;
+    }
+
     private GUI gui = GUI.getInstance();
 
     public void mouseClicked(MouseEvent e) {

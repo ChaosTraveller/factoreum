@@ -6,6 +6,18 @@ import java.awt.event.MouseEvent;
 
 public class Upgrade extends MouseAdapter{
 
+    private static Upgrade ourInstance = new Upgrade();
+
+    private static Upgrade single_instance = null;
+
+    public static Upgrade getInstance()
+    {
+        if (single_instance == null)
+            single_instance = new Upgrade();
+
+        return single_instance;
+    }
+
         private GUI gui = GUI.getInstance();
         private Handler handler = Handler.getInstance();
     public static final int[] x = {20,125, 230, 335, 440, 545}, y = {60, 165, 270, 375, 480, 585};

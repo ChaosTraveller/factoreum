@@ -11,6 +11,18 @@ public class Store extends MouseAdapter {
     protected IGuiItems IGuiItems = GUI.getInstance();
     public Color c2 = new Color(255, 172, 23);
 
+    private static Store ourInstance = new Store();
+
+    private static Store single_instance = null;
+
+    public static Store getInstance()
+    {
+        if (single_instance == null)
+            single_instance = new Store();
+
+        return single_instance;
+    }
+
 
     public void mouseClicked(MouseEvent e) {
         super.mouseClicked(e);
