@@ -11,6 +11,7 @@ public class Miner extends Machine {
     private int time = 0;
     private String oreName = "";
     private int powerU = 0;
+    private IGuiCoord gui = new GUI();
 
 
     public Miner(int x, int y, int temperature, int lvl, TYPE type, int id) {
@@ -23,7 +24,7 @@ public class Miner extends Machine {
     public void tick() {
 
         if (ore == 0){
-            ore = IGuiCoord.getBoardFieldOre()[IGuiCoord.getFx()][IGuiCoord.getFy()];
+            ore = gui.getBoardFieldOre()[gui.getFx()][gui.getFy()];
             if (ore == 1) {
                 oreName = "Coal";
             } else if (ore == 2) {

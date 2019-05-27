@@ -4,10 +4,10 @@ public interface IGuiCoord {
 
     public int[][] getBoardField();
     public void setBoardField(int[][] boardField);
-    public static int[][] getBoardFieldOre();
+    public int[][] getBoardFieldOre();
     public void setBoardFieldOre(int[][] boardFieldOre);
-    public static int getFx();
+    public int getFx();
     public void setFx(int fx);
-    public static int getFy();
+    public int getFy();
     public void setFy(int fy);
 }

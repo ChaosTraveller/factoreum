@@ -8,9 +8,6 @@ public class Main extends Canvas implements Runnable {
     public static final int WI = 960, HE = 720;
     public static final int[] x = {20,125, 230, 335, 440, 545}, y = {60, 165, 270, 375, 480, 585};
 
-    public Color c1 = new Color(0, 14, 33);
-    public Color c2 = new Color(255, 172, 23);
-    public Color c3 = new Color(255, 188, 91);
 
     private Thread action;
     private boolean r = false; // Czy gra działa
@@ -18,10 +15,10 @@ public class Main extends Canvas implements Runnable {
     private GUI gui = GUI.getInstance();
     private Handler handler =  Handler.getInstance();
 
-    private static Menu menu = new Menu();
-    private static Store store = new Store();
-    private static Build build = new Build();
-    private static Upgrade upgrade = new Upgrade();
+    private  Menu menu = Menu.getInstance();
+    private  Store store = Store.getInstance();
+    private  Build build = Build.getInstance();
+    private  Upgrade upgrade = Upgrade.getInstance();
 
 
     public Main(){

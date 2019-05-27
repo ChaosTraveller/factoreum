@@ -27,8 +27,8 @@ public class Upgrade extends MouseAdapter{
             int my = e.getY();
 
             if (mousePos(mx, my, 665, 130, 265, 35) && gui.overlap == GUI.OVERLAP.Field) {
-                handler.deleteMachine(gui.boardField[gui.fx][gui.fy]);
-                gui.boardField[gui.fx][gui.fy] = -1;
+                handler.deleteMachine(gui.getBoardField()[gui.getFx()][gui.getFy()]);
+                gui.getBoardField()[gui.getFx()][gui.getFy()] = -1;
             }
         }
 

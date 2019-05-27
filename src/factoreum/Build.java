@@ -18,10 +18,9 @@ public class Build extends MouseAdapter {
         return single_instance;
     }
 
-    public Color c2 = new Color(255, 172, 23);
     private TYPE type;
     private Handler handler = Handler.getInstance();
-    private GUI gui = new IGuiCoord();
+    private IGuiCoord gui = GUI.getInstance();
     private int n = 0;
 
     public static final int[] x = {20,125, 230, 335, 440, 545}, y = {60, 165, 270, 375, 480, 585};
@@ -29,34 +28,34 @@ public class Build extends MouseAdapter {
     public void mouseClicked(MouseEvent e) {
         int mx = e.getX();
         int my = e.getY();
-        if (gui.boardField[gui.fx][gui.fy] == -1){
+        if (gui.getBoardField()[gui.getFx()][gui.getFy()] == -1){
             if (mousePos(mx, my, 665, 130, 265, 35)) {
-                handler.addMachine(new Solar(x[gui.fx], y[gui.fy], 20, 1, TYPE.Solar, n));
-                gui.boardField[gui.fx][gui.fy] = n;
+                handler.addMachine(new Solar(x[gui.getFx()], y[gui.getFy()], 20, 1, TYPE.Solar, n));
+                gui.getBoardField()[gui.getFx()][gui.getFy()] = n;
                 n++;
             } else if (mousePos(mx, my, 665, 180, 265, 35)) {
-                handler.addMachine(new FuelGen(x[gui.fx], y[gui.fy], 20, 1, TYPE.Fuel, n));
-                gui.boardField[gui.fx][gui.fy] = n;
+                handler.addMachine(new FuelGen(x[gui.getFx()], y[gui.getFy()], 20, 1, TYPE.Fuel, n));
+                gui.getBoardField()[gui.getFx()][gui.getFy()] = n;
                 n++;
             } else if (mousePos(mx, my, 665, 230, 265, 35)) {
-                handler.addMachine(new NuclearGen(x[gui.fx], y[gui.fy], 20, 1, TYPE.Nuclear, n));
-                gui.boardField[gui.fx][gui.fy] = n;
+                handler.addMachine(new NuclearGen(x[gui.getFx()], y[gui.getFy()], 20, 1, TYPE.Nuclear, n));
+                gui.getBoardField()[gui.getFx()][gui.getFy()] = n;
                 n++;
             } else if (mousePos(mx, my, 665, 280, 265, 35)) {
-                handler.addMachine(new Miner(x[gui.fx], y[gui.fy], 20, 1, TYPE.Miner, n));
-                gui.boardField[gui.fx][gui.fy] = n;
+                handler.addMachine(new Miner(x[gui.getFx()], y[gui.getFy()], 20, 1, TYPE.Miner, n));
+                gui.getBoardField()[gui.getFx()][gui.getFy()] = n;
                 n++;
             } else if (mousePos(mx, my, 665, 330, 265, 35)) {
-                handler.addMachine(new AdvancedMiner(x[gui.fx], y[gui.fy], 20, 1, TYPE.AdvancedMiner, n));
-                gui.boardField[gui.fx][gui.fy] = n;
+                handler.addMachine(new AdvancedMiner(x[gui.getFx()], y[gui.getFy()], 20, 1, TYPE.AdvancedMiner, n));
+                gui.getBoardField()[gui.getFx()][gui.getFy()] = n;
                 n++;
             } else if (mousePos(mx, my, 665, 380, 265, 35)) {
-                handler.addMachine(new CoolingSystem(x[gui.fx], y[gui.fy], 20, 1, TYPE.Cooler, n));
-                gui.boardField[gui.fx][gui.fy] = n;
+                handler.addMachine(new CoolingSystem(x[gui.getFx()], y[gui.getFy()], 20, 1, TYPE.Cooler, n));
+                gui.getBoardField()[gui.getFx()][gui.getFy()] = n;
                 n++;
             } else if (mousePos(mx, my, 665, 430, 265, 35)) {
-                handler.addMachine(new Crafter(x[gui.fx], y[gui.fy], 20, 1, TYPE.Crafter, n));
-                gui.boardField[gui.fx][gui.fy] = n;
+                handler.addMachine(new Crafter(x[gui.getFx()], y[gui.getFy()], 20, 1, TYPE.Crafter, n));
+                gui.getBoardField()[gui.getFx()][gui.getFy()] = n;
                 n++;
             }
         }

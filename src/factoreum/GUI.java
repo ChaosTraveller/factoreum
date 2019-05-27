@@ -71,10 +71,10 @@ public class GUI extends MouseAdapter implements IGuiRaw, IGuiItems, IGuiCoord {
     Random r = new Random();
     private int n;
 
-    private Build build = Build.getInstance();
-    private Menu menu = Menu.getInstance();
-    private Upgrade upgrade = Upgrade.getInstance();
-    private Store store = Store.getInstance();
+    private Build build; //= Build.getInstance();
+    private Menu menu ;//= Menu.getInstance();
+    private Upgrade upgrade ;//= Upgrade.getInstance();
+    private Store store ;//= Store.getInstance();
 
     public void mouseClicked(MouseEvent e) {
         int mx = e.getX();
