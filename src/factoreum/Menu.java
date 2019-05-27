@@ -18,13 +18,13 @@ public class Menu extends MouseAdapter {
         return single_instance;
     }
 
-    private GUI gui = GUI.getInstance();
+    private IBoardCoord gui = Board.getInstance();
 
     public void mouseClicked(MouseEvent e) {
         int mx = e.getX();
         int my = e.getY();
 
-        if (mousePos(mx, my, 665, 230, 265, 35) && gui.overlap == GUI.OVERLAP.Menu) {
+        if (mousePos(mx, my, 665, 230, 265, 35) && gui.getOverlap() == OVERLAP.Menu) {
             System.exit(1);
         }
 

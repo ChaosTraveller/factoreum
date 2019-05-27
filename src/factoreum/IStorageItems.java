@@ -1,6 +1,6 @@
 package factoreum;
 
-public interface IGuiItems {
+public interface IStorageItems {
 
     public  int getGraphite();
     public  void setGraphite(int graphite);

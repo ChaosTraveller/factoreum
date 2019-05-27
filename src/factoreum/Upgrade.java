@@ -18,15 +18,16 @@ public class Upgrade extends MouseAdapter{
         return single_instance;
     }
 
-        private GUI gui = GUI.getInstance();
+        private Board gui = Board.getInstance();
         private Handler handler = Handler.getInstance();
     public static final int[] x = {20,125, 230, 335, 440, 545}, y = {60, 165, 270, 375, 480, 585};
+
 
         public void mouseClicked(MouseEvent e) {
             int mx = e.getX();
             int my = e.getY();
 
-            if (mousePos(mx, my, 665, 130, 265, 35) && gui.overlap == GUI.OVERLAP.Field) {
+            if (mousePos(mx, my, 665, 130, 265, 35) && gui.getOverlap() == OVERLAP.Field) {
                 handler.deleteMachine(gui.getBoardField()[gui.getFx()][gui.getFy()]);
                 gui.getBoardField()[gui.getFx()][gui.getFy()] = -1;
             }

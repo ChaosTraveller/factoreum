@@ -21,7 +21,7 @@ public class Handler {
 
         return single_instance;
     }
-    private GUI gui = GUI.getInstance();
+    private IStorageRaw gui = Storage.getInstance();
 
     public ArrayList<Machine> machine = new ArrayList<>();
 

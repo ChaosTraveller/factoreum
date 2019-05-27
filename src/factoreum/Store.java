@@ -6,9 +6,9 @@ import java.awt.event.MouseEvent;
 
 public class Store extends MouseAdapter {
 
-    private GUI gui = GUI.getInstance();
-    protected IGuiRaw IGuiRaw = GUI.getInstance();
-    protected IGuiItems IGuiItems = GUI.getInstance();
+ //   private GUI gui = GUI.getInstance();
+    protected IStorageRaw IGuiRaw = Storage.getInstance();
+    protected IStorageItems IGuiItems = Storage.getInstance();
     public Color c2 = new Color(255, 172, 23);
 
     private static Store ourInstance = new Store();

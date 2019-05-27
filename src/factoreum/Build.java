@@ -20,7 +20,7 @@ public class Build extends MouseAdapter {
 
     private TYPE type;
     private Handler handler = Handler.getInstance();
-    private IGuiCoord gui = GUI.getInstance();
+    private IBoardCoord gui = Board.getInstance();
     private int n = 0;
 
     public static final int[] x = {20,125, 230, 335, 440, 545}, y = {60, 165, 270, 375, 480, 585};

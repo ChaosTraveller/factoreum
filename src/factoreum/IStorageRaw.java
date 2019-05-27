@@ -1,6 +1,6 @@
 package factoreum;
 
-public interface IGuiRaw {
+public interface IStorageRaw {
 
     public  int getMaxPower();
     public  void setMaxPower(int maxPower);

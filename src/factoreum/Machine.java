@@ -8,8 +8,8 @@ public abstract class Machine implements IMachine{
     protected int temperature;
     protected int lvl;
     protected TYPE type;
-    protected IGuiRaw IGuiRaw = GUI.getInstance();
-    protected GUI gui = GUI.getInstance();
+    protected IStorageRaw IGuiRaw = Storage.getInstance();
+    //protected GUI gui = GUI.getInstance();
     protected int id;
 
     public Machine(int x, int y, int temperature, int lvl, TYPE type, int id) {

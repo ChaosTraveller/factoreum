@@ -5,7 +5,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Random;
 
-public class GUI extends MouseAdapter implements IGuiRaw, IGuiItems, IGuiCoord {
+public class GUI extends MouseAdapter {
 
     private static GUI ourInstance = new GUI();
 
@@ -19,27 +19,7 @@ public class GUI extends MouseAdapter implements IGuiRaw, IGuiItems, IGuiCoord {
         return single_instance;
     }
 
-    private  int maxPower = 0;
-    private  int powerUsage = 0;
-    private  int units = 0;
-    private  int coal = 0;
-    private  int titanium = 0;
-    private  int crystals = 0;
-    private  int uranium = 0;
-    private  int coolingPower = 0;
-    private  int heatingPower = 0;
 
-    private  int graphite = 0;
-    private  int graphiteRod = 0;
-    private  int controlRod = 0;
-    private  int titaniumPlate = 0;
-    private  int fuelRod = 0;
-    private  int advancedFuelRod = 0;
-    private  int electronicParts = 0;
-    private  int powerTransmiter = 0;
-    private  int pureCrystal = 0;
-    private  int reinforcedTiPlate = 0;
-    private  int electronicCircute = 0;
 
     public Color c1 = new Color(0, 14, 33);
     public Color c2 = new Color(255, 172, 23);
@@ -47,10 +27,9 @@ public class GUI extends MouseAdapter implements IGuiRaw, IGuiItems, IGuiCoord {
 
     private int[] minX = {0, 0, 0, 0, 0, 0};
     private int[] minY = {0, 0, 0, 0, 0, 0};
-    private int[] random = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,};
-    private int[][] boardField = {{-1, -1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1, -1} };
-    private int[][] boardFieldOre = {{0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, };
-    private int fx, fy;
+//    private int[][] boardField = {{-1, -1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1, -1} };
+//    private int[][] boardFieldOre = {{0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, };
+//    private int fx, fy;
 
     public enum OVERLAP {
         Menu,
@@ -65,32 +44,37 @@ public class GUI extends MouseAdapter implements IGuiRaw, IGuiItems, IGuiCoord {
 
 //    public boolean menu, items, crafting, store, upgrade;
 
-    public OVERLAP overlap = OVERLAP.Items;
+
 
     private int ore = 0;
     Random r = new Random();
     private int n;
 
-    private Build build; //= Build.getInstance();
-    private Menu menu ;//= Menu.getInstance();
-    private Upgrade upgrade ;//= Upgrade.getInstance();
-    private Store store ;//= Store.getInstance();
+    private IBoardCoord board = Board.getInstance();
+    private IStorageItems items = Storage.getInstance();
+    private IStorageRaw raw = Storage.getInstance();
+    private Build build = Build.getInstance();
+    private Menu menu = Menu.getInstance();
+    private Upgrade upgrade = Upgrade.getInstance();
+    private Store store = Store.getInstance();
+
+    public factoreum.OVERLAP overlap = board.getOverlap();
 
     public void mouseClicked(MouseEvent e) {
         int mx = e.getX();
         int my = e.getY();
 
         if (mousePos(mx, my, 880, 0, 70, 35)) {
-            overlap = OVERLAP.Menu;
+            board.setOverlap(factoreum.OVERLAP.Menu);
 
         } else if (mousePos(mx, my, 665, 65, 81, 35)) {
-            overlap = OVERLAP.Items;
+            board.setOverlap(factoreum.OVERLAP.Items);
 
         } else if (mousePos(mx, my, 756, 65, 81, 35)) {
-            overlap = OVERLAP.Crafting;
+            board.setOverlap(factoreum.OVERLAP.Crafting);
 
         } else if (mousePos(mx, my, 847, 65, 81, 35)) {
-            overlap = OVERLAP.Store;
+            board.setOverlap(factoreum.OVERLAP.Store);
 
         } else if (mousePos(mx, my, 10, 50, 630, 630)) {
             mouseBoardPos(mx, my);
@@ -114,14 +98,14 @@ public class GUI extends MouseAdapter implements IGuiRaw, IGuiItems, IGuiCoord {
     private void mouseBoardPos(int mx, int my) {
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 6; j++) {
-                if (mx > minX[j] && mx < minX[j] + 100) {
-                    if (my > minY[i] && my < minY[i] + 100) {
-                        fx = j;
-                        fy = i;
-                        if (boardField[j][i] == -1) {
-                            overlap = OVERLAP.FieldEmpty;
+                if (mx > board.getMinX()[j] && mx < board.getMinX()[j] + 100) {
+                    if (my > board.getMinY()[i] && my < board.getMinY()[i] + 100) {
+                        board.setFx(j);
+                        board.setFy(i);
+                        if (board.getBoardField()[j][i] == -1) {
+                            board.setOverlap(factoreum.OVERLAP.FieldEmpty);
                         } else {
-                            overlap = OVERLAP.Field;
+                            board.setOverlap(factoreum.OVERLAP.Field);
                         }
                     }
                 }
@@ -131,12 +115,16 @@ public class GUI extends MouseAdapter implements IGuiRaw, IGuiItems, IGuiCoord {
 
 
     public void tick(){
-        if (minY[5] == 0) {
+        if (board.getMinY()[5] == 0) {
             int spx = 0, spy = 0;
             for (int i = 0; i < 6; i++) {
                 for (int j = 0; j < 6; j++) {
+                    minX = board.getMinX();
                     minX[j] = 10 + (j * 100) + spx;
+                    board.setMinX(minX);
+                    minY = board.getMinY();
                     minY[i] = 50 + (i * 100) + spy;
+                    board.setMinY(minY);
                     spx += 5;
                 }
                 spx = 0;
@@ -144,7 +132,7 @@ public class GUI extends MouseAdapter implements IGuiRaw, IGuiItems, IGuiCoord {
             }
         }
 
-        if (boardFieldOre[5][5] == 0) {
+        if (board.getBoardFieldOre()[5][5] == 0) {
 //            for (int i =0; i<36; i++) {
 //                random[i] = r.nextInt(100) + 1;
 //            }
@@ -152,26 +140,34 @@ public class GUI extends MouseAdapter implements IGuiRaw, IGuiItems, IGuiCoord {
             for (int k = 0; k < 6; k++) {
                 //n = r.nextInt(100) + 1; //Coś tu jest nie tak z liczbami losowymi i błędy w energii przy usówaniu minerów
                 for (int l = 0; l < 6; l++) {
-                   // int i = 0;
-                    boardFieldOre[k][l] = r.nextInt(100) + 1;
+                    int i = r.nextInt(100) + 1;
+                    if (i <= 40) {
+                        board.getBoardFieldOre()[k][l] = 1;
+                    } else if (i > 40 && i <= 70) {
+                        board.getBoardFieldOre()[k][l] = 2;
+                    } else if (i > 70 && i <= 90) {
+                        board.getBoardFieldOre()[k][l] = 3;
+                    } else {
+                        board.getBoardFieldOre()[k][l] = 4;
+                    }
                     //i++;
                 }
             }
-            for (int k = 0; k < 6; k++) {
-                //n = r.nextInt(100) + 1; //Coś tu jest nie tak z liczbami losowymi i błędy w energii przy usówaniu minerów
-                for (int l = 0; l < 6; l++) {
-                    System.out.println(boardFieldOre[k][l]);
-                    if (boardFieldOre[k][l] <= 50) {
-                        boardFieldOre[k][l] = 1;
-                    } else if (boardFieldOre[k][l] > 50 && boardFieldOre[k][l] <= 80) {
-                        boardFieldOre[k][l] = 2;
-                    } else if (boardFieldOre[k][l] > 80 && boardFieldOre[k][l] <= 95) {
-                        boardFieldOre[k][l] = 3;
-                    } else {
-                        boardFieldOre[k][l] = 4;
-                    }
-                }
-            }
+//            for (int k = 0; k < 6; k++) {
+////                //n = r.nextInt(100) + 1; //Coś tu jest nie tak z liczbami losowymi i błędy w energii przy usówaniu minerów
+////                for (int l = 0; l < 6; l++) {
+////                    System.out.println(boardFieldOre[k][l]);
+////                    if (boardFieldOre[k][l] <= 50) {
+////                        boardFieldOre[k][l] = 1;
+////                    } else if (boardFieldOre[k][l] > 50 && boardFieldOre[k][l] <= 80) {
+////                        boardFieldOre[k][l] = 2;
+////                    } else if (boardFieldOre[k][l] > 80 && boardFieldOre[k][l] <= 95) {
+////                        boardFieldOre[k][l] = 3;
+////                    } else {
+////                        boardFieldOre[k][l] = 4;
+////                    }
+////                }
+////            }
         }
     }
 
@@ -194,14 +190,14 @@ public class GUI extends MouseAdapter implements IGuiRaw, IGuiItems, IGuiCoord {
 
 
         gr.setColor(c2);
-        gr.drawString("Power: " + (maxPower - powerUsage), 5, 20);
-        gr.drawString("Units: " + units, 100, 20 );
-        gr.drawString("Coal: " + coal, 200, 20);
-        gr.drawString("Titanium: " + titanium, 300, 20);
-        gr.drawString("Crystals: " + crystals, 400, 20);
-        gr.drawString("Uranium: " + uranium, 500, 20);
-        gr.drawString("Heating: " + heatingPower, 600, 20);
-        gr.drawString("Cooling: " + coolingPower, 700, 20);
+        gr.drawString("Power: " + (raw.getMaxPower() - raw.getPowerUsage()), 5, 20);
+        gr.drawString("Units: " + raw.getUnits(), 100, 20 );
+        gr.drawString("Coal: " + raw.getCoal(), 200, 20);
+        gr.drawString("Titanium: " + raw.getTitanium(), 300, 20);
+        gr.drawString("Crystals: " + raw.getCrystals(), 400, 20);
+        gr.drawString("Uranium: " + raw.getUranium(), 500, 20);
+        gr.drawString("Heating: " + raw.getHeatingPower(), 600, 20);
+        gr.drawString("Cooling: " + raw.getCoolingPower(), 700, 20);
         gr.setColor(Color.black);
         gr.fillRect(660, 60, 275, 610);
         gr.setColor(Color.white);
@@ -215,120 +211,79 @@ public class GUI extends MouseAdapter implements IGuiRaw, IGuiItems, IGuiCoord {
         gr.drawRect(847, 65, 81, 35);
         gr.drawString("Store", 862, 90);
 
-        if (overlap == OVERLAP.Items) {
+        if (board.getOverlap() == factoreum.OVERLAP.Items) {
             gr.setColor(c2);
             gr.setFont(new Font("arial", Font.PLAIN, 20));
-            gr.drawString("Graphite: " + graphite,                          665, 130);
-            gr.drawString("Graphite rods: " + graphiteRod,                  665, 155);
-            gr.drawString("Controm Rods: " + controlRod,                    665, 180);
-            gr.drawString("Titanium plates: " + titaniumPlate,              665, 205);
-            gr.drawString("Fuel rods: " + fuelRod,                          665, 230);
-            gr.drawString("Advanced fuel rods: " + advancedFuelRod,         665, 255);
-            gr.drawString("Electronic parts: " + electronicParts,           665, 280);
-            gr.drawString("Power transmiters: " + powerTransmiter,          665, 305);
-            gr.drawString("Pure crystals: " + pureCrystal,                  665, 330);
-            gr.drawString("Reinforced ti. plates: " + reinforcedTiPlate,    665, 355);
-            gr.drawString("Electronic circutes: " + electronicCircute,      665, 380);
+            gr.drawString("Graphite: " + items.getGraphite(),                          665, 130);
+            gr.drawString("Graphite rods: " + items.getGraphiteRod(),                  665, 155);
+            gr.drawString("Controm Rods: " + items.getControlRod(),                    665, 180);
+            gr.drawString("Titanium plates: " + items.getTitaniumPlate(),              665, 205);
+            gr.drawString("Fuel rods: " + items.getFuelRod(),                          665, 230);
+            gr.drawString("Advanced fuel rods: " + items.getAdvancedFuelRod(),         665, 255);
+            gr.drawString("Electronic parts: " + items.getElectronicParts(),           665, 280);
+            gr.drawString("Power transmiters: " + items.getPowerTransmiter(),          665, 305);
+            gr.drawString("Pure crystals: " + items.getPureCrystal(),                  665, 330);
+            gr.drawString("Reinforced ti. plates: " + items.getReinforcedTiPlate(),    665, 355);
+            gr.drawString("Electronic circutes: " + items.getElectronicCircute(),      665, 380);
             gr.setColor(Color.red);
             gr.setFont(new Font("arial", Font.PLAIN, 20));
             gr.drawRect(665, 65, 81, 35);
             gr.drawString("Storage", 670, 90);
-        } else if (overlap == OVERLAP.Crafting) {
+        } else if (board.getOverlap() == factoreum.OVERLAP.Crafting) {
 
 
             gr.setColor(Color.red);
             gr.setFont(new Font("arial", Font.PLAIN, 20));
             gr.drawRect(756, 65, 81, 35);
             gr.drawString("Crafting", 761, 90);
-        } else if (overlap == OVERLAP.Store) {
+        } else if (board.getOverlap() == factoreum.OVERLAP.Store) {
             store.render(gr);
-        } else if (overlap == OVERLAP.Menu) {
+        } else if (board.getOverlap() == factoreum.OVERLAP.Menu) {
             menu.render(gr);
-        } else if (overlap == OVERLAP.Field) {
+        } else if (board.getOverlap() == factoreum.OVERLAP.Field) {
             gr.setColor(Color.red);
-            gr.drawRect(minX[fx], minY[fy], 100, 100);
+            gr.drawRect(minX[board.getFx()], minY[board.getFy()], 100, 100);
             upgrade.render(gr);
-        } else if (overlap == OVERLAP.FieldEmpty) {
+        } else if (board.getOverlap() == factoreum.OVERLAP.FieldEmpty) {
             gr.setColor(Color.green);
-            gr.drawRect(minX[fx], minY[fy], 100, 100);
+            gr.drawRect(minX[board.getFx()], minY[board.getFy()], 100, 100);
             build.render(gr);
         }
 
 
     }
 
-    public int getMaxPower() { return maxPower; }
-    public void setMaxPower(int maxPower) { this.maxPower = maxPower; }
-    public int getPowerUsage() { return powerUsage; }
-    public void setPowerUsage(int powerUsage) { this.powerUsage = powerUsage; }
-    public int getUnits() { return units; }
-    public void setUnits(int units) { this.units = units; }
-    public int getCoal() { return coal; }
-    public void setCoal(int coal) { this.coal = coal; }
-    public int getTitanium() { return titanium; }
-    public void setTitanium(int titanium) { this.titanium = titanium; }
-    public int getCrystals() { return crystals; }
-    public void setCrystals(int crystals) { this.crystals = crystals; }
-    public int getUranium() { return uranium; }
-    public void setUranium(int uranium) { this.uranium = uranium; }
-    public int getCoolingPower() { return coolingPower; }
-    public void setCoolingPower(int coolingPower) { this.coolingPower = coolingPower; }
-    public int getHeatingPower() { return heatingPower; }
-    public void setHeatingPower(int heatingPower) { this.heatingPower = heatingPower;}
 
 
-    public int getGraphite() { return graphite; }
-    public void setGraphite(int graphite) { this.graphite = graphite; }
-    public int getGraphiteRod() { return graphiteRod; }
-    public void setGraphiteRod(int graphiteRod) { this.graphiteRod = graphiteRod; }
-    public int getControlRod() { return controlRod; }
-    public void setControlRod(int controlRod) { this.controlRod = controlRod; }
-    public int getTitaniumPlate() { return titaniumPlate; }
-    public void setTitaniumPlate(int titaniumPlate) { this.titaniumPlate = titaniumPlate; }
-    public int getFuelRod() { return fuelRod; }
-    public void setFuelRod(int fuelRod) { this.fuelRod = fuelRod; }
-    public int getAdvancedFuelRod() { return advancedFuelRod; }
-    public void setAdvancedFuelRod(int advancedFuelRod) { this.advancedFuelRod = advancedFuelRod; }
-    public int getElectronicParts() { return electronicParts; }
-    public void setElectronicParts(int electronicParts) { this.electronicParts = electronicParts; }
-    public int getPowerTransmiter() { return powerTransmiter; }
-    public void setPowerTransmiter(int powerTransmiter) { this.powerTransmiter = powerTransmiter; }
-    public int getPureCrystal() { return pureCrystal; }
-    public void setPureCrystal(int pureCrystal) { this.pureCrystal = pureCrystal; }
-    public int getReinforcedTiPlate() { return reinforcedTiPlate; }
-    public void setReinforcedTiPlate(int reinforcedTiPlate) { this.reinforcedTiPlate = reinforcedTiPlate; }
-    public int getElectronicCircute() { return electronicCircute; }
-    public void setElectronicCircute(int electronicCircute) { this.electronicCircute = electronicCircute; }
-
-    public int[][] getBoardField() {
-        return boardField;
-    }
-
-    public void setBoardField(int[][] boardField) {
-        this.boardField = boardField;
-    }
-
-    public int[][] getBoardFieldOre() {
-        return boardFieldOre;
-    }
-
-    public void setBoardFieldOre(int[][] boardFieldOre) {
-        this.boardFieldOre = boardFieldOre;
-    }
-
-    public int getFx() {
-        return fx;
-    }
-
-    public void setFx(int fx) {
-        this.fx = fx;
-    }
-
-    public int getFy() {
-        return fy;
-    }
-
-    public void setFy(int fy) {
-        this.fy = fy;
-    }
+//    public int[][] getBoardField() {
+//        return boardField;
+//    }
+//
+//    public void setBoardField(int[][] boardField) {
+//        this.boardField = boardField;
+//    }
+//
+//    public int[][] getBoardFieldOre() {
+//        return boardFieldOre;
+//    }
+//
+//    public void setBoardFieldOre(int[][] boardFieldOre) {
+//        this.boardFieldOre = boardFieldOre;
+//    }
+//
+//    public int getFx() {
+//        return fx;
+//    }
+//
+//    public void setFx(int fx) {
+//        this.fx = fx;
+//    }
+//
+//    public int getFy() {
+//        return fy;
+//    }
+//
+//    public void setFy(int fy) {
+//        this.fy = fy;
+//    }
 }

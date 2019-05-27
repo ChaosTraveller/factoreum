@@ -1,7 +1,6 @@
 package factoreum;
 
 import java.awt.*;
-import java.util.*;
 
 public class Miner extends Machine {
 
@@ -11,7 +10,7 @@ public class Miner extends Machine {
     private int time = 0;
     private String oreName = "";
     private int powerU = 0;
-    private IGuiCoord gui = new GUI();
+    private IBoardCoord gui = Board.getInstance();
 
 
     public Miner(int x, int y, int temperature, int lvl, TYPE type, int id) {
