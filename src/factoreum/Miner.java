@@ -69,7 +69,10 @@ public class Miner extends Machine {
                     break;
                 }
             }
-        } else time--;
+        } else if (IGuiRaw.getMaxPower() >= IGuiRaw.getPowerUsage() && time != 0) {
+            time--;
+        }
+
     }
 
     private Color sol = new Color(117, 112, 148);

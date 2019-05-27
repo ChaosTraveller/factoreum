@@ -1,12 +1,13 @@
 package factoreum;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.NumberFormat;
 
 public class Store extends MouseAdapter {
 
- //   private GUI gui = GUI.getInstance();
     protected IStorageRaw IGuiRaw = Storage.getInstance();
     protected IStorageItems IGuiItems = Storage.getInstance();
     public Color c2 = new Color(255, 172, 23);
@@ -22,6 +23,8 @@ public class Store extends MouseAdapter {
 
         return single_instance;
     }
+
+    JFormattedTextField amount = new JFormattedTextField(NumberFormat.getNumberInstance());
 
 
     public void mouseClicked(MouseEvent e) {
@@ -74,6 +77,7 @@ public class Store extends MouseAdapter {
         gr.setFont(new Font("arial", Font.PLAIN, 20));
         gr.drawRect(847, 65, 81, 35);
         gr.drawString("Store", 862, 90);
+
 
     }
 
