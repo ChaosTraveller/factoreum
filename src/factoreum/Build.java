@@ -19,7 +19,7 @@ public class Build extends MouseAdapter {
     }
 
     private TYPE type;
-    private Handler handler = Handler.getInstance();
+    private IHandler handler = Handler.getInstance();
     private IBoardCoord gui = Board.getInstance();
     private IStorageRaw raw = Storage.getInstance();
     private int n = 0;
@@ -29,7 +29,7 @@ public class Build extends MouseAdapter {
     public void mouseClicked(MouseEvent e) {
         int mx = e.getX();
         int my = e.getY();
-        if (gui.getBoardField()[gui.getFx()][gui.getFy()] == -1){
+        if (gui.getBoardField()[gui.getFx()][gui.getFy()] == -1 && gui.getOverlap() == OVERLAP.FieldEmpty){
             if (mousePos(mx, my, 665, 130, 265, 35) && raw.getUnits() >= 50) {
                 handler.addMachine(new Solar(x[gui.getFx()], y[gui.getFy()], 20, 1, TYPE.Solar, n));
                 raw.setUnits(raw.getUnits() - 50);

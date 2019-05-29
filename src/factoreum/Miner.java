@@ -4,13 +4,13 @@ import java.awt.*;
 
 public class Miner extends Machine {
 
-    private int ore = 0;
-    private boolean p = false;
-    private int lastLvl = lvl;
-    private int time = 0;
-    private String oreName = "";
-    private int powerU = 0;
-    private IBoardCoord gui = Board.getInstance();
+    protected int ore = 0;
+    protected boolean p = false;
+    protected int lastLvl = lvl;
+    protected int time = 0;
+    protected String oreName = "";
+    protected int powerU = 0;
+    protected IBoardCoord gui = Board.getInstance();
 
 
     public Miner(int x, int y, int temperature, int lvl, TYPE type, int id) {

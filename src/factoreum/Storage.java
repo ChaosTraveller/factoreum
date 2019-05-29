@@ -18,7 +18,7 @@ public class Storage implements IStorageRaw, IStorageItems{
     private  int maxPower = 0;
     private  int powerUsage = 0;
     private  int units = 500;
-    private  int coal = 0;
+    private  int coal = 1000;
     private  int titanium = 0;
     private  int crystals = 0;
     private  int uranium = 0;

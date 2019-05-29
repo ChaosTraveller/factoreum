@@ -18,7 +18,7 @@ public class Main extends Canvas implements Runnable {
     private  Menu menu = Menu.getInstance();
     private  Store store = Store.getInstance();
     private  Build build = Build.getInstance();
-    private  Upgrade upgrade = Upgrade.getInstance();
+    private MachineManager upgrade = MachineManager.getInstance();
 
 
     public Main(){
@@ -28,6 +28,7 @@ public class Main extends Canvas implements Runnable {
         this.addMouseListener(menu);
         this.addMouseListener(build);
         this.addMouseListener(upgrade);
+        this.addMouseMotionListener(store);
 
         new Window(WI, HE, "Factoreum", this);
 

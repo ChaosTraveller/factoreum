@@ -4,16 +4,16 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class Upgrade extends MouseAdapter{
+public class MachineManager extends MouseAdapter{
 
-    private static Upgrade ourInstance = new Upgrade();
+    private static MachineManager ourInstance = new MachineManager();
 
-    private static Upgrade single_instance = null;
+    private static MachineManager single_instance = null;
 
-    public static Upgrade getInstance()
+    public static MachineManager getInstance()
     {
         if (single_instance == null)
-            single_instance = new Upgrade();
+            single_instance = new MachineManager();
 
         return single_instance;
     }

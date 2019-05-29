@@ -55,7 +55,7 @@ public class GUI extends MouseAdapter {
     private IStorageRaw raw = Storage.getInstance();
     private Build build = Build.getInstance();
     private Menu menu = Menu.getInstance();
-    private Upgrade upgrade = Upgrade.getInstance();
+    private MachineManager upgrade = MachineManager.getInstance();
     private Store store = Store.getInstance();
 
     public factoreum.OVERLAP overlap = board.getOverlap();
