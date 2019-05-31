@@ -18,50 +18,49 @@ public class Build extends MouseAdapter {
         return single_instance;
     }
 
-    private TYPE type;
     private IHandler handler = Handler.getInstance();
     private IBoardCoord gui = Board.getInstance();
     private IStorageRaw raw = Storage.getInstance();
     private int n = 0;
 
-    public static final int[] x = {20,125, 230, 335, 440, 545}, y = {60, 165, 270, 375, 480, 585};
+    private static final int[] x = {20,125, 230, 335, 440, 545}, y = {60, 165, 270, 375, 480, 585};
 
     public void mouseClicked(MouseEvent e) {
         int mx = e.getX();
         int my = e.getY();
         if (gui.getBoardField()[gui.getFx()][gui.getFy()] == -1 && gui.getOverlap() == OVERLAP.FieldEmpty){
             if (mousePos(mx, my, 665, 130, 265, 35) && raw.getUnits() >= 50) {
-                handler.addMachine(new Solar(x[gui.getFx()], y[gui.getFy()], 20, 1, TYPE.Solar, n));
+                handler.addMachine(new Solar(x[gui.getFx()], y[gui.getFy()], 20, 1, TYPE.Solar, n, true));
                 raw.setUnits(raw.getUnits() - 50);
                 gui.getBoardField()[gui.getFx()][gui.getFy()] = n;
                 n++;
             } else if (mousePos(mx, my, 665, 180, 265, 35) && raw.getUnits() >= 500) {
-                handler.addMachine(new FuelGen(x[gui.getFx()], y[gui.getFy()], 20, 1, TYPE.Fuel, n));
+                handler.addMachine(new FuelGen(x[gui.getFx()], y[gui.getFy()], 20, 1, TYPE.Fuel, n, true));
                 raw.setUnits(raw.getUnits() - 500);
                 gui.getBoardField()[gui.getFx()][gui.getFy()] = n;
                 n++;
             } else if (mousePos(mx, my, 665, 230, 265, 35) && raw.getUnits() >= 2000) {
-                handler.addMachine(new NuclearGen(x[gui.getFx()], y[gui.getFy()], 20, 1, TYPE.Nuclear, n));
+                handler.addMachine(new NuclearGen(x[gui.getFx()], y[gui.getFy()], 20, 1, TYPE.Nuclear, n, true));
                 raw.setUnits(raw.getUnits() - 2000);
                 gui.getBoardField()[gui.getFx()][gui.getFy()] = n;
                 n++;
             } else if (mousePos(mx, my, 665, 280, 265, 35) && raw.getUnits() >= 200) {
-                handler.addMachine(new Miner(x[gui.getFx()], y[gui.getFy()], 20, 1, TYPE.Miner, n));
+                handler.addMachine(new Miner(x[gui.getFx()], y[gui.getFy()], 20, 1, TYPE.Miner, n, true));
                 raw.setUnits(raw.getUnits() - 200);
                 gui.getBoardField()[gui.getFx()][gui.getFy()] = n;
                 n++;
             } else if (mousePos(mx, my, 665, 330, 265, 35) && raw.getUnits() >= 5000) {
-                handler.addMachine(new AdvancedMiner(x[gui.getFx()], y[gui.getFy()], 20, 1, TYPE.AdvancedMiner, n));
+                handler.addMachine(new AdvancedMiner(x[gui.getFx()], y[gui.getFy()], 20, 1, TYPE.AdvancedMiner, n, true));
                 raw.setUnits(raw.getUnits() - 5000);
                 gui.getBoardField()[gui.getFx()][gui.getFy()] = n;
                 n++;
             } else if (mousePos(mx, my, 665, 380, 265, 35) && raw.getUnits() >= 300) {
-                handler.addMachine(new CoolingSystem(x[gui.getFx()], y[gui.getFy()], 20, 1, TYPE.Cooler, n));
+                handler.addMachine(new CoolingSystem(x[gui.getFx()], y[gui.getFy()], 20, 1, TYPE.Cooler, n, true));
                 raw.setUnits(raw.getUnits() - 300);
                 gui.getBoardField()[gui.getFx()][gui.getFy()] = n;
                 n++;
             } else if (mousePos(mx, my, 665, 430, 265, 35) && raw.getUnits() >= 200) {
-                handler.addMachine(new Crafter(x[gui.getFx()], y[gui.getFy()], 20, 1, TYPE.Crafter, n));
+                handler.addMachine(new Crafter(x[gui.getFx()], y[gui.getFy()], 20, 1, TYPE.Crafter, n, true));
                 raw.setUnits(raw.getUnits() - 200);
                 gui.getBoardField()[gui.getFx()][gui.getFy()] = n;
                 n++;

@@ -13,8 +13,8 @@ public class Miner extends Machine {
     protected IBoardCoord gui = Board.getInstance();
 
 
-    public Miner(int x, int y, int temperature, int lvl, TYPE type, int id) {
-        super(x, y, temperature, lvl, type, id);
+    public Miner(int x, int y, int temperature, int lvl, TYPE type, int id, boolean state) {
+        super(x, y, temperature, lvl, type, id, state);
     }
 
 

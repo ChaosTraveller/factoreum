@@ -12,8 +12,6 @@ public class Handler implements IHandler{
 
     private static Handler single_instance = null;
 
-
-
     public static Handler getInstance()
     {
         if (single_instance == null)
@@ -21,9 +19,11 @@ public class Handler implements IHandler{
 
         return single_instance;
     }
+
+
     private IStorageRaw gui = Storage.getInstance();
 
-    public ArrayList<Machine> machine = new ArrayList<>();
+    private ArrayList<Machine> machine = new ArrayList<>();
 
     public void tick() {
         for (int i = 0; i < machine.size(); i++) {
@@ -71,4 +71,11 @@ public class Handler implements IHandler{
         }
     }
 
+    public ArrayList<Machine> getMachine() {
+        return machine;
+    }
+
+    public void setMachine(ArrayList<Machine> machine) {
+        this.machine = machine;
+    }
 }

@@ -27,24 +27,6 @@ public class GUI extends MouseAdapter {
 
     private int[] minX = {0, 0, 0, 0, 0, 0};
     private int[] minY = {0, 0, 0, 0, 0, 0};
-//    private int[][] boardField = {{-1, -1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1, -1} };
-//    private int[][] boardFieldOre = {{0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, };
-//    private int fx, fy;
-
-    public enum OVERLAP {
-        Menu,
-        Items,
-        Crafting,
-        Store,
-        Field,
-        FieldEmpty;
-
-    }
-//    private Handler handler = Handler.getInstance();
-
-//    public boolean menu, items, crafting, store, upgrade;
-
-
 
     private int ore = 0;
     Random r = new Random();
@@ -79,8 +61,6 @@ public class GUI extends MouseAdapter {
         } else if (mousePos(mx, my, 10, 50, 630, 630)) {
             mouseBoardPos(mx, my);
         }
-
-
     }
 
 
@@ -133,12 +113,7 @@ public class GUI extends MouseAdapter {
         }
 
         if (board.getBoardFieldOre()[5][5] == 0) {
-//            for (int i =0; i<36; i++) {
-//                random[i] = r.nextInt(100) + 1;
-//            }
-
             for (int k = 0; k < 6; k++) {
-                //n = r.nextInt(100) + 1; //Coś tu jest nie tak z liczbami losowymi i błędy w energii przy usówaniu minerów
                 for (int l = 0; l < 6; l++) {
                     int i = r.nextInt(100) + 1;
                     if (i <= 40) {
@@ -150,24 +125,8 @@ public class GUI extends MouseAdapter {
                     } else {
                         board.getBoardFieldOre()[k][l] = 4;
                     }
-                    //i++;
                 }
             }
-//            for (int k = 0; k < 6; k++) {
-////                //n = r.nextInt(100) + 1; //Coś tu jest nie tak z liczbami losowymi i błędy w energii przy usówaniu minerów
-////                for (int l = 0; l < 6; l++) {
-////                    System.out.println(boardFieldOre[k][l]);
-////                    if (boardFieldOre[k][l] <= 50) {
-////                        boardFieldOre[k][l] = 1;
-////                    } else if (boardFieldOre[k][l] > 50 && boardFieldOre[k][l] <= 80) {
-////                        boardFieldOre[k][l] = 2;
-////                    } else if (boardFieldOre[k][l] > 80 && boardFieldOre[k][l] <= 95) {
-////                        boardFieldOre[k][l] = 3;
-////                    } else {
-////                        boardFieldOre[k][l] = 4;
-////                    }
-////                }
-////            }
         }
     }
 
@@ -249,41 +208,5 @@ public class GUI extends MouseAdapter {
             gr.drawRect(minX[board.getFx()], minY[board.getFy()], 100, 100);
             build.render(gr);
         }
-
-
     }
-
-
-
-//    public int[][] getBoardField() {
-//        return boardField;
-//    }
-//
-//    public void setBoardField(int[][] boardField) {
-//        this.boardField = boardField;
-//    }
-//
-//    public int[][] getBoardFieldOre() {
-//        return boardFieldOre;
-//    }
-//
-//    public void setBoardFieldOre(int[][] boardFieldOre) {
-//        this.boardFieldOre = boardFieldOre;
-//    }
-//
-//    public int getFx() {
-//        return fx;
-//    }
-//
-//    public void setFx(int fx) {
-//        this.fx = fx;
-//    }
-//
-//    public int getFy() {
-//        return fy;
-//    }
-//
-//    public void setFy(int fy) {
-//        this.fy = fy;
-//    }
 }

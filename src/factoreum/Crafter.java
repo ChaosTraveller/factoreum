@@ -3,8 +3,8 @@ package factoreum;
 import java.awt.*;
 
 public class Crafter extends Machine {
-    public Crafter(int x, int y, int temperature, int lvl, TYPE type, int id) {
-        super(x, y, temperature, lvl, type, id);
+    public Crafter(int x, int y, int temperature, int lvl, TYPE type, int id, boolean state) {
+        super(x, y, temperature, lvl, type, id, state);
     }
 
     protected int powerU = 0;

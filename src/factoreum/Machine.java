@@ -9,16 +9,17 @@ public abstract class Machine implements IMachine{
     protected int lvl;
     protected TYPE type;
     protected IStorageRaw IGuiRaw = Storage.getInstance();
-    //protected GUI gui = GUI.getInstance();
     protected int id;
+    protected boolean state;
 
-    public Machine(int x, int y, int temperature, int lvl, TYPE type, int id) {
+    public Machine(int x, int y, int temperature, int lvl, TYPE type, int id, boolean state) {
         this.x = x;
         this.y = y;
         this.temperature = temperature;
         this.lvl = lvl;
         this.type = type;
         this.id = id;
+        this.state = state;
     }
 
     public abstract void tick();

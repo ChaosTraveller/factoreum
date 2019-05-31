@@ -4,8 +4,8 @@ import java.awt.*;
 
 public class NuclearGen extends Machine{
 
-    public NuclearGen(int x, int y, int temperature, int lvl, TYPE type, int id) {
-        super(x, y, temperature, lvl, type,  id);
+    public NuclearGen(int x, int y, int temperature, int lvl, TYPE type, int id, boolean state) {
+        super(x, y, temperature, lvl, type,  id, state);
     }
     private int lastLvl = lvl;
     private boolean p = false;

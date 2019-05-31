@@ -5,8 +5,8 @@ import java.awt.image.BufferStrategy;
 
 public class Main extends Canvas implements Runnable {
 
-    public static final int WI = 960, HE = 720;
-    public static final int[] x = {20,125, 230, 335, 440, 545}, y = {60, 165, 270, 375, 480, 585};
+    private static final int WI = 960, HE = 720;
+    private static final int[] x = {20,125, 230, 335, 440, 545}, y = {60, 165, 270, 375, 480, 585};
 
 
     private Thread action;
