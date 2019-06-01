@@ -18,7 +18,7 @@ public class MachineManager extends MouseAdapter{
         return single_instance;
     }
 
-        private Board gui = Board.getInstance();
+        private IBoardCoord gui = Board.getInstance();
         private Handler handler = Handler.getInstance();
         public static final int[] x = {20,125, 230, 335, 440, 545}, y = {60, 165, 270, 375, 480, 585};
 
@@ -81,6 +81,11 @@ public class MachineManager extends MouseAdapter{
             gr.setColor(Color.white);
             gr.drawString("Destroy",                                   670, 155);
             gr.drawRect(                                                    665, 130, 265, 35);
+
+            gr.setFont(new Font("arial", Font.PLAIN, 20));
+            gr.setColor(Color.white);
+            gr.drawString("Upgrade",                                   670, 195);
+            gr.drawRect(                                                    665, 170, 265, 35);
 
 
 

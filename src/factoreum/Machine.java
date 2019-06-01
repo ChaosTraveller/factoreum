@@ -47,6 +47,6 @@ public abstract class Machine implements IMachine{
     public void setY(int y) { this.y = y; }
     public int getY() { return y; }
     public void setId(int id) {this.id = id; }
-    public int getId() { return id;
-    }
+    public int getId() { return id; }
+
 }

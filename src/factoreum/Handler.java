@@ -22,6 +22,7 @@ public class Handler implements IHandler{
 
 
     private IStorageRaw gui = Storage.getInstance();
+    private IBoardCoord board = Board.getInstance();
 
     private ArrayList<Machine> machine = new ArrayList<>();
 
@@ -49,7 +50,9 @@ public class Handler implements IHandler{
         for (int i = 0; i < machine.size(); i++) {
             Machine tempM = machine.get(i);
 
-            if(tempM.getId() == j){
+            if(tempM.getId() == j && board.getOverlap() == OVERLAP.Field){
+                board.setOverlap(OVERLAP.FieldEmpty);
+
                 if (tempM.getType() == TYPE.Solar) {
                     gui.setMaxPower(gui.getMaxPower() - Math.round((float)tempM.getLvl()*tempM.getLvl()/2));
                 } else if (tempM.getType() == TYPE.Fuel) {
