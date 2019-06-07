@@ -8,16 +8,16 @@ public class Crafter extends Machine {
     }
 
     protected int powerU = 0;
-    protected IBoardCoord gui = Board.getInstance();
+    protected IBoardCoord board = Board.getInstance();
 
 
 
-    ITEM it = ITEM.none;
+    private ITEM it = ITEM.none;
 
 
     public void tick() {
 
-
+        System.out.println(it);
 
     }
 
@@ -36,4 +36,6 @@ public class Crafter extends Machine {
 
     }
 
+    public ITEM getIt() { return it; }
+    public void setIt(ITEM it) { this.it = it; }
 }

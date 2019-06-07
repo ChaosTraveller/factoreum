@@ -37,6 +37,7 @@ public class MachineManager extends MouseAdapter{
                for (int i=0; i<handler.getMachine().size(); i++) {
                    Machine tempM = handler.getMachine().get(i);
 
+
                    if (tempM.type == TYPE.Solar) {
                        m = TYPE.Solar;
                    } else if (tempM.type == TYPE.Fuel) {
