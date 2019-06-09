@@ -32,7 +32,7 @@ public class GUI extends MouseAdapter {
     Random r = new Random();
     private int n;
 
-    private IBoardCoord board = Board.getInstance();
+    private IBoard board = Board.getInstance();
     private IStorageItems items = Storage.getInstance();
     private IStorageRaw raw = Storage.getInstance();
     private Build build = Build.getInstance();
@@ -52,8 +52,8 @@ public class GUI extends MouseAdapter {
         } else if (mousePos(mx, my, 665, 65, 81, 35)) {
             board.setOverlap(factoreum.OVERLAP.Items);
 
-        } else if (mousePos(mx, my, 756, 65, 81, 35)) {
-            board.setOverlap(factoreum.OVERLAP.Crafting);
+//        } else if (mousePos(mx, my, 756, 65, 81, 35)) {
+//            board.setOverlap(factoreum.OVERLAP.Crafting);
 
         } else if (mousePos(mx, my, 847, 65, 81, 35)) {
             board.setOverlap(factoreum.OVERLAP.Store);
@@ -165,8 +165,8 @@ public class GUI extends MouseAdapter {
         gr. drawString("Menu", 890, 25);
         gr.drawRect(665, 65, 81, 35);
         gr.drawString("Storage", 670, 90);
-        gr.drawRect(756, 65, 81, 35);
-        gr.drawString("Crafting", 761, 90);
+//        gr.drawRect(756, 65, 81, 35);
+//        gr.drawString("Crafting", 761, 90);
         gr.drawRect(847, 65, 81, 35);
         gr.drawString("Store", 862, 90);
 
@@ -191,10 +191,10 @@ public class GUI extends MouseAdapter {
         } else if (board.getOverlap() == factoreum.OVERLAP.Crafting) {
 
 
-            gr.setColor(Color.red);
-            gr.setFont(new Font("arial", Font.PLAIN, 20));
-            gr.drawRect(756, 65, 81, 35);
-            gr.drawString("Crafting", 761, 90);
+//            gr.setColor(Color.red);
+//            gr.setFont(new Font("arial", Font.PLAIN, 20));
+//            gr.drawRect(756, 65, 81, 35);
+//            gr.drawString("Crafting", 761, 90);
         } else if (board.getOverlap() == factoreum.OVERLAP.Store) {
             store.render(gr);
         } else if (board.getOverlap() == factoreum.OVERLAP.Menu) {

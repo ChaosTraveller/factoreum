@@ -16,4 +16,5 @@ public interface IMachine {
     public TYPE getType();
 
 
+
 }

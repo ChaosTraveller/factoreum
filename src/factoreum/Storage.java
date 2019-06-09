@@ -17,25 +17,25 @@ public class Storage implements IStorageRaw, IStorageItems{
 
     private  int maxPower = 0;
     private  int powerUsage = 0;
-    private  int units = 500;
+    private  int units = 1000;
     private  int coal = 1000;
-    private  int titanium = 0;
-    private  int crystals = 0;
-    private  int uranium = 0;
+    private  int titanium = 1000;
+    private  int crystals = 1000;
+    private  int uranium = 1000;
     private  int coolingPower = 0;
     private  int heatingPower = 0;
 
-    private  int graphite = 0;
-    private  int graphiteRod = 0;
-    private  int controlRod = 0;
-    private  int titaniumPlate = 0;
-    private  int fuelRod = 0;
-    private  int advancedFuelRod = 0;
-    private  int electronicParts = 0;
-    private  int powerTransmiter = 0;
-    private  int pureCrystal = 0;
-    private  int reinforcedTiPlate = 0;
-    private  int electronicCircute = 0;
+    private  int graphite = 1000;
+    private  int graphiteRod = 1000;
+    private  int controlRod = 1000;
+    private  int titaniumPlate = 1000;
+    private  int fuelRod = 1000;
+    private  int advancedFuelRod = 1000;
+    private  int electronicParts = 1000;
+    private  int powerTransmiter = 1000;
+    private  int pureCrystal = 1000;
+    private  int reinforcedTiPlate = 1000;
+    private  int electronicCircute = 1000;
 
 
 

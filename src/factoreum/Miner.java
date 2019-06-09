@@ -10,7 +10,7 @@ public class Miner extends Machine {
     protected int time = 0;
     protected String oreName = "";
     protected int powerU = 0;
-    protected IBoardCoord gui = Board.getInstance();
+    protected IBoard gui = Board.getInstance();
 
 
     public Miner(int x, int y, int temperature, int lvl, TYPE type, int id, boolean state) {
@@ -50,22 +50,22 @@ public class Miner extends Machine {
             switch (ore) {
                 case 1: {
                     IGuiRaw.setCoal(IGuiRaw.getCoal() + lvl);
-                    time = 50;
+                    time = 20;
                     break;
                 }
                 case 2: {
                     IGuiRaw.setTitanium(IGuiRaw.getTitanium() + lvl);
-                    time = 60;
+                    time = 30;
                     break;
                 }
                 case 3: {
                     IGuiRaw.setCrystals(IGuiRaw.getCrystals() + lvl);
-                    time = 80;
+                    time = 40;
                     break;
                 }
                 case 4: {
                     IGuiRaw.setUranium(IGuiRaw.getUranium() + lvl);
-                    time = 100;
+                    time = 50;
                     break;
                 }
             }

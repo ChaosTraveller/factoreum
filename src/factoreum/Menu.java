@@ -18,7 +18,7 @@ public class Menu extends MouseAdapter {
         return single_instance;
     }
 
-    private IBoardCoord gui = Board.getInstance();
+    private IBoard gui = Board.getInstance();
 
     public void mouseClicked(MouseEvent e) {
         int mx = e.getX();

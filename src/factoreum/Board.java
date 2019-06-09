@@ -1,6 +1,6 @@
 package factoreum;
 
-public class Board implements IBoardCoord{
+public class Board implements IBoard {
 
     private static Board ourInstance = new Board();
 
@@ -19,6 +19,7 @@ public class Board implements IBoardCoord{
     private int[][] boardField = {{-1, -1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1, -1} };
     private int[][] boardFieldOre = {{0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, };
     private int fx, fy;
+    private ITEM[] item = new ITEM[36];
 
     private OVERLAP overlap = OVERLAP.Items;
 
@@ -55,4 +56,7 @@ public class Board implements IBoardCoord{
 
     public OVERLAP getOverlap() { return overlap; }
     public void setOverlap(OVERLAP overlap) { this.overlap = overlap; }
+
+    public ITEM[] getItem() { return item; }
+    public void setItem(ITEM[] item) { this.item = item; }
 }

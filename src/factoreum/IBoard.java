@@ -1,6 +1,8 @@
 package factoreum;
 
-public interface IBoardCoord {
+import java.util.ArrayList;
+
+public interface IBoard {
 
     public int[][] getBoardField();
     public void setBoardField(int[][] boardField);
@@ -17,4 +19,7 @@ public interface IBoardCoord {
 
     public OVERLAP getOverlap();
     public void setOverlap(OVERLAP overlap);
+
+    public ITEM[] getItem();
+    public void setItem(ITEM[] item);
 }

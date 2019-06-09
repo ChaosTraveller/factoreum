@@ -5,16 +5,14 @@ import java.awt.image.BufferStrategy;
 
 public class Main extends Canvas implements Runnable {
 
-    private static final int WI = 960, HE = 720;
-//    private static final int[] x = {20,125, 230, 335, 440, 545}, y = {60, 165, 270, 375, 480, 585};
+    private static final int WI = 960, HE = 720; // Window width and height
 
 
     private Thread action;
-    private boolean r = false; // Czy gra działa
+    private boolean r = false; // Is game running?
 
     private GUI gui = GUI.getInstance();
     private Handler handler =  Handler.getInstance();
-
     private  Menu menu = Menu.getInstance();
     private  Store store = Store.getInstance();
     private  Build build = Build.getInstance();
@@ -34,7 +32,7 @@ public class Main extends Canvas implements Runnable {
 
     }
 
-    public synchronized void start() {
+    public synchronized void start() {      // Game starts
 
         action = new Thread(this);
         action.start();
@@ -42,7 +40,7 @@ public class Main extends Canvas implements Runnable {
 
     }
 
-    public synchronized void stop() {
+    public synchronized void stop() {       // Game stops
 
         try {
             action.join();
@@ -54,7 +52,7 @@ public class Main extends Canvas implements Runnable {
     }
 
 
-    public void run(){
+    public void run(){                          //main game loop
 
         long lastTime = System.nanoTime();
         double ticks = 30.0;

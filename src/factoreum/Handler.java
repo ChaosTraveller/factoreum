@@ -4,7 +4,6 @@ package factoreum;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 public class Handler implements IHandler{
 
@@ -22,9 +21,10 @@ public class Handler implements IHandler{
 
 
     private IStorageRaw gui = Storage.getInstance();
-    private IBoardCoord board = Board.getInstance();
+    private IBoard board = Board.getInstance();
 
     private ArrayList<Machine> machine = new ArrayList<>();
+
 
     public void tick() {
         for (int i = 0; i < machine.size(); i++) {
@@ -62,11 +62,11 @@ public class Handler implements IHandler{
                 }else if (tempM.getType() == TYPE.Miner) {
                     gui.setPowerUsage(gui.getPowerUsage() - Math.round((float)(2*tempM.getLvl())));
                 }else if (tempM.getType() == TYPE.AdvancedMiner) {
-                    gui.setMaxPower(gui.getMaxPower() - Math.round((float)tempM.getLvl()*tempM.getLvl()*tempM.getLvl()));
+                    gui.setMaxPower(gui.getMaxPower() - Math.round((float)(tempM.getLvl()*tempM.getLvl()*tempM.getLvl())));
                 }else if (tempM.getType() == TYPE.Cooler) {
-                    gui.setMaxPower(gui.getMaxPower() - Math.round((float)tempM.getLvl()*tempM.getLvl()*tempM.getLvl()));
+                    gui.setMaxPower(gui.getMaxPower() - Math.round((float)(tempM.getLvl()*tempM.getLvl()*tempM.getLvl())));
                 }else if (tempM.getType() == TYPE.Crafter) {
-                    gui.setMaxPower(gui.getMaxPower() - Math.round((float)tempM.getLvl()*tempM.getLvl()*tempM.getLvl()));
+                    gui.setMaxPower(gui.getMaxPower() - (tempM.getLvl()*tempM.getLvl()*tempM.getLvl()));
                 }
                 machine.remove(i);
                 break;

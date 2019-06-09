@@ -6,7 +6,6 @@ import java.awt.*;
 
 public class Solar extends Machine{
 
-
     public Solar(int x, int y, int temperature, int lvl, TYPE type, int id, boolean state){
         super(x, y, temperature, lvl, type, id, state);
     }

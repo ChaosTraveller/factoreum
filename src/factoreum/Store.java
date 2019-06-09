@@ -1,6 +1,5 @@
 package factoreum;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -10,7 +9,7 @@ public class Store extends MouseAdapter {
 
     protected IStorageRaw IGuiRaw = Storage.getInstance();
     protected IStorageItems IGuiItems = Storage.getInstance();
-    protected IBoardCoord gui = Board.getInstance();
+    protected IBoard gui = Board.getInstance();
     public Color c2 = new Color(255, 172, 23);
 
 

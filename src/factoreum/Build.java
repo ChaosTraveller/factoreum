@@ -19,7 +19,7 @@ public class Build extends MouseAdapter {
     }
 
     private IHandler handler = Handler.getInstance();
-    private IBoardCoord gui = Board.getInstance();
+    private IBoard gui = Board.getInstance();
     private IStorageRaw raw = Storage.getInstance();
     private int n = 0;
 
