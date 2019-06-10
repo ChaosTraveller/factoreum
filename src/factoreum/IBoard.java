@@ -22,4 +22,8 @@ public interface IBoard {
 
     public ITEM[] getItem();
     public void setItem(ITEM[] item);
+    public int[] getOre();
+    public void setOre(int[] ore);
+    public Board.FIELDTYPE getFieldtype();
+    public void setFieldtype(Board.FIELDTYPE fieldtype);
 }

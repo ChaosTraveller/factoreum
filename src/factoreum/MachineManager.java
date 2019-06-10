@@ -26,6 +26,7 @@ public class MachineManager extends MouseAdapter{
     public static final int[] x = {20,125, 230, 335, 440, 545}, y = {60, 165, 270, 375, 480, 585};
     private ITEM[] craftingItem;
     private Machine temp;
+    private int[] ore;
 
     private TYPE m;
 
@@ -47,22 +48,40 @@ public class MachineManager extends MouseAdapter{
                 if (temp.getId() == board.getBoardField()[board.getFx()][board.getFy()]) {
                     if (temp.type == TYPE.Solar) {
                         m = TYPE.Solar;
-
+                        board.setFieldtype(Board.FIELDTYPE.FieldSolar);
                     } else if (temp.type == TYPE.Fuel) {
                         m = TYPE.Fuel;
-
+                        board.setFieldtype(Board.FIELDTYPE.FieldFuel);
                     } else if (temp.type == TYPE.Nuclear) {
                         m = TYPE.Nuclear;
-
+                        board.setFieldtype(Board.FIELDTYPE.FieldNuclear);
                     } else if (temp.type == TYPE.Miner) {
                         m = TYPE.Miner;
-
+                        board.setFieldtype(Board.FIELDTYPE.FieldMiner);
                     } else if (temp.type == TYPE.AdvancedMiner) {
                         m = TYPE.AdvancedMiner;
+                        board.setFieldtype(Board.FIELDTYPE.FieldAdvancedMiner);
+                        if (mousePos(mx, my, 665, 220, 265, 35)) {
+                            ore = board.getOre();
+                            ore[temp.getId()] = 1;
+                            board.setOre(ore);
+                        }else if (mousePos(mx, my, 665, 260, 265, 35)){
+                            ore = board.getOre();
+                            ore[temp.getId()] = 2;
+                            board.setOre(ore);
+                        } else if (mousePos(mx, my, 665, 300, 265, 35)){
+                            ore = board.getOre();
+                            ore[temp.getId()] = 3;
+                            board.setOre(ore);
+                        } else if (mousePos(mx, my, 665, 340, 265, 35)){
+                            ore = board.getOre();
+                            ore[temp.getId()] = 4;
+                            board.setOre(ore);
+                        }
 
                     } else if (temp.type == TYPE.Crafter) {
                         m = TYPE.Crafter;
-
+                        board.setFieldtype(Board.FIELDTYPE.FieldCrafter);
 
                         if (mousePos(mx, my, 665, 220, 265, 35)) {
                             craftingItem = board.getItem();
@@ -112,7 +131,7 @@ public class MachineManager extends MouseAdapter{
 
                     } else if (temp.type == TYPE.Cooler) {
                         m = TYPE.Cooler;
-
+                        board.setFieldtype(Board.FIELDTYPE.FieldCooler);
                     }
                     if (mousePos(mx, my, 665, 170, 265, 35)) {
                         upgrade(temp);
@@ -243,6 +262,18 @@ public class MachineManager extends MouseAdapter{
             } else if (m == TYPE.Miner) {
 
             } else if (m == TYPE.AdvancedMiner) {
+
+                gr.setColor(Color.white);
+                gr.setFont(new Font("arial", Font.PLAIN, 20));
+                gr.drawRect(665, 220, 265, 35);
+                gr.drawRect(665, 260, 265, 35);
+                gr.drawRect(665, 300, 265, 35);
+                gr.drawRect(665, 340, 265, 35);
+
+                gr.drawString("Coal: " + raw.getCoal(),                          670, 245);
+                gr.drawString("Titanium: " + raw.getTitanium(),                    670, 285);
+                gr.drawString("Crystals: " + raw.getCrystals(),                    670, 325);
+                gr.drawString("Uranium: " + raw.getUranium(),                  670, 365);
 
             } else if (m == TYPE.Crafter) {
 

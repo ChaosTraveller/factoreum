@@ -20,6 +20,18 @@ public class Board implements IBoard {
     private int[][] boardFieldOre = {{0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0}, };
     private int fx, fy;
     private ITEM[] item = new ITEM[36];
+    private int[] ore = new int[36];
+
+    public enum FIELDTYPE {
+        FieldSolar,
+        FieldFuel,
+        FieldNuclear,
+        FieldMiner,
+        FieldCrafter,
+        FieldAdvancedMiner,
+        FieldCooler,
+    }
+    private FIELDTYPE fieldtype;
 
     private OVERLAP overlap = OVERLAP.Items;
 
@@ -59,4 +71,15 @@ public class Board implements IBoard {
 
     public ITEM[] getItem() { return item; }
     public void setItem(ITEM[] item) { this.item = item; }
+
+    public int[] getOre() { return ore; }
+    public void setOre(int[] ore) { this.ore = ore; }
+
+    public FIELDTYPE getFieldtype() {
+        return fieldtype;
+    }
+
+    public void setFieldtype(FIELDTYPE fieldtype) {
+        this.fieldtype = fieldtype;
+    }
 }

@@ -6,5 +6,6 @@ public enum OVERLAP {
     Crafting,
     Store,
     Field,
+
     FieldEmpty;
 }

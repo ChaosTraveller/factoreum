@@ -106,7 +106,7 @@ public class Crafter extends Machine implements IMachine {
 
 
 
-        if (board.getOverlap() == OVERLAP.Field) {
+        if (board.getOverlap() == OVERLAP.Field && board.getFieldtype() == Board.FIELDTYPE.FieldCrafter) {
             gr.setFont(new Font("arial", Font.PLAIN, 20));
             if (board.getItem()[id] == ITEM.graphite) {
                 gr.setColor(Color.red);

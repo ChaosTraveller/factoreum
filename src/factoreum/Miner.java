@@ -10,7 +10,7 @@ public class Miner extends Machine {
     protected int time = 0;
     protected String oreName = "";
     protected int powerU = 0;
-    protected IBoard gui = Board.getInstance();
+    protected IBoard board = Board.getInstance();
 
 
     public Miner(int x, int y, int temperature, int lvl, TYPE type, int id, boolean state) {
@@ -23,7 +23,7 @@ public class Miner extends Machine {
     public void tick() {
 
         if (ore == 0){
-            ore = gui.getBoardFieldOre()[gui.getFx()][gui.getFy()];
+            ore = board.getBoardFieldOre()[board.getFx()][board.getFy()];
             if (ore == 1) {
                 oreName = "Coal";
             } else if (ore == 2) {
