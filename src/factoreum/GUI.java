@@ -155,8 +155,8 @@ public class GUI extends MouseAdapter {
         gr.drawString("Titanium: " + raw.getTitanium(), 300, 20);
         gr.drawString("Crystals: " + raw.getCrystals(), 400, 20);
         gr.drawString("Uranium: " + raw.getUranium(), 500, 20);
-        gr.drawString("Heating: " + raw.getHeatingPower(), 600, 20);
-        gr.drawString("Cooling: " + raw.getCoolingPower(), 700, 20);
+//        gr.drawString("Heating: " + raw.getHeatingPower(), 600, 20);
+//        gr.drawString("Cooling: " + raw.getCoolingPower(), 700, 20);
         gr.setColor(Color.black);
         gr.fillRect(660, 60, 275, 610);
         gr.setColor(Color.white);

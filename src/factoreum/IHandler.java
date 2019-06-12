@@ -11,5 +11,6 @@ public interface IHandler {
     public void render(Graphics gr);
     public ArrayList<Machine> getMachine();
     public void setMachine(ArrayList<Machine> machine);
+    public boolean isLose();
 
 }

@@ -23,11 +23,11 @@ public class Crafter extends Machine implements IMachine {
     public void tick() {
 
         if(p != true) {
-            powerU = (lvl * lvl * lvl);
+            powerU = (lastLvl * lastLvl * lastLvl);
             IGuiRaw.setPowerUsage(IGuiRaw.getPowerUsage() + powerU);
             p = true;
         } else if(p == true && lastLvl != lvl) {
-            IGuiRaw.setPowerUsage(IGuiRaw.getPowerUsage() - (lvl * lvl * lvl));
+            IGuiRaw.setPowerUsage(IGuiRaw.getPowerUsage() - (lastLvl * lastLvl * lastLvl));
             p = false;
             lastLvl = lvl;
         }
@@ -105,42 +105,41 @@ public class Crafter extends Machine implements IMachine {
 
 
 
-
         if (board.getOverlap() == OVERLAP.Field && board.getFieldtype() == Board.FIELDTYPE.FieldCrafter) {
-            gr.setFont(new Font("arial", Font.PLAIN, 20));
+            gr.setFont(new Font("arial", Font.PLAIN, 15));
             if (board.getItem()[id] == ITEM.graphite) {
                 gr.setColor(Color.red);
-                gr.drawString("Graphite: " + item.getGraphite(),                          670, 245);
+                gr.drawString("Graphite: 10Coal   " + item.getGraphite(),                          670, 245);
             } else if (board.getItem()[id] == ITEM.graphiteRod) {
                 gr.setColor(Color.red);
-                gr.drawString("Graphite rods: " + item.getGraphiteRod(),                  670, 285);
+                gr.drawString("Graphite rods: 10Graf.   " + item.getGraphiteRod(),                  670, 285);
             } else if (board.getItem()[id] == ITEM.controlRod) {
                 gr.setColor(Color.red);
-                gr.drawString("Control Rods: " + item.getControlRod(),                    670, 325);
+                gr.drawString("Control Rods: 10GrRod   " + item.getControlRod(),            670, 325);
             } else if (board.getItem()[id] == ITEM.titaniumPlate) {
                 gr.setColor(Color.red);
-                gr.drawString("Titanium plates: " + item.getTitaniumPlate(),              670, 365);
+                gr.drawString("Titanium plates: 10Tit.  " + item.getTitaniumPlate(),        670, 365);
             } else if (board.getItem()[id] == ITEM.fuelRod) {
                 gr.setColor(Color.red);
-                gr.drawString("Fuel rods: " + item.getFuelRod(),                          670, 405);
+                gr.drawString("Fuel rods: 10U   " + item.getFuelRod(),                         670, 405);
             } else if (board.getItem()[id] == ITEM.advancedFuelRod) {
                 gr.setColor(Color.red);
-                gr.drawString("Advanced fuel rods: " + item.getAdvancedFuelRod(),         670, 445);
+                gr.drawString("Advanced fuel rods: 10FRod   " + item.getAdvancedFuelRod(),  670, 445);
             } else if (board.getItem()[id] == ITEM.electronicParts) {
                 gr.setColor(Color.red);
-                gr.drawString("Electronic parts: " + item.getElectronicParts(),           670, 485);
+                gr.drawString("Electronic parts: 5Cr. 5Ti   " + item.getElectronicParts(),  670, 485);
             } else if (board.getItem()[id] == ITEM.powerTransmiter) {
                 gr.setColor(Color.red);
-                gr.drawString("Power transmiters: " + item.getPowerTransmiter(),          670, 525);
+                gr.drawString("Power transmiters: 1Pc 5Ep   " + item.getPowerTransmiter(),  670, 525);
             } else if (board.getItem()[id] == ITEM.pureCrystal) {
                 gr.setColor(Color.red);
-                gr.drawString("Pure crystals: " + item.getPureCrystal(),                  670, 565);
+                gr.drawString("Pure crystals: 50xCr   " + item.getPureCrystal(),            670, 565);
             } else if (board.getItem()[id] == ITEM.reinforcedTiPlate) {
                 gr.setColor(Color.red);
-                gr.drawString("Reinforced ti. plates: " + item.getReinforcedTiPlate(),    670, 605);
-            } else if (board.getItem()[id] == ITEM.powerTransmiter) {
+                gr.drawString("Reinforced ti. plates: 10TiPl   " + item.getReinforcedTiPlate(),  670, 605);
+            } else if (board.getItem()[id] == ITEM.electronicCircute) {
                 gr.setColor(Color.red);
-                gr.drawString("Electronic circutes: " + item.getElectronicCircute(),      670, 645);
+                gr.drawString("Electronic cir.: 1pcr 20gr 20ep   " + item.getElectronicCircute(), 670, 645);
             }
         }
     }

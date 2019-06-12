@@ -20,17 +20,21 @@ public class Handler implements IHandler{
     }
 
 
-    private IStorageRaw gui = Storage.getInstance();
+    private IStorageRaw raw = Storage.getInstance();
     private IBoard board = Board.getInstance();
 
     private ArrayList<Machine> machine = new ArrayList<>();
+
+    private boolean lose = false;
 
 
     public void tick() {
         for (int i = 0; i < machine.size(); i++) {
             Machine tempM = machine.get(i);
-
             tempM.tick();
+            if(raw.getUnits() < 50 && raw.getMaxPower() < 2) {
+                lose = true;
+            }
         }
     }
 
@@ -54,19 +58,26 @@ public class Handler implements IHandler{
                 board.setOverlap(OVERLAP.FieldEmpty);
 
                 if (tempM.getType() == TYPE.Solar) {
-                    gui.setMaxPower(gui.getMaxPower() - Math.round((float)tempM.getLvl()*tempM.getLvl()/2));
+                    raw.setMaxPower(raw.getMaxPower() - Math.round((float)tempM.getLvl()*tempM.getLvl()/2));
+                    raw.setUnits(raw.getUnits() + 25);
                 } else if (tempM.getType() == TYPE.Fuel) {
-                    gui.setMaxPower(gui.getMaxPower() - Math.round((float)tempM.getLvl()*tempM.getLvl()));
+                    raw.setMaxPower(raw.getMaxPower() - Math.round((float)tempM.getLvl()*tempM.getLvl()));
+                    raw.setUnits(raw.getUnits() + 250);
                 }else if (tempM.getType() == TYPE.Nuclear) {
-                    gui.setMaxPower(gui.getMaxPower() - Math.round((float)tempM.getLvl()*tempM.getLvl()*tempM.getLvl()));
+                    raw.setMaxPower(raw.getMaxPower() - Math.round((float)tempM.getLvl()*tempM.getLvl()*tempM.getLvl()));
+                    raw.setUnits(raw.getUnits() + 1000);
                 }else if (tempM.getType() == TYPE.Miner) {
-                    gui.setPowerUsage(gui.getPowerUsage() - Math.round((float)(2*tempM.getLvl())));
+                    raw.setPowerUsage(raw.getPowerUsage() - Math.round((float)(2*tempM.getLvl())));
+                    raw.setUnits(raw.getUnits() + 100);
                 }else if (tempM.getType() == TYPE.AdvancedMiner) {
-                    gui.setMaxPower(gui.getMaxPower() - Math.round((float)(tempM.getLvl()*tempM.getLvl()*tempM.getLvl())));
-                }else if (tempM.getType() == TYPE.Cooler) {
-                    gui.setMaxPower(gui.getMaxPower() - Math.round((float)(tempM.getLvl()*tempM.getLvl()*tempM.getLvl())));
+                    raw.setPowerUsage(raw.getPowerUsage() - Math.round((float)(tempM.getLvl()*tempM.getLvl()*tempM.getLvl())));
+                    raw.setUnits(raw.getUnits() + 2500);
+//                }else if (tempM.getType() == TYPE.Cooler) {
+//                    raw.setPowerUsage(raw.getPowerUsage() - Math.round((float)(tempM.getLvl()*tempM.getLvl()*tempM.getLvl())));
+//                    raw.setUnits(raw.getUnits() + 100);
                 }else if (tempM.getType() == TYPE.Crafter) {
-                    gui.setMaxPower(gui.getMaxPower() - (tempM.getLvl()*tempM.getLvl()*tempM.getLvl()));
+                    raw.setPowerUsage(raw.getPowerUsage() - (tempM.getLvl()*tempM.getLvl()*tempM.getLvl()));
+                    raw.setUnits(raw.getUnits() + 100);
                 }
                 machine.remove(i);
                 break;
@@ -81,4 +92,6 @@ public class Handler implements IHandler{
     public void setMachine(ArrayList<Machine> machine) {
         this.machine = machine;
     }
+
+    public boolean isLose() { return lose; }
 }

@@ -90,19 +90,19 @@ public class Build extends MouseAdapter {
 
         gr.setFont(new Font("arial", Font.PLAIN, 20));
         gr.setColor(Color.white);
-        gr.drawString("Solar generator",                                   670, 155);
+        gr.drawString("Solar generator 50$",                                   670, 155);
         gr.drawRect(                                                           665, 130, 265, 35);
-        gr.drawString("Fuel generator",                                    670, 205);
+        gr.drawString("Fuel generator 500$",                                    670, 205);
         gr.drawRect(                                                           665, 180, 265, 35);
-        gr.drawString("Nuclear reactor",                                   670, 255);
+        gr.drawString("Nuclear reactor 2000$",                                   670, 255);
         gr.drawRect(                                                           665, 230, 265, 35);
-        gr.drawString("Miner",                                              670, 305);
+        gr.drawString("Miner 200$",                                              670, 305);
         gr.drawRect(                                                           665, 280, 265, 35);
-        gr.drawString("Advanced miner",                                    670, 355);
+        gr.drawString("Advanced miner 5000$",                                    670, 355);
         gr.drawRect(                                                           665, 330, 265, 35);
-        gr.drawString("Crafter",                                   670, 405);
+        gr.drawString("Crafter 200$",                                   670, 405);
         gr.drawRect(                                                           665, 380, 265, 35);
-//        gr.drawString("Cooling system",                                            670, 455);
+//        gr.drawString("Cooling system 300$",                                            670, 455);
 //        gr.drawRect(                                                           665, 430, 265, 35);
 
     }

@@ -17,6 +17,10 @@ public class Main extends Canvas implements Runnable {
     private  Store store = Store.getInstance();
     private  Build build = Build.getInstance();
     private MachineManager upgrade = MachineManager.getInstance();
+    private IStorageRaw raw = Storage.getInstance();
+    private IHandler ih = Handler.getInstance();
+
+    private boolean win = false;
 
 
     public Main(){
@@ -89,6 +93,12 @@ public class Main extends Canvas implements Runnable {
         build.tick();
         upgrade.tick();
 
+        if (raw.getUnits() >= 100000000) {
+            win = true;
+        }
+
+
+
     }
 
     private void render(){
@@ -106,8 +116,27 @@ public class Main extends Canvas implements Runnable {
 
         handler.render(gr);
 
+        if (win == true) {
+            gr.setColor(Color.black);
+            gr.fillRect(0, 0,960, 720);
+            gr.setColor(Color.WHITE);
+            gr.drawRect(100, 200, 760, 100);
+            gr.setFont(new Font("arial", Font.PLAIN, 80));
+            gr.drawString("You win", 350, 280);
+
+        }
+        if (ih.isLose()) {
+            gr.setColor(Color.black);
+            gr.fillRect(0, 0,960, 720);
+            gr.setColor(Color.WHITE);
+            gr.drawRect(100, 200, 760, 100);
+            gr.setFont(new Font("arial", Font.PLAIN, 80));
+            gr.drawString("You lose", 350, 280);
+        }
+
         gr.dispose();
         bs.show();
+
 
     }
 

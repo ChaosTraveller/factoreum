@@ -13,7 +13,15 @@ public class Solar extends Machine{
     private  boolean p = false;
     private int power = 0;
 
+    private IBoard board = Board.getInstance();
 
+    private int to (int i) {
+        if (i <= 0) {
+            return 0;
+        } else {
+            return i;
+        }
+    }
 
 
     public void tick() {
@@ -31,6 +39,7 @@ public class Solar extends Machine{
 
     private Color sol = new Color(255, 242, 159);
     public void render(Graphics gr) {
+
 
         gr.setColor(sol);
         gr.fillRect(x, y, 80, 80);
