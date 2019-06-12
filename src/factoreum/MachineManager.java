@@ -129,10 +129,11 @@ public class MachineManager extends MouseAdapter{
                             board.setItem(craftingItem);
                         }
 
-                    } else if (temp.type == TYPE.Cooler) {
-                        m = TYPE.Cooler;
-                        board.setFieldtype(Board.FIELDTYPE.FieldCooler);
                     }
+//                    else if (temp.type == TYPE.Cooler) {
+//                        m = TYPE.Cooler;
+//                        board.setFieldtype(Board.FIELDTYPE.FieldCooler);
+//                    }
                     if (mousePos(mx, my, 665, 170, 265, 35)) {
                         upgrade(temp);
                     }
@@ -155,7 +156,13 @@ public class MachineManager extends MouseAdapter{
 
     private void upgrade(Machine ma) {
 
-        if (m == TYPE.Solar && ma.getLvl() < 10) {
+        if (m == TYPE.Solar && ma.getLvl() < 10 && raw.getTitanium() >= 10 * ma.getLvl()
+                && raw.getCrystals() >= 5 * to((ma.getLvl() - 2))
+                && items.getGraphite() >= 5 * to((ma.getLvl() - 2))
+                && items.getTitaniumPlate() >= 3 * to((ma.getLvl() - 4))
+                && items.getElectronicParts() >= 2 * to((ma.getLvl() - 4))
+                && items.getPowerTransmiter() >= to(ma.getLvl()- 6)
+                && items.getReinforcedTiPlate() >= to(ma.getLvl() - 6)) {
 
                 raw.setTitanium(raw.getTitanium() - to(10 * ma.getLvl()));
                 raw.setCrystals(raw.getCrystals() - to((5 * (ma.getLvl() - 2))));
@@ -167,30 +174,47 @@ public class MachineManager extends MouseAdapter{
 
                 ma.setLvl(ma.getLvl() + 1);
 
-        } else if (m == TYPE.Fuel && ma.getLvl() < 10) {
+        } else if (m == TYPE.Fuel && ma.getLvl() < 10 && raw.getTitanium() >= to((5 * (ma.getLvl())))
+                && raw.getCoal() >= to((5 * (ma.getLvl())))
+                && items.getElectronicParts() >= to((5 * (ma.getLvl() - 4)))
+                && items.getTitaniumPlate() >= to((3 * (ma.getLvl() - 4)))
+                && items.getPowerTransmiter() >= to((3 * (ma.getLvl() - 2)))
+                && items.getReinforcedTiPlate() >= to((2 * (ma.getLvl() - 6)))
+                && items.getElectronicCircute() >= to((2 * (ma.getLvl() - 6))) ) {
 
-                raw.setTitanium(raw.getTitanium() - to((5 * (ma.getLvl() - 2))));
-                raw.setCoal(raw.getCoal() - to((5 * (ma.getLvl() - 2))));
-                items.setElectronicParts(items.getElectronicParts() - to((5 * (ma.getLvl() - 2))));
-                items.setTitaniumPlate(items.getTitaniumPlate() - to((5 * (ma.getLvl() - 2))));
-                items.setPowerTransmiter(items.getPowerTransmiter() - to((5 * (ma.getLvl() - 2))));
-                items.setReinforcedTiPlate(items.getReinforcedTiPlate() - to((5 * (ma.getLvl() - 2))));
-                items.setElectronicCircute(items.getElectronicCircute() - to((5 * (ma.getLvl() - 2))));
+                raw.setTitanium(raw.getTitanium() - to((5 * (ma.getLvl()))));
+                raw.setCoal(raw.getCoal() - to((5 * (ma.getLvl()))));
+                items.setElectronicParts(items.getElectronicParts() - to((5 * (ma.getLvl() - 4))));
+                items.setTitaniumPlate(items.getTitaniumPlate() - to((3 * (ma.getLvl() - 4))));
+                items.setPowerTransmiter(items.getPowerTransmiter() - to((3 * (ma.getLvl() - 2))));
+                items.setReinforcedTiPlate(items.getReinforcedTiPlate() - to((2 * (ma.getLvl() - 6))));
+                items.setElectronicCircute(items.getElectronicCircute() - to((2 * (ma.getLvl() - 6))));
 
                 ma.setLvl(ma.getLvl() + 1);
-        } else if (m == TYPE.Nuclear && ma.getLvl() < 10) {
+        } else if (m == TYPE.Nuclear && ma.getLvl() < 10
+                && raw.getTitanium() >=- to((5 * (ma.getLvl())))
+                && raw.getUranium() >= to((10 * (ma.getLvl())))
+                && items.getGraphite() >= to((10 * (ma.getLvl())))
+                && items.getTitaniumPlate() >= to((5 * (ma.getLvl() - 4)))
+                && items.getGraphiteRod() >= to((5 * (ma.getLvl() - 4)))
+                && items.getFuelRod() >= to((5 * (ma.getLvl() - 2)))
+                && items.getReinforcedTiPlate() >= to((5 * (ma.getLvl() - 6)))
+                && items.getControlRod() >= to((5 * (ma.getLvl() - 4)))
+                && items.getAdvancedFuelRod() >= to((5 * (ma.getLvl() - 4)))
+                && items.getPowerTransmiter() >= to(((ma.getLvl() - 4)))
+                && items.getElectronicCircute() >= to(((ma.getLvl() - 4)))) {
 
-                raw.setTitanium(raw.getTitanium() - to((5 * (ma.getLvl() - 2))));
-                raw.setUranium(raw.getUranium() - to((5 * (ma.getLvl() - 2))));
-                items.setGraphite(items.getGraphite() - to((5 * (ma.getLvl() - 2))));
-                items.setTitaniumPlate(items.getTitaniumPlate() - to((5 * (ma.getLvl() - 2))));
-                items.setGraphiteRod(items.getGraphiteRod() - to((5 * (ma.getLvl() - 2))));
+                raw.setTitanium(raw.getTitanium() - to((5 * (ma.getLvl()))));
+                raw.setUranium(raw.getUranium() - to((10 * (ma.getLvl()))));
+                items.setGraphite(items.getGraphite() - to((10 * (ma.getLvl()))));
+                items.setTitaniumPlate(items.getTitaniumPlate() - to((5 * (ma.getLvl() - 4))));
+                items.setGraphiteRod(items.getGraphiteRod() - to((5 * (ma.getLvl() - 4))));
                 items.setFuelRod(items.getFuelRod() - to((5 * (ma.getLvl() - 2))));
-                items.setReinforcedTiPlate(items.getReinforcedTiPlate() - to((5 * (ma.getLvl() - 2))));
+                items.setReinforcedTiPlate(items.getReinforcedTiPlate() - to((5 * (ma.getLvl() - 6))));
                 items.setControlRod(items.getControlRod() - to((5 * (ma.getLvl() - 2))));
-                items.setAdvancedFuelRod(items.getAdvancedFuelRod() - to((5 * (ma.getLvl() - 2))));
-                items.setPowerTransmiter(items.getPowerTransmiter() - to((5 * (ma.getLvl() - 2))));
-                items.setElectronicCircute(items.getElectronicCircute() - to((5 * (ma.getLvl() - 2))));
+                items.setAdvancedFuelRod(items.getAdvancedFuelRod() - to((5 * (ma.getLvl() - 4))));
+                items.setPowerTransmiter(items.getPowerTransmiter() - to(((ma.getLvl() - 4))));
+                items.setElectronicCircute(items.getElectronicCircute() - to(((ma.getLvl() - 4))));
 
             ma.setLvl(ma.getLvl() + 1);
         } else if (m == TYPE.Miner && ma.getLvl() < 10) {
@@ -204,15 +228,17 @@ public class MachineManager extends MouseAdapter{
                 items.setElectronicCircute(items.getElectronicCircute() - to((5 * (ma.getLvl() - 2))));
 
             ma.setLvl(ma.getLvl() + 1);
-        } else if (m == TYPE.AdvancedMiner && ma.getLvl() < 10) {
+        } else if (m == TYPE.AdvancedMiner && ma.getLvl() < 10 && raw.getTitanium() >= (10 * ma.getLvl())
+                && items.getElectronicParts() >= to((5 * (ma.getLvl() - 3)))
+                && items.getTitaniumPlate() >= to((5 * (ma.getLvl() - 4)))
+                && items.getReinforcedTiPlate() >= to((2 * (ma.getLvl() - 2)))
+                && items.getElectronicCircute() >= to((ma.getLvl() - 6))) {
 
                 raw.setTitanium(raw.getTitanium() - (10 * ma.getLvl()));
-                raw.setCoal(raw.getCoal() - (10 * ma.getLvl()));
-                items.setElectronicParts(items.getElectronicParts() - to((5 * (ma.getLvl() - 2))));
-                items.setTitaniumPlate(items.getTitaniumPlate() - to((5 * (ma.getLvl() - 2))));
-                items.setPowerTransmiter(items.getPowerTransmiter() - to((5 * (ma.getLvl() - 2))));
-                items.setReinforcedTiPlate(items.getReinforcedTiPlate() - to((5 * (ma.getLvl() - 2))));
-                items.setElectronicCircute(items.getElectronicCircute() - to((5 * (ma.getLvl() - 2))));
+                items.setElectronicParts(items.getElectronicParts() - to((5 * (ma.getLvl() - 3))));
+                items.setTitaniumPlate(items.getTitaniumPlate() - to((5 * (ma.getLvl() - 4))));
+                items.setReinforcedTiPlate(items.getReinforcedTiPlate() - to((2 * (ma.getLvl() - 2))));
+                items.setElectronicCircute(items.getElectronicCircute() - to((ma.getLvl() - 6)));
 
             ma.setLvl(ma.getLvl() + 1);
         } else if (m == TYPE.Crafter && ma.getLvl() < 10) {
@@ -304,9 +330,10 @@ public class MachineManager extends MouseAdapter{
                 gr.drawString("Electronic circutes: " + items.getElectronicCircute(),      670, 645);
 
 
-            } else if (m == TYPE.Cooler) {
-
             }
+//            else if (m == TYPE.Cooler) {
+//
+//            }
 
 
         }

@@ -54,16 +54,16 @@ public class Build extends MouseAdapter {
                 raw.setUnits(raw.getUnits() - 5000);
                 gui.getBoardField()[gui.getFx()][gui.getFy()] = n;
                 n++;
-            } else if (mousePos(mx, my, 665, 380, 265, 35) && raw.getUnits() >= 300) {
-                handler.addMachine(new CoolingSystem(x[gui.getFx()], y[gui.getFy()], 20, 1, TYPE.Cooler, n, true));
-                raw.setUnits(raw.getUnits() - 300);
-                gui.getBoardField()[gui.getFx()][gui.getFy()] = n;
-                n++;
-            } else if (mousePos(mx, my, 665, 430, 265, 35) && raw.getUnits() >= 200) {
+            } else if (mousePos(mx, my, 665, 380, 265, 35) && raw.getUnits() >= 200) {
                 handler.addMachine(new Crafter(x[gui.getFx()], y[gui.getFy()], 20, 1, TYPE.Crafter, n, true));
                 raw.setUnits(raw.getUnits() - 200);
                 gui.getBoardField()[gui.getFx()][gui.getFy()] = n;
                 n++;
+//            } else if (mousePos(mx, my, 665, 430, 265, 35) && raw.getUnits() >= 300) {
+//                handler.addMachine(new CoolingSystem(x[gui.getFx()], y[gui.getFy()], 20, 1, TYPE.Cooler, n, true));
+//                raw.setUnits(raw.getUnits() - 300);
+//                gui.getBoardField()[gui.getFx()][gui.getFy()] = n;
+//                n++;
             }
         }
 
@@ -100,10 +100,10 @@ public class Build extends MouseAdapter {
         gr.drawRect(                                                           665, 280, 265, 35);
         gr.drawString("Advanced miner",                                    670, 355);
         gr.drawRect(                                                           665, 330, 265, 35);
-        gr.drawString("Cooling system",                                   670, 405);
+        gr.drawString("Crafter",                                   670, 405);
         gr.drawRect(                                                           665, 380, 265, 35);
-        gr.drawString("Crafter",                                            670, 455);
-        gr.drawRect(                                                           665, 430, 265, 35);
+//        gr.drawString("Cooling system",                                            670, 455);
+//        gr.drawRect(                                                           665, 430, 265, 35);
 
     }
 

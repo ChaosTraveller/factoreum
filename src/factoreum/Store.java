@@ -15,7 +15,7 @@ public class Store extends MouseAdapter {
 
     int[] mX = {665,665,665,665,665,665,665,665,665,665,665,665,665,665,665};
     private float[] amount = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-    private final int[] price = {1, 2, 4, 5, 15, 160, 20, 80, 500, 50, 100, 500, 100, 300};
+    private final int[] price = {1, 2, 5, 4, 15, 150, 2000, 25, 50, 600, 40, 800, 500, 300, 2000};
     private int i = 0;
 
     private static final Store instance = new Store();
