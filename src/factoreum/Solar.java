@@ -27,7 +27,7 @@ public class Solar extends Machine{
     public void tick() {
 
         if(p != true) {
-            power = Math.round((float)lvl*lvl/2);
+            power = Math.round((float)lastLvl*lastLvl/2);
             IGuiRaw.setMaxPower(IGuiRaw.getMaxPower() + power);
             p = true;
         } else if(p == true && lastLvl != lvl) {

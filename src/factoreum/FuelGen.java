@@ -31,6 +31,7 @@ public class FuelGen extends Machine{
             p = false;
             lastLvl = lvl;
         }
+
     }
 
     private Color sol = new Color(66, 78, 98);

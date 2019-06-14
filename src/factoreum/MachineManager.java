@@ -3,7 +3,6 @@ package factoreum;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 
 public class MachineManager extends MouseAdapter{
 
@@ -31,7 +30,7 @@ public class MachineManager extends MouseAdapter{
     private Machine m;
 
 
-    public void mouseClicked(MouseEvent e) {
+    public void mouseReleased(MouseEvent e) {
         int mx = e.getX();
         int my = e.getY();
 
@@ -137,14 +136,18 @@ public class MachineManager extends MouseAdapter{
                     if (mousePos(mx, my, 665, 110, 265, 55)) {
                         upgrade(temp);
                     }
+                    if (mousePos(mx, my, 756, 65, 81, 35) && (m.getType() == TYPE.Crafter || m.getType() == TYPE.Miner || m.getType() == TYPE.AdvancedMiner)) {
+                        if (m.getState() == true) {
+                            m.setState(false);
+                        } else if (m.getState() == false) {
+                            m.setState(true);
+                        }
+                    }
                 }
             }
         } else m = null;
     }
 
-    public void mouseReleased(MouseEvent e) {
-        super.mouseReleased(e);
-    }
 
     private int to (int i) {
         if (i <= 0) {
@@ -293,6 +296,18 @@ public class MachineManager extends MouseAdapter{
             gr.drawString("Destroy",                                   670, 195);
             gr.setColor(Color.white);
             gr.drawRect(                                                    665, 170, 265, 35);
+
+
+
+            if (m.getType() == TYPE.Crafter || m.getType() == TYPE.Miner || m.getType() == TYPE.AdvancedMiner) {
+                if (m.getState() == true) {
+                    gr.setColor(Color.green);
+                } else gr.setColor(Color.red);
+                gr.setFont(new Font("arial", Font.PLAIN, 20));
+                gr.drawRect(756, 65, 81, 35);
+                gr.drawString("ON/OFF", 761, 90);
+            }
+
 
             if (m.getType() == TYPE.Solar ) {
                 gr.setFont(new Font("arial", Font.PLAIN, 10));

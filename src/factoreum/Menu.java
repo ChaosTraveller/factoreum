@@ -20,7 +20,7 @@ public class Menu extends MouseAdapter {
 
     private IBoard gui = Board.getInstance();
 
-    public void mouseClicked(MouseEvent e) {
+    public void mouseReleased(MouseEvent e) {
         int mx = e.getX();
         int my = e.getY();
 
@@ -30,9 +30,7 @@ public class Menu extends MouseAdapter {
 
     }
 
-    public void mouseReleased(MouseEvent e) {
-        super.mouseReleased(e);
-    }
+
 
     private boolean mousePos(int mx, int my, int x, int y, int width, int height) {
         if (mx > x && mx < x + width) {
@@ -48,11 +46,12 @@ public class Menu extends MouseAdapter {
 
     public void render(Graphics gr) {
 
-        gr.setColor(Color.white);
+        gr.setColor(Color.gray);
         gr.drawString("Save game",                                      670, 155);
         gr.drawRect(                                                        665, 130, 265, 35);
         gr.drawString("Load game",                                      670, 205);
         gr.drawRect(                                                        665, 180, 265, 35);
+        gr.setColor(Color.white);
         gr.drawString("Exit" ,                                          670, 255);
         gr.drawRect(                                                        665, 230, 265, 35);
         gr.setColor(Color.red);

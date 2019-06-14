@@ -27,7 +27,7 @@ public class Store extends MouseAdapter {
         return instance;
     }
 
-    public void mouseClicked(MouseEvent e) {
+    public void mouseReleased(MouseEvent e) {
 
         int mx = e.getX();
         int my = e.getY();
@@ -175,12 +175,6 @@ public class Store extends MouseAdapter {
     }
 
 
-
-
-    public void mouseReleased(MouseEvent e) {
-        super.mouseReleased(e);
-    }
-
     public void tick() {
 
     }
@@ -188,79 +182,79 @@ public class Store extends MouseAdapter {
     public void render(Graphics gr) {
 
         gr.setColor(c2);
-        gr.setFont(new Font("arial", Font.PLAIN, 13));
+        gr.setFont(new Font("arial", Font.PLAIN, 12));
 
-        gr.drawString("Coal: " + IGuiRaw.getCoal(),                                  665, 130);
+        gr.drawString("Coal: " + price[0] + "$ " + IGuiRaw.getCoal(),                                  665, 130);
         gr.drawString("Sell: " + (int)amount[0], 805, 130);
         gr.drawRect(                                                        800, 115, 130, 18);
         gr.drawRect(                                                        665, 135, 265, 15);
 
-        gr.drawString("Titanium: " + IGuiRaw.getTitanium(),                          665, 165);
+        gr.drawString("Titanium: " + price[1] + "$ " + IGuiRaw.getTitanium(),                          665, 165);
         gr.drawString("Sell: " + (int)amount[1], 805, 165);
         gr.drawRect(                                                        800, 150, 130, 18);
         gr.drawRect(                                                        665, 170, 265, 15);
 
-        gr.drawString("Crystals: " + IGuiRaw.getCrystals(),                          665, 200);
+        gr.drawString("Crystals: " + price[2] + "$ " + IGuiRaw.getCrystals(),                          665, 200);
         gr.drawString("Sell: " + (int)amount[2], 805, 200);
         gr.drawRect(                                                        800, 185, 130, 18);
         gr.drawRect(                                                        665, 205, 265, 15);
 
-        gr.drawString("Uranium: " + IGuiRaw.getUranium(),                            665, 235);
+        gr.drawString("Uranium: " + price[3] + "$ " + IGuiRaw.getUranium(),                            665, 235);
         gr.drawString("Sell: " + (int)amount[3], 805, 235);
         gr.drawRect(                                                        800, 220, 130, 18);
         gr.drawRect(                                                        665, 240, 265, 15);
 
-        gr.drawString("Graphite: " + IGuiItems.getGraphite(),                          665, 270);
+        gr.drawString("Graphite: " + price[4] + "$ " + IGuiItems.getGraphite(),                          665, 270);
         gr.drawString("Sell: " + (int)amount[4], 805, 270);
         gr.drawRect(                                                        800, 255, 130, 18);
         gr.drawRect(                                                        665, 275, 265, 15);
 
-        gr.drawString("Graphite rods: " + IGuiItems.getGraphiteRod(),                  665, 305);
+        gr.drawString("Gr rods: " + price[5] + "$ " + IGuiItems.getGraphiteRod(),                  665, 305);
         gr.drawString("Sell: " + (int)amount[5], 805, 305);
         gr.drawRect(                                                        800, 290, 130, 18);
         gr.drawRect(                                                        665, 310, 265, 15);
 
-        gr.drawString("Controm Rods: " + IGuiItems.getControlRod(),                    665, 340);
+        gr.drawString("C Rods: " + price[6] + "$ " + IGuiItems.getControlRod(),                    665, 340);
         gr.drawString("Sell: " + (int)amount[6], 805, 340);
         gr.drawRect(                                                        800, 325, 130, 18);
         gr.drawRect(                                                        665, 345, 265, 15);
 
-        gr.drawString("Titanium plates: " + IGuiItems.getTitaniumPlate(),              665, 375);
+        gr.drawString("Ti plates: " + price[7] + "$ " + IGuiItems.getTitaniumPlate(),              665, 375);
         gr.drawString("Sell: " + (int)amount[7], 805, 375);
         gr.drawRect(                                                        800, 360, 130, 18);
         gr.drawRect(                                                        665, 380, 265, 15);
 
-        gr.drawString("Fuel rods: " + IGuiItems.getFuelRod(),                          665, 410);
+        gr.drawString("Fuel rods: " + price[8] + "$ " + IGuiItems.getFuelRod(),                          665, 410);
         gr.drawString("Sell: " + (int)amount[8], 805, 410);
         gr.drawRect(                                                        800, 395, 130, 18);
         gr.drawRect(                                                        665, 415, 265, 15);
 
-        gr.drawString("Advanced fuel rods: " + IGuiItems.getAdvancedFuelRod(),         665, 445);
+        gr.drawString("A fuel rods: " + price[9] + "$ " + IGuiItems.getAdvancedFuelRod(),         665, 445);
         gr.drawString("Sell: " + (int)amount[9], 805, 445);
         gr.drawRect(                                                        800, 430, 130, 18);
         gr.drawRect(                                                        665, 450, 265, 15);
 
-        gr.drawString("Electronic parts: " + IGuiItems.getElectronicParts(),           665, 480);
+        gr.drawString("El parts: " + price[10] + "$ " + IGuiItems.getElectronicParts(),           665, 480);
         gr.drawString("Sell: " + (int)amount[10], 805, 480);
         gr.drawRect(                                                        800, 465, 130, 18);
         gr.drawRect(                                                        665, 485, 265, 15);
 
-        gr.drawString("Power transmiters: " + IGuiItems.getPowerTransmiter(),          665, 515);
+        gr.drawString("P transmiter: " + price[11] + "$ " + IGuiItems.getPowerTransmiter(),          665, 515);
         gr.drawString("Sell: " + (int)amount[11], 805, 515);
         gr.drawRect(                                                        800, 500, 130, 18);
         gr.drawRect(                                                        665, 520, 265, 15);
 
-        gr.drawString("Pure crystals: " + IGuiItems.getPureCrystal(),                  665, 550);
+        gr.drawString("P crystals: " + price[12] + "$ " + IGuiItems.getPureCrystal(),                  665, 550);
         gr.drawString("Sell: " + (int)amount[12], 805, 550);
         gr.drawRect(                                                        800, 535, 130, 18);
         gr.drawRect(                                                        665, 555, 265, 15);
 
-        gr.drawString("Reinforced ti. plates: " + IGuiItems.getReinforcedTiPlate(),    665, 585);
+        gr.drawString("R ti. plates: " + price[13] + "$ " + IGuiItems.getReinforcedTiPlate(),    665, 585);
         gr.drawString("Sell: " + (int)amount[13], 805, 585);
         gr.drawRect(                                                        800, 570, 130, 18);
         gr.drawRect(                                                        665, 590, 265, 15);
 
-        gr.drawString("Electronic circutes: " + IGuiItems.getElectronicCircute(),      665, 620);
+        gr.drawString("El circutes: " + price[14] + "$ " + IGuiItems.getElectronicCircute(),      665, 620);
         gr.drawString("Sell: " + (int)amount[14], 805, 620);
         gr.drawRect(                                                        800, 605, 130, 18);
         gr.drawRect(                                                        665, 625, 265, 15);

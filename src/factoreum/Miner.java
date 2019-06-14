@@ -35,9 +35,9 @@ public class Miner extends Machine {
             }
         }
 
-        powerU = 2*lvl /*Math.round((float)(Math.pow(2, lvl/2)))*/;
 
         if(p != true) {
+            powerU = 2*lastLvl;
             IGuiRaw.setPowerUsage(IGuiRaw.getPowerUsage() + powerU);
             p = true;
         } else if(p == true && lastLvl != lvl) {
@@ -46,7 +46,16 @@ public class Miner extends Machine {
             lastLvl = lvl;
         }
 
-        if (IGuiRaw.getMaxPower() >= IGuiRaw.getPowerUsage() && time == 0) {
+        if (state == false && powerU!= 0) {
+            IGuiRaw.setPowerUsage(IGuiRaw.getPowerUsage() - powerU);
+            powerU = 0;
+        } else if (state == true && powerU == 0) {
+            powerU = 2*lastLvl;
+            IGuiRaw.setPowerUsage(IGuiRaw.getPowerUsage() + powerU);
+
+        }
+
+        if (IGuiRaw.getMaxPower() >= IGuiRaw.getPowerUsage() && time == 0 && state == true) {
             switch (ore) {
                 case 1: {
                     IGuiRaw.setCoal(IGuiRaw.getCoal() + lvl);

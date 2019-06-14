@@ -23,16 +23,24 @@ public class Crafter extends Machine implements IMachine {
     public void tick() {
 
         if(p != true) {
-            powerU = (lastLvl * lastLvl * lastLvl);
+            powerU = (lastLvl * lastLvl);
             IGuiRaw.setPowerUsage(IGuiRaw.getPowerUsage() + powerU);
             p = true;
         } else if(p == true && lastLvl != lvl) {
-            IGuiRaw.setPowerUsage(IGuiRaw.getPowerUsage() - (lastLvl * lastLvl * lastLvl));
+            IGuiRaw.setPowerUsage(IGuiRaw.getPowerUsage() - (lastLvl * lastLvl));
             p = false;
             lastLvl = lvl;
         }
+        if (state == false && powerU != 0) {
+            IGuiRaw.setPowerUsage(IGuiRaw.getPowerUsage() - powerU);
+            powerU = 0;
+        } else if (state == true && powerU == 0) {
+            powerU = lastLvl * lastLvl;
+            IGuiRaw.setPowerUsage(IGuiRaw.getPowerUsage() + powerU);
 
-        if (IGuiRaw.getMaxPower() >= IGuiRaw.getPowerUsage() && time == 0) {
+        }
+
+        if (IGuiRaw.getMaxPower() >= IGuiRaw.getPowerUsage() && time == 0 && state == true) {
 
             if (board.getItem()[id] == ITEM.graphite && raw.getCoal() >= (lvl*10)) {
                 raw.setCoal(raw.getCoal() - (lvl*10));
@@ -43,7 +51,7 @@ public class Crafter extends Machine implements IMachine {
                 item.setGraphiteRod(item.getGraphiteRod() + lvl);
                 time = 50;
             } else if (board.getItem()[id] == ITEM.controlRod && item.getGraphiteRod() >= (lvl*10)) {
-                item.setControlRod(item.getControlRod() - (lvl*10));
+                item.setGraphiteRod(item.getGraphiteRod() - (lvl*10));
                 item.setControlRod(item.getControlRod() + lvl);
                 time = 50;
             } else if (board.getItem()[id] == ITEM.titaniumPlate && raw.getTitanium() >= (lvl*10)) {

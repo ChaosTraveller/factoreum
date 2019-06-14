@@ -25,7 +25,7 @@ public class Build extends MouseAdapter {
 
     private static final int[] x = {20,125, 230, 335, 440, 545}, y = {60, 165, 270, 375, 480, 585};
 
-    public void mouseClicked(MouseEvent e) {
+    public void mouseReleased(MouseEvent e) {
         int mx = e.getX();
         int my = e.getY();
         if (gui.getBoardField()[gui.getFx()][gui.getFy()] == -1 && gui.getOverlap() == OVERLAP.FieldEmpty){
@@ -69,9 +69,6 @@ public class Build extends MouseAdapter {
 
     }
 
-    public void mouseReleased(MouseEvent e) {
-        super.mouseReleased(e);
-    }
 
 
     private boolean mousePos(int mx, int my, int x, int y, int width, int height) {

@@ -16,8 +16,8 @@ public interface IStorageRaw {
     public  void setCrystals(int crystals);
     public  int getUranium();
     public  void setUranium(int uranium);
-    public  int getCoolingPower();
-    public  void setCoolingPower(int coolingPower);
-    public  int getHeatingPower();
-    public  void setHeatingPower(int heatingPower);
+//    public  int getCoolingPower();
+//    public  void setCoolingPower(int coolingPower);
+//    public  int getHeatingPower();
+//    public  void setHeatingPower(int heatingPower);
 }

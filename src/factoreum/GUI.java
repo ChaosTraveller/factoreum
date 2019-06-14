@@ -42,7 +42,7 @@ public class GUI extends MouseAdapter {
 
     public factoreum.OVERLAP overlap = board.getOverlap();
 
-    public void mouseClicked(MouseEvent e) {
+    public void mouseReleased(MouseEvent e) {
         int mx = e.getX();
         int my = e.getY();
 
@@ -64,9 +64,6 @@ public class GUI extends MouseAdapter {
     }
 
 
-    public void mouseReleased(MouseEvent e) {
-        super.mouseReleased(e);
-    }
 
     private boolean mousePos(int mx, int my, int x, int y, int width, int height) {
         if (mx > x && mx < x + width) {
@@ -191,10 +188,7 @@ public class GUI extends MouseAdapter {
         } else if (board.getOverlap() == factoreum.OVERLAP.Crafting) {
 
 
-//            gr.setColor(Color.red);
-//            gr.setFont(new Font("arial", Font.PLAIN, 20));
-//            gr.drawRect(756, 65, 81, 35);
-//            gr.drawString("Crafting", 761, 90);
+
         } else if (board.getOverlap() == factoreum.OVERLAP.Store) {
             store.render(gr);
         } else if (board.getOverlap() == factoreum.OVERLAP.Menu) {

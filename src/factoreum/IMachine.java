@@ -14,6 +14,8 @@ public interface IMachine {
     public int getY();
     public void setType(TYPE type);
     public TYPE getType();
+    public boolean getState();
+    public void setState(boolean state);
 
 
 

@@ -22,9 +22,9 @@ public class AdvancedMiner extends Miner {
                 oreName = "Uranium";
             }
 
-        powerU = 4*lvl /*Math.round((float)(Math.pow(2, lvl/2)))*/;
 
         if(p != true) {
+            powerU = 4*lvl;
             IGuiRaw.setPowerUsage(IGuiRaw.getPowerUsage() + powerU);
             p = true;
         } else if(p == true && lastLvl != lvl) {
@@ -33,7 +33,16 @@ public class AdvancedMiner extends Miner {
             lastLvl = lvl;
         }
 
-        if (IGuiRaw.getMaxPower() >= IGuiRaw.getPowerUsage() && time == 0) {
+        if (state == false && powerU!= 0) {
+            IGuiRaw.setPowerUsage(IGuiRaw.getPowerUsage() - powerU);
+            powerU = 0;
+        } else if (state == true && powerU == 0) {
+            powerU = 4*lastLvl;
+            IGuiRaw.setPowerUsage(IGuiRaw.getPowerUsage() + powerU);
+
+        }
+
+        if (IGuiRaw.getMaxPower() >= IGuiRaw.getPowerUsage() && time == 0 && state == true) {
             switch (ore[id]) {
                 case 1: {
                     IGuiRaw.setCoal(IGuiRaw.getCoal() + lvl);

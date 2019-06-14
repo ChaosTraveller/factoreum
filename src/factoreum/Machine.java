@@ -48,5 +48,6 @@ public abstract class Machine implements IMachine{
     public int getY() { return y; }
     public void setId(int id) {this.id = id; }
     public int getId() { return id; }
-
+    public boolean getState() { return state; }
+    public void setState(boolean state) {this.state = state; }
 }
