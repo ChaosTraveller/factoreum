@@ -8,7 +8,5 @@ public enum TYPE {
     Crafter(),
     Miner(),
     AdvancedMiner,
-    Cooler(),
-    Rocket;
 
 }

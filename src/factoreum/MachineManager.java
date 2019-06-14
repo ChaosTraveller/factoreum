@@ -19,7 +19,7 @@ public class MachineManager extends MouseAdapter{
     }
 
     private IBoard board = Board.getInstance();
-    private Handler handler = Handler.getInstance();
+    private IHandler handler = Handler.getInstance();
     private IStorageRaw raw = Storage.getInstance();
     private IStorageItems items = Storage.getInstance();
     public static final int[] x = {20,125, 230, 335, 440, 545}, y = {60, 165, 270, 375, 480, 585};
@@ -175,7 +175,7 @@ public class MachineManager extends MouseAdapter{
                 items.setPowerTransmiter(items.getPowerTransmiter() - to(ma.getLvl()- 6));
                 items.setReinforcedTiPlate(items.getReinforcedTiPlate() - to(ma.getLvl() - 6));
 
-                ma.setLvl(ma.getLvl() + 1);
+                m.setLvl(m.getLvl() + 1);
 
         } else if (m.getType() == TYPE.Fuel && ma.getLvl() < 10 && raw.getTitanium() >= to((5 * (ma.getLvl())))
                 && raw.getCoal() >= to((5 * (ma.getLvl())))
@@ -193,7 +193,7 @@ public class MachineManager extends MouseAdapter{
                 items.setReinforcedTiPlate(items.getReinforcedTiPlate() - to((2 * (ma.getLvl() - 6))));
                 items.setElectronicCircute(items.getElectronicCircute() - to((2 * (ma.getLvl() - 6))));
 
-                ma.setLvl(ma.getLvl() + 1);
+                m.setLvl(m.getLvl() + 1);
 
         } else if (m.getType() == TYPE.Nuclear && ma.getLvl() < 10
                 && raw.getUranium() >= to((10 * (ma.getLvl())))
@@ -218,7 +218,7 @@ public class MachineManager extends MouseAdapter{
                 items.setPowerTransmiter(items.getPowerTransmiter() - to(((ma.getLvl() - 4))));
                 items.setElectronicCircute(items.getElectronicCircute() - to(((ma.getLvl() - 4))));
 
-                ma.setLvl(ma.getLvl() + 1);
+                m.setLvl(m.getLvl() + 1);
         } else if (m.getType() == TYPE.Miner && ma.getLvl() < 10
                 && raw.getTitanium() >= to((5 * (ma.getLvl())))
                 && items.getElectronicParts() >= to((3 * (ma.getLvl() - 4)))
@@ -247,7 +247,7 @@ public class MachineManager extends MouseAdapter{
                 items.setReinforcedTiPlate(items.getReinforcedTiPlate() - to((2 * (ma.getLvl() - 2))));
                 items.setElectronicCircute(items.getElectronicCircute() - to((ma.getLvl() - 6)));
 
-            ma.setLvl(ma.getLvl() + 1);
+            m.setLvl(m.getLvl() + 1);
         } else if (m.getType() == TYPE.Crafter && ma.getLvl() < 10
                 && raw.getTitanium() >= (10 * ma.getLvl())
                 && raw.getCrystals() >= to((5 * (ma.getLvl())))
@@ -267,7 +267,7 @@ public class MachineManager extends MouseAdapter{
             items.setElectronicCircute(items.getElectronicCircute() - to((2 * (ma.getLvl() - 4))));
             items.setPureCrystal(items.getPureCrystal() - to((2 * (ma.getLvl() - 4))));
 
-            ma.setLvl(ma.getLvl() + 1);
+            m.setLvl(ma.getLvl() + 1);
         }
     }
 

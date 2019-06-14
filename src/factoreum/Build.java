@@ -79,9 +79,6 @@ public class Build extends MouseAdapter {
         } else return false;
     }
 
-    public void tick() {
-
-    }
 
     public void render(Graphics gr) {
 

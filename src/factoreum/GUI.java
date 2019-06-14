@@ -25,19 +25,19 @@ public class GUI extends MouseAdapter {
     public Color c2 = new Color(255, 172, 23);
     public Color c3 = new Color(255, 188, 91);
 
-    private int[] minX = {0, 0, 0, 0, 0, 0};
-    private int[] minY = {0, 0, 0, 0, 0, 0};
+    private int[] minX = new int[6];
+    private int[] minY = new int[6];
 
-    private int ore = 0;
-    Random r = new Random();
-    private int n;
+
+    private Random r = new Random();
+
 
     private IBoard board = Board.getInstance();
     private IStorageItems items = Storage.getInstance();
     private IStorageRaw raw = Storage.getInstance();
     private Build build = Build.getInstance();
     private Menu menu = Menu.getInstance();
-    private MachineManager upgrade = MachineManager.getInstance();
+    private MachineManager manager = MachineManager.getInstance();
     private Store store = Store.getInstance();
 
     public factoreum.OVERLAP overlap = board.getOverlap();
@@ -196,7 +196,7 @@ public class GUI extends MouseAdapter {
         } else if (board.getOverlap() == factoreum.OVERLAP.Field) {
             gr.setColor(Color.red);
             gr.drawRect(minX[board.getFx()], minY[board.getFy()], 100, 100);
-            upgrade.render(gr);
+            manager.render(gr);
         } else if (board.getOverlap() == factoreum.OVERLAP.FieldEmpty) {
             gr.setColor(Color.green);
             gr.drawRect(minX[board.getFx()], minY[board.getFy()], 100, 100);

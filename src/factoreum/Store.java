@@ -9,19 +9,17 @@ public class Store extends MouseAdapter {
 
     protected IStorageRaw IGuiRaw = Storage.getInstance();
     protected IStorageItems IGuiItems = Storage.getInstance();
-    protected IBoard gui = Board.getInstance();
+    protected IBoard board = Board.getInstance();
     public Color c2 = new Color(255, 172, 23);
 
 
     int[] mX = {665,665,665,665,665,665,665,665,665,665,665,665,665,665,665};
-    private float[] amount = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+    private float[] amount = new float[15];
     private final int[] price = {1, 2, 5, 4, 15, 150, 2000, 25, 50, 600, 40, 800, 500, 300, 2000};
     private int i = 0;
 
     private static final Store instance = new Store();
 
-    private Store() {
-    }
 
     public static Store getInstance() {
         return instance;
@@ -31,7 +29,7 @@ public class Store extends MouseAdapter {
 
         int mx = e.getX();
         int my = e.getY();
-        if (gui.getOverlap() == OVERLAP.Store) {
+        if (board.getOverlap() == OVERLAP.Store) {
             if (mousePos2(mx, my, 800, 115, 130, 18) && IGuiRaw.getCoal() >= amount[0]) {
                 IGuiRaw.setCoal(IGuiRaw.getCoal() - (int)amount[0]);
                 IGuiRaw.setUnits(IGuiRaw.getUnits() + ((int)amount[0] * price[0]));
@@ -87,7 +85,7 @@ public class Store extends MouseAdapter {
     public void mouseDragged(MouseEvent e) {
         int mx = e.getX();
         int my = e.getY();
-        if (gui.getOverlap() == OVERLAP.Store) {
+        if (board.getOverlap() == OVERLAP.Store) {
             if (mousePos2(mx, my, 665, 135, 265, 15)) {
                 Arrays.fill(amount, 0);
                 i = 0;
@@ -175,9 +173,6 @@ public class Store extends MouseAdapter {
     }
 
 
-    public void tick() {
-
-    }
 
     public void render(Graphics gr) {
 

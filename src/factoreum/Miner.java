@@ -41,7 +41,7 @@ public class Miner extends Machine {
             IGuiRaw.setPowerUsage(IGuiRaw.getPowerUsage() + powerU);
             p = true;
         } else if(p == true && lastLvl != lvl) {
-            IGuiRaw.setPowerUsage(IGuiRaw.getPowerUsage() - 2*lastLvl);
+            IGuiRaw.setPowerUsage(IGuiRaw.getPowerUsage() - powerU);
             p = false;
             lastLvl = lvl;
         }
@@ -84,10 +84,10 @@ public class Miner extends Machine {
 
     }
 
-    private Color sol = new Color(117, 112, 148);
+    private Color c1 = new Color(117, 112, 148);
     public void render(Graphics gr) {
 
-        gr.setColor(sol);
+        gr.setColor(c1);
         gr.fillRect(x, y, 80, 80);
         gr.setColor(Color.black);
         gr.setFont(new Font("arial", Font.PLAIN, 10));

@@ -84,7 +84,7 @@ public class Crafter extends Machine implements IMachine {
                 item.setTitaniumPlate(item.getTitaniumPlate() - (lvl*10));
                 item.setReinforcedTiPlate(item.getReinforcedTiPlate() + lvl);
                 time = 50;
-            } else if (board.getItem()[id] == ITEM.powerTransmiter && item.getPureCrystal() >= lvl && item.getElectronicParts() >= (lvl*20) && item.getGraphite() >= (lvl*20)) {
+            } else if (board.getItem()[id] == ITEM.electronicCircute && item.getPureCrystal() >= lvl && item.getElectronicParts() >= (lvl*20) && item.getGraphite() >= (lvl*20)) {
                 item.setPureCrystal(item.getPureCrystal() - lvl);
                 item.setElectronicParts(item.getElectronicParts() - (lvl*20));
                 item.setGraphite(item.getGraphite() - (lvl*20));

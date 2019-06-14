@@ -37,11 +37,11 @@ public class NuclearGen extends Machine{
         }
     }
 
-    private Color sol = new Color(66, 101, 89);
+    private Color c1 = new Color(66, 101, 89);
 
     public void render(Graphics gr) {
 
-        gr.setColor(sol);
+        gr.setColor(c1);
         gr.fillRect(x, y, 80, 80);
         gr.setColor(Color.black);
         gr.setFont(new Font("arial", Font.PLAIN, 10));

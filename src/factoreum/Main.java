@@ -13,9 +13,9 @@ public class Main extends Canvas implements Runnable {
 
     private GUI gui = GUI.getInstance();
     private Handler handler =  Handler.getInstance();
-    private  Menu menu = Menu.getInstance();
-    private  Store store = Store.getInstance();
-    private  Build build = Build.getInstance();
+    private Menu menu = Menu.getInstance();
+    private Store store = Store.getInstance();
+    private Build build = Build.getInstance();
     private MachineManager upgrade = MachineManager.getInstance();
     private IStorageRaw raw = Storage.getInstance();
     private IHandler ih = Handler.getInstance();
@@ -90,10 +90,9 @@ public class Main extends Canvas implements Runnable {
         gui.tick();
         menu.tick();
         store.tick();
-        build.tick();
         upgrade.tick();
 
-        if (raw.getUnits() >= 100000000) {
+        if (raw.getUnits() >= 1000000) {
             win = true;
         }
 
