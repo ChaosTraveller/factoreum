@@ -89,7 +89,6 @@ public class Main extends Canvas implements Runnable {
         handler.tick();
         gui.tick();
         menu.tick();
-        store.tick();
         upgrade.tick();
 
         if (raw.getUnits() >= 1000000) {

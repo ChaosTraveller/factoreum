@@ -11,13 +11,12 @@ public class Crafter extends Machine implements IMachine {
     private int lastLvl = lvl;
     private  boolean p = false;
     private int time = 0;
+    private String craftedItem;
 
     protected IBoard board = Board.getInstance();
     private IStorageRaw raw = Storage.getInstance();
     private IStorageItems item = Storage.getInstance();
 
-
-    private ITEM it = ITEM.none;
 
 
     public void tick() {
@@ -43,48 +42,59 @@ public class Crafter extends Machine implements IMachine {
         if (IGuiRaw.getMaxPower() >= IGuiRaw.getPowerUsage() && time == 0 && state == true) {
 
             if (board.getItem()[id] == ITEM.graphite && raw.getCoal() >= (lvl*10)) {
+                craftedItem = "graphite";
                 raw.setCoal(raw.getCoal() - (lvl*10));
                 item.setGraphite(item.getGraphite() + lvl);
                 time = 50;
             } else if (board.getItem()[id] == ITEM.graphiteRod && item.getGraphite() >= (lvl*10)) {
+                craftedItem = "gr. Rod";
                 item.setGraphite(item.getGraphite() - (lvl*10));
                 item.setGraphiteRod(item.getGraphiteRod() + lvl);
                 time = 50;
             } else if (board.getItem()[id] == ITEM.controlRod && item.getGraphiteRod() >= (lvl*10)) {
+                craftedItem = "control Rod";
                 item.setGraphiteRod(item.getGraphiteRod() - (lvl*10));
                 item.setControlRod(item.getControlRod() + lvl);
                 time = 50;
             } else if (board.getItem()[id] == ITEM.titaniumPlate && raw.getTitanium() >= (lvl*10)) {
+                craftedItem = "ti Plate";
                 raw.setTitanium(raw.getTitanium() - (lvl*10));
                 item.setTitaniumPlate(item.getTitaniumPlate() + lvl);
                 time = 50;
             } else if (board.getItem()[id] == ITEM.fuelRod && raw.getUranium() >= (lvl*10)) {
+                craftedItem = "fuel Rod";
                 raw.setUranium(raw.getUranium() - (lvl*10));
                 item.setFuelRod(item.getFuelRod() + lvl);
                 time = 50;
             } else if (board.getItem()[id] == ITEM.advancedFuelRod && item.getFuelRod() >= (lvl*10)) {
+                craftedItem = "adv. F. Rod";
                 item.setFuelRod(item.getFuelRod() - (lvl*10));
                 item.setAdvancedFuelRod(item.getAdvancedFuelRod() + lvl);
                 time = 50;
             } else if (board.getItem()[id] == ITEM.electronicParts && raw.getTitanium() >= (lvl*5) && raw.getCrystals() >= (lvl*5)) {
+                craftedItem = "el. Parts";
                 raw.setTitanium(raw.getTitanium() - (lvl*5));
                 raw.setCrystals(raw.getCrystals() - (lvl*5));
                 time = 50;
                 item.setElectronicParts(item.getElectronicParts() + lvl);
             } else if (board.getItem()[id] == ITEM.powerTransmiter && item.getPureCrystal() >= lvl && item.getElectronicParts() >= (lvl*5)) {
+                craftedItem = "p. Transmiter";
                 item.setPureCrystal(item.getPureCrystal() - lvl);
                 item.setElectronicParts(item.getElectronicParts() - (lvl*5));
                 item.setPowerTransmiter(item.getPowerTransmiter() + lvl);
                 time = 50;
             } else if (board.getItem()[id] == ITEM.pureCrystal && raw.getCrystals() >= (lvl*50)) {
+                craftedItem = "pure Crystal";
                 raw.setCrystals(raw.getCrystals() - (lvl*50));
                 item.setPureCrystal(item.getPureCrystal() + lvl);
                 time = 50;
             } else if (board.getItem()[id] == ITEM.reinforcedTiPlate && item.getTitaniumPlate() >= (lvl*10)) {
+                craftedItem = "R. Ti Plate";
                 item.setTitaniumPlate(item.getTitaniumPlate() - (lvl*10));
                 item.setReinforcedTiPlate(item.getReinforcedTiPlate() + lvl);
                 time = 50;
             } else if (board.getItem()[id] == ITEM.electronicCircute && item.getPureCrystal() >= lvl && item.getElectronicParts() >= (lvl*20) && item.getGraphite() >= (lvl*20)) {
+                craftedItem = "el. Circute";
                 item.setPureCrystal(item.getPureCrystal() - lvl);
                 item.setElectronicParts(item.getElectronicParts() - (lvl*20));
                 item.setGraphite(item.getGraphite() - (lvl*20));
@@ -108,6 +118,7 @@ public class Crafter extends Machine implements IMachine {
         gr.drawString("Crafter", x +3, y +10);
         gr.setFont(new Font("arial", Font.PLAIN, 13));
         gr.drawString("lvl: " + lvl, x +3, y +25);
+        gr.drawString("" + craftedItem, x + 3, y + 40);
         gr.drawString("Power: -" + powerU, x+3, y+53);
         gr.drawString("Temp: " + temperature, x+3, y+68);
 
