@@ -13,7 +13,7 @@ public class Board implements IBoard {
 
         return single_instance;
     }
-
+                                                    //Zmienne związane z planszą
     private int[] minX = {0, 0, 0, 0, 0, 0};
     private int[] minY = {0, 0, 0, 0, 0, 0};
     private int[][] boardField = {{-1, -1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1, -1}, {-1, -1, -1, -1, -1, -1} };

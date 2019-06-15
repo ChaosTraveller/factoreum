@@ -36,7 +36,7 @@ public class Main extends Canvas implements Runnable {
 
     }
 
-    public synchronized void start() {      // Game starts
+    public synchronized void start() {      // Rozpoczęcie aplikacji
 
         action = new Thread(this);
         action.start();
@@ -44,7 +44,7 @@ public class Main extends Canvas implements Runnable {
 
     }
 
-    public synchronized void stop() {       // Game stops
+    public synchronized void stop() {       // Zatrzymanie aplikacji
 
         try {
             action.join();
@@ -56,7 +56,7 @@ public class Main extends Canvas implements Runnable {
     }
 
 
-    public void run(){                          //main game loop
+    public void run(){                          //główna pętla gry
 
         long lastTime = System.nanoTime();
         double ticks = 30.0;

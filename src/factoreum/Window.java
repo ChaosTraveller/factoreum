@@ -3,7 +3,7 @@ package factoreum;
 import javax.swing.*;
 import java.awt.*;
 
-public class Window extends Canvas {
+public class Window extends Canvas {            //Tworzenie nowego okna
 
     public Window(int width, int height, String title, Main board){
         JFrame frame = new JFrame(title);

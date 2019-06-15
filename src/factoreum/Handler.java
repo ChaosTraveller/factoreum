@@ -46,11 +46,11 @@ public class Handler implements IHandler{
         }
     }
 
-    public void addMachine(Machine m) {
+    public void addMachine(Machine m) {     //dodawanie maszyny do listy
         machine.add(m);
     }
 
-    public void deleteMachine(int j) {
+    public void deleteMachine(int j) {      //usówanie maszyny z listy
         for (int i = 0; i < machine.size(); i++) {
             Machine tempM = machine.get(i);
 

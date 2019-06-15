@@ -149,7 +149,7 @@ public class MachineManager extends MouseAdapter{
     }
 
 
-    private int to (int i) {
+    private int to (int i) {        //funkcja zwraca zero jeśli int < 0
         if (i <= 0) {
             return 0;
         } else {
@@ -157,7 +157,7 @@ public class MachineManager extends MouseAdapter{
         }
     }
 
-    private void upgrade(Machine ma) {
+    private void upgrade(Machine ma) {      //Upgradeowanie maszyny
 
         if (m.getType() == TYPE.Solar && ma.getLvl() < 10 && raw.getTitanium() >= 10 * ma.getLvl()
                 && raw.getCrystals() >= 5 * to((ma.getLvl() - 2))
@@ -271,7 +271,7 @@ public class MachineManager extends MouseAdapter{
         }
     }
 
-    private boolean mousePos(int mx, int my, int x, int y, int width, int height) {
+    private boolean mousePos(int mx, int my, int x, int y, int width, int height) {     //Sprawdzanie pozycji kursora na ekranie
         if (mx > x && mx < x + width) {
             if (my > y && my < y + height) {
                 return true;

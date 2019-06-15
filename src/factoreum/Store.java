@@ -82,7 +82,7 @@ public class Store extends MouseAdapter {
     }
 
 
-    public void mouseDragged(MouseEvent e) {
+    public void mouseDragged(MouseEvent e) {            //suwaki do zmiany liczby przedmiotów do sprzedania
         int mx = e.getX();
         int my = e.getY();
         if (board.getOverlap() == OVERLAP.Store) {

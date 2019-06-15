@@ -92,7 +92,7 @@ public class GUI extends MouseAdapter {
 
 
     public void tick(){
-        if (board.getMinY()[5] == 0) {
+        if (board.getMinY()[5] == 0) {      //Generacja planszy
             int spx = 0, spy = 0;
             for (int i = 0; i < 6; i++) {
                 for (int j = 0; j < 6; j++) {
@@ -109,7 +109,7 @@ public class GUI extends MouseAdapter {
             }
         }
 
-        if (board.getBoardFieldOre()[5][5] == 0) {
+        if (board.getBoardFieldOre()[5][5] == 0) {      //Losowanie surowców na planszy
             for (int k = 0; k < 6; k++) {
                 for (int l = 0; l < 6; l++) {
                     int i = r.nextInt(100) + 1;
