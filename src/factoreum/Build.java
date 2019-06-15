@@ -19,7 +19,7 @@ public class Build extends MouseAdapter {
     }
 
     private IHandler handler = Handler.getInstance();
-    private IBoard gui = Board.getInstance();
+    private IBoard board = Board.getInstance();
     private IStorageRaw raw = Storage.getInstance();
     private int n = 0;
 
@@ -28,41 +28,41 @@ public class Build extends MouseAdapter {
     public void mouseReleased(MouseEvent e) {
         int mx = e.getX();
         int my = e.getY();
-        if (gui.getBoardField()[gui.getFx()][gui.getFy()] == -1 && gui.getOverlap() == OVERLAP.FieldEmpty){
+        if (board.getBoardField()[board.getFx()][board.getFy()] == -1 && board.getOverlap() == OVERLAP.FieldEmpty){
             if (mousePos(mx, my, 665, 130, 265, 35) && raw.getUnits() >= 50) {
-                handler.addMachine(new Solar(x[gui.getFx()], y[gui.getFy()], 20, 1, TYPE.Solar, n, true));
+                handler.addMachine(new Solar(x[board.getFx()], y[board.getFy()], 20, 1, TYPE.Solar, n, true));
                 raw.setUnits(raw.getUnits() - 50);
-                gui.getBoardField()[gui.getFx()][gui.getFy()] = n;
+                board.getBoardField()[board.getFx()][board.getFy()] = n;
                 n++;
             } else if (mousePos(mx, my, 665, 180, 265, 35) && raw.getUnits() >= 500) {
-                handler.addMachine(new FuelGen(x[gui.getFx()], y[gui.getFy()], 20, 1, TYPE.Fuel, n, true));
+                handler.addMachine(new FuelGen(x[board.getFx()], y[board.getFy()], 20, 1, TYPE.Fuel, n, true));
                 raw.setUnits(raw.getUnits() - 500);
-                gui.getBoardField()[gui.getFx()][gui.getFy()] = n;
+                board.getBoardField()[board.getFx()][board.getFy()] = n;
                 n++;
             } else if (mousePos(mx, my, 665, 230, 265, 35) && raw.getUnits() >= 2000) {
-                handler.addMachine(new NuclearGen(x[gui.getFx()], y[gui.getFy()], 20, 1, TYPE.Nuclear, n, true));
+                handler.addMachine(new NuclearGen(x[board.getFx()], y[board.getFy()], 20, 1, TYPE.Nuclear, n, true));
                 raw.setUnits(raw.getUnits() - 2000);
-                gui.getBoardField()[gui.getFx()][gui.getFy()] = n;
+                board.getBoardField()[board.getFx()][board.getFy()] = n;
                 n++;
             } else if (mousePos(mx, my, 665, 280, 265, 35) && raw.getUnits() >= 200) {
-                handler.addMachine(new Miner(x[gui.getFx()], y[gui.getFy()], 20, 1, TYPE.Miner, n, true));
+                handler.addMachine(new Miner(x[board.getFx()], y[board.getFy()], 20, 1, TYPE.Miner, n, true));
                 raw.setUnits(raw.getUnits() - 200);
-                gui.getBoardField()[gui.getFx()][gui.getFy()] = n;
+                board.getBoardField()[board.getFx()][board.getFy()] = n;
                 n++;
             } else if (mousePos(mx, my, 665, 330, 265, 35) && raw.getUnits() >= 5000) {
-                handler.addMachine(new AdvancedMiner(x[gui.getFx()], y[gui.getFy()], 20, 1, TYPE.AdvancedMiner, n, true));
+                handler.addMachine(new AdvancedMiner(x[board.getFx()], y[board.getFy()], 20, 1, TYPE.AdvancedMiner, n, true));
                 raw.setUnits(raw.getUnits() - 5000);
-                gui.getBoardField()[gui.getFx()][gui.getFy()] = n;
+                board.getBoardField()[board.getFx()][board.getFy()] = n;
                 n++;
             } else if (mousePos(mx, my, 665, 380, 265, 35) && raw.getUnits() >= 200) {
-                handler.addMachine(new Crafter(x[gui.getFx()], y[gui.getFy()], 20, 1, TYPE.Crafter, n, true));
+                handler.addMachine(new Crafter(x[board.getFx()], y[board.getFy()], 20, 1, TYPE.Crafter, n, true));
                 raw.setUnits(raw.getUnits() - 200);
-                gui.getBoardField()[gui.getFx()][gui.getFy()] = n;
+                board.getBoardField()[board.getFx()][board.getFy()] = n;
                 n++;
 //            } else if (mousePos(mx, my, 665, 430, 265, 35) && raw.getUnits() >= 300) {
-//                handler.addMachine(new CoolingSystem(x[gui.getFx()], y[gui.getFy()], 20, 1, TYPE.Cooler, n, true));
+//                handler.addMachine(new CoolingSystem(x[board.getFx()], y[board.getFy()], 20, 1, TYPE.Cooler, n, true));
 //                raw.setUnits(raw.getUnits() - 300);
-//                gui.getBoardField()[gui.getFx()][gui.getFy()] = n;
+//                board.getBoardField()[board.getFx()][gui.getFy()] = n;
 //                n++;
             }
         }
