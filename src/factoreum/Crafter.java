@@ -25,12 +25,12 @@ public class Crafter extends Machine implements IMachine {
             powerU = (lastLvl * lastLvl);
             IGuiRaw.setPowerUsage(IGuiRaw.getPowerUsage() + powerU);
             p = true;
-        } else if(p == true && lastLvl != lvl) {            //Update zużycia energii przy upgradzie maszyny
+        } else if(p == true && lastLvl != lvl) {            //Update zużycia energii przy upgrage'u maszyny
             IGuiRaw.setPowerUsage(IGuiRaw.getPowerUsage() - (lastLvl * lastLvl));
             p = false;
             lastLvl = lvl;
         }
-        if (state == false && powerU != 0) {        //zmniejszenie zużycia energii kiedy maszyna jest wyłączona
+        if (state == false && powerU != 0) {        //Zmniejszenie zużycia energii, kiedy maszyna jest wyłączona
             IGuiRaw.setPowerUsage(IGuiRaw.getPowerUsage() - powerU);
             powerU = 0;
         } else if (state == true && powerU == 0) {

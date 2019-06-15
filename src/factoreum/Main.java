@@ -5,7 +5,7 @@ import java.awt.image.BufferStrategy;
 
 public class Main extends Canvas implements Runnable {
 
-    private static final int WI = 960, HE = 720; // Window width and height
+    private static final int WI = 960, HE = 720; // Szerokość i wysokość okna
 
 
     private Thread action;
@@ -56,7 +56,7 @@ public class Main extends Canvas implements Runnable {
     }
 
 
-    public void run(){                          //główna pętla gry
+    public void run(){                          //Główna pętla gry
 
         long lastTime = System.nanoTime();
         double ticks = 30.0;

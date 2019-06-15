@@ -14,7 +14,7 @@ public class Storage implements IStorageRaw, IStorageItems{
         return single_instance;
     }
 
-                                    // Zmienne związanie z przedmiotami energią itp
+                                    // Zmienne związanie z przedmiotami, energią, itp
     private  int maxPower = 0;
     private  int powerUsage = 0;
     private  int units = 1000;

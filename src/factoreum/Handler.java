@@ -50,7 +50,7 @@ public class Handler implements IHandler{
         machine.add(m);
     }
 
-    public void deleteMachine(int j) {      //usówanie maszyny z listy
+    public void deleteMachine(int j) {      //Usuwanie maszyny z listy
         for (int i = 0; i < machine.size(); i++) {
             Machine tempM = machine.get(i);
 
